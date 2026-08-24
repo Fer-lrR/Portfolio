@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Preloader } from './components/Preloader';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Architectures } from './components/Architectures';
+import { AboutMe } from './components/AboutMe';
 import { Projects } from './components/Projects';
+import { Architectures } from './components/Architectures';
 import { Experience } from './components/Experience';
 import { TechRadar } from './components/TechRadar';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { FloatingDock } from './components/FloatingDock';
 
 export const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -39,6 +41,7 @@ export const App: React.FC = () => {
         {/* Main Content */}
         <main style={{ flex: 1 }}>
           <Hero onOpenContact={handleScrollToContact} />
+          <AboutMe />
           <Projects />
           <Architectures />
           <Experience />
@@ -48,6 +51,9 @@ export const App: React.FC = () => {
 
         {/* Footer */}
         <Footer />
+
+        {/* Floating Quick Action Dock (WhatsApp & Back to Top) */}
+        <FloatingDock />
       </div>
     </>
   );

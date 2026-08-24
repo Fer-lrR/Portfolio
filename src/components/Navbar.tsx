@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Menu, X, Send, ExternalLink } from 'lucide-react';
+import { Menu, X, Send, ExternalLink, Download } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 interface NavbarProps {
@@ -20,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   }, []);
 
   const navLinks = [
+    { name: 'Sobre Mí', href: '#about' },
     { name: 'Proyectos', href: '#projects' },
     { name: 'Arquitectura', href: '#architecture' },
     { name: 'Experiencia', href: '#experience' },
@@ -84,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         </a>
 
         {/* Desktop Navigation */}
-        <nav style={{ display: 'none', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
+        <nav style={{ display: 'none', alignItems: 'center', gap: '1.75rem' }} className="desktop-nav">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -104,20 +105,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           ))}
 
           <a
-            href="https://rodevsoftware.com"
+            href="/cv/CV_Luis_Fernando_Romano.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            className="glass-pill"
             style={{
               color: '#38bdf8',
               fontWeight: 600,
-              fontSize: '0.85rem',
+              fontSize: '0.8rem',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.3rem'
+              gap: '0.35rem',
+              borderColor: 'rgba(56, 189, 248, 0.3)'
             }}
           >
-            <span>rodevsoftware.com</span>
-            <ExternalLink size={13} />
+            <Download size={13} />
+            <span>CV</span>
           </a>
         </nav>
 
@@ -212,6 +215,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               {link.name}
             </a>
           ))}
+
+          <a
+            href="/cv/CV_Luis_Fernando_Romano.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: '#38bdf8',
+              fontSize: '1rem',
+              fontWeight: 600,
+              padding: '0.5rem 0',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem'
+            }}
+          >
+            <Download size={16} />
+            <span>Descargar CV (PDF)</span>
+          </a>
 
           <a
             href="https://rodevsoftware.com"

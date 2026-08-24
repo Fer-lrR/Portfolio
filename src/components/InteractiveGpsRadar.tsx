@@ -7,38 +7,48 @@ export const InteractiveGpsRadar: React.FC = () => {
   const [lat, setLat] = useState(-27.1584);
   const [lng, setLng] = useState(-65.4124);
   const [wakeLockActive, setWakeLockActive] = useState(true);
-  const [isAlerting, setIsAlerting] = useState(false);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [pings, setPings] = useState(284);
-  const [audioWave, setAudioWave] = useState([12, 24, 18, 30, 15, 28, 20, 32]);
+  const [audioWave, setAudioWave] = useState([10, 18, 14, 22, 12, 20, 16, 24]);
 
-  // Web Audio API Synthesizer Chirp with dynamic wave simulation
-  const triggerAudioChirp = (type: 'danger' | 'info' = 'danger') => {
+  // High-End Luxury Sonar Ping & Telemetry Chime (Gentle dual sine chord with exponential decay)
+  const playTelemetryChime = () => {
     try {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       const ctx = new AudioCtx();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
 
-      osc.type = type === 'danger' ? 'sawtooth' : 'sine';
-      osc.frequency.setValueAtTime(type === 'danger' ? 880 : 580, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(type === 'danger' ? 440 : 880, ctx.currentTime + 0.3);
+      // Master Gain for smooth volume control
+      const masterGain = ctx.createGain();
+      masterGain.gain.setValueAtTime(0.12, ctx.currentTime);
+      masterGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.55);
+      masterGain.connect(ctx.destination);
 
-      gain.gain.setValueAtTime(0.25, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+      // Primary Harmonious Tone (C5 - 523.25 Hz)
+      const osc1 = ctx.createOscillator();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(523.25, ctx.currentTime);
+      osc1.frequency.exponentialRampToValueAtTime(1046.5, ctx.currentTime + 0.12); // Bell-like sparkle
+      osc1.connect(masterGain);
 
-      osc.connect(gain);
-      gain.connect(ctx.destination);
+      // Secondary Overtone (G5 - 783.99 Hz)
+      const osc2 = ctx.createOscillator();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(783.99, ctx.currentTime);
+      osc2.connect(masterGain);
 
-      osc.start();
-      osc.stop(ctx.currentTime + 0.3);
+      osc1.start();
+      osc2.start();
 
-      setIsAlerting(true);
-      setAudioWave([45, 60, 52, 70, 48, 65, 55, 68]);
+      osc1.stop(ctx.currentTime + 0.55);
+      osc2.stop(ctx.currentTime + 0.55);
+
+      setIsPlayingAudio(true);
+      setAudioWave([30, 48, 40, 56, 38, 50, 42, 54]);
 
       setTimeout(() => {
-        setIsAlerting(false);
-        setAudioWave([12, 24, 18, 30, 15, 28, 20, 32]);
-      }, 700);
+        setIsPlayingAudio(false);
+        setAudioWave([10, 18, 14, 22, 12, 20, 16, 24]);
+      }, 550);
     } catch {
       console.log('Audio Context unavailable');
     }
@@ -85,7 +95,7 @@ export const InteractiveGpsRadar: React.FC = () => {
               color: '#06b6d4'
             }}
           >
-            <Radio size={20} className={isAlerting ? 'pulse-alert' : ''} />
+            <Radio size={20} className={isPlayingAudio ? 'pulse-alert' : ''} />
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -244,7 +254,7 @@ export const InteractiveGpsRadar: React.FC = () => {
         </div>
       </div>
 
-      {/* Audio Wave Visualizer & Alert Trigger */}
+      {/* Audio Wave Visualizer & Luxury Sonar Ping Trigger */}
       <div
         style={{
           display: 'flex',
@@ -267,7 +277,7 @@ export const InteractiveGpsRadar: React.FC = () => {
                 style={{
                   width: '4px',
                   height: `${h}px`,
-                  backgroundColor: isAlerting ? '#ef4444' : '#06b6d4',
+                  backgroundColor: isPlayingAudio ? '#38bdf8' : '#06b6d4',
                   borderRadius: '2px',
                   transition: 'height 0.15s ease, background-color 0.2s ease'
                 }}
@@ -277,36 +287,36 @@ export const InteractiveGpsRadar: React.FC = () => {
 
           <div>
             <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#f8fafc' }}>
-              Sintetizador Acústico Nativo (Web Audio API)
+              Telemetría Acústica Digital (Web Audio API)
             </div>
             <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
-              Generación de sonido en cliente sin latencia de red ni archivos .MP3
+              Tono armónico C5 + G5 con decaimiento exponencial suave en cliente
             </div>
           </div>
         </div>
 
         <button
-          onClick={() => triggerAudioChirp('danger')}
+          onClick={playTelemetryChime}
           className="btn-primary"
           style={{
             padding: '0.55rem 1.15rem',
             fontSize: '0.825rem',
             borderRadius: '0.6rem',
-            background: isAlerting ? 'linear-gradient(135deg, #dc2626, #f97316)' : 'linear-gradient(135deg, #2563eb, #06b6d4)'
+            background: isPlayingAudio ? 'linear-gradient(135deg, #06b6d4, #10b981)' : 'linear-gradient(135deg, #2563eb, #06b6d4)'
           }}
         >
           <Volume2 size={15} />
-          <span>{isAlerting ? '¡Emitiendo Alarma!' : 'Probar Alerta Sonora'}</span>
+          <span>{isPlayingAudio ? 'Emitiendo Chime...' : 'Probar Tono Digital'}</span>
         </button>
       </div>
 
       <style>{`
         .pulse-alert {
-          animation: pulse-alert-anim 0.4s ease infinite alternate;
+          animation: pulse-alert-anim 0.5s ease infinite alternate;
         }
         @keyframes pulse-alert-anim {
           from { transform: scale(1); color: #06b6d4; }
-          to { transform: scale(1.3); color: #ef4444; }
+          to { transform: scale(1.25); color: #38bdf8; }
         }
         @media (max-width: 650px) {
           .cockpit-grid {
