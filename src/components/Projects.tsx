@@ -1,5 +1,6 @@
 import React from 'react';
 import { FEATURED_PROJECTS } from '../data/portfolioData';
+import { SpotlightCard } from './SpotlightCard';
 import { Building2, CheckCircle2, ExternalLink, Activity } from 'lucide-react';
 
 export const Projects: React.FC = () => {
@@ -32,17 +33,16 @@ export const Projects: React.FC = () => {
           className="projects-flagship-grid"
         >
           {FEATURED_PROJECTS.map((project) => (
-            <div
+            <SpotlightCard
               key={project.id}
-              className="glass-card"
+              spotlightColor="rgba(6, 182, 212, 0.15)"
               style={{
                 padding: '2.25rem',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 border: '1px solid rgba(59, 130, 246, 0.25)',
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)',
-                position: 'relative'
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)'
               }}
             >
               <div>
@@ -137,7 +137,7 @@ export const Projects: React.FC = () => {
                   </a>
                 )}
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ENGINEERING_TOPICS } from '../data/portfolioData';
+import { InteractiveGpsRadar } from './InteractiveGpsRadar';
+import { InteractiveCanvasDemo } from './InteractiveCanvasDemo';
 import { Code2, Check, Copy, CheckCheck, Layers } from 'lucide-react';
 
 export const Architectures: React.FC = () => {
@@ -73,7 +75,8 @@ export const Architectures: React.FC = () => {
           className="glass-card-static"
           style={{
             padding: '2.5rem',
-            border: '1px solid rgba(59, 130, 246, 0.3)'
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+            marginBottom: '2rem'
           }}
         >
           <div
@@ -199,6 +202,19 @@ export const Architectures: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Live Interactive Telemetry Cockpit or Canvas Compressor Simulator */}
+        {activeTab === 'telemetry-pwa' && (
+          <div style={{ marginTop: '2rem' }}>
+            <InteractiveGpsRadar />
+          </div>
+        )}
+
+        {activeTab === 'client-optimization' && (
+          <div style={{ marginTop: '2rem' }}>
+            <InteractiveCanvasDemo />
+          </div>
+        )}
       </div>
 
       <style>{`

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { ArrowRight, Code } from 'lucide-react';
+import { ArrowRight, ExternalLink, Briefcase, GraduationCap } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface HeroProps {
@@ -18,22 +18,43 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <section style={{ paddingTop: '8rem', paddingBottom: '4.5rem', position: 'relative' }}>
+    <section style={{ paddingTop: '8.5rem', paddingBottom: '4.5rem', position: 'relative' }}>
       <div className="container">
-        {/* Availability Badge */}
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
+        {/* Availability & RoDevs Badge Row */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.75rem' }}>
           <div className="glass-pill" style={{ borderColor: 'rgba(16, 185, 129, 0.3)', padding: '0.4rem 1rem' }}>
             <span className="pulse-dot" />
             <span style={{ color: '#10b981', fontWeight: 600 }}>Disponible para Roles Full Stack & Consultoría</span>
           </div>
+
+          <a
+            href="https://rodevsoftware.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-pill"
+            style={{
+              borderColor: 'rgba(59, 130, 246, 0.35)',
+              padding: '0.35rem 0.85rem',
+              color: '#38bdf8',
+              textDecoration: 'none'
+            }}
+          >
+            <img
+              src="/images/rodevs-shield-3d.png"
+              alt="RoDevs Software"
+              style={{ width: '18px', height: '18px', objectFit: 'contain' }}
+            />
+            <span style={{ fontWeight: 600 }}>RoDevs Software Solutions</span>
+            <ExternalLink size={12} />
+          </a>
         </div>
 
-        {/* Main Grid: Headline & Profile Info */}
+        {/* Main Grid: Headline & Photo Card */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: '1.2fr 0.8fr',
-            gap: '3rem',
+            gap: '3.5rem',
             alignItems: 'center'
           }}
           className="hero-main-grid"
@@ -42,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           <div>
             <h1
               style={{
-                fontSize: 'clamp(2.4rem, 4.5vw, 3.75rem)',
+                fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
                 fontWeight: 800,
                 letterSpacing: '-0.03em',
                 lineHeight: 1.15,
@@ -63,7 +84,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 marginBottom: '2rem'
               }}
             >
-              Soy <strong style={{ color: '#f8fafc' }}>Luis Fernando Romano</strong>. Lead Full Stack Developer en <strong style={{ color: '#38bdf8' }}>RoDevs</strong>, estudiante avanzado de Ingeniería en Sistemas de Información (UTN) y docente universitario de Algoritmos. Construyo aplicaciones web y móviles de alta disponibilidad con telemetría en tiempo real y arquitecturas cloud eficientes.
+              Soy <strong style={{ color: '#f8fafc' }}>Luis Fernando Romano</strong>. Lead Full Stack Developer en <a href="https://rodevsoftware.com" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', fontWeight: 600, textDecoration: 'underline' }}>RoDevs Software</a>, estudiante avanzado de Ingeniería en Sistemas de Información (UTN) y docente universitario de Algoritmos. Construyo aplicaciones web y móviles de alta disponibilidad con telemetría en tiempo real y arquitecturas cloud eficientes.
             </p>
 
             {/* Action Buttons */}
@@ -115,56 +136,83 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             </div>
           </div>
 
-          {/* Right Column: Engineering Highlights Card */}
-          <div>
+          {/* Right Column: Real Professional Photo Card */}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div
               className="glass-card-static"
               style={{
-                padding: '2rem',
+                position: 'relative',
+                padding: '1.25rem',
+                borderRadius: '1.75rem',
                 background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.98) 100%)',
-                border: '1px solid rgba(59, 130, 246, 0.3)',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.6)'
+                border: '1px solid rgba(59, 130, 246, 0.35)',
+                boxShadow: '0 25px 50px rgba(0, 0, 0, 0.7)',
+                maxWidth: '380px',
+                width: '100%'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Code size={18} color="#38bdf8" />
-                  <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f8fafc', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Perfil Profesional
-                  </span>
+              {/* Photo Container with glowing rim */}
+              <div
+                style={{
+                  position: 'relative',
+                  borderRadius: '1.25rem',
+                  overflow: 'hidden',
+                  aspectRatio: '4/5',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)'
+                }}
+              >
+                <img
+                  src="/images/luis-romano.jpg"
+                  alt="Luis Fernando Romano - Full Stack Developer"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center top'
+                  }}
+                />
+
+                {/* Floating Role Overlay */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '1rem',
+                    left: '1rem',
+                    right: '1rem',
+                    backgroundColor: 'rgba(2, 6, 23, 0.85)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    borderRadius: '0.85rem',
+                    padding: '0.75rem 1rem'
+                  }}
+                >
+                  <div style={{ fontWeight: 800, fontSize: '0.95rem', color: '#f8fafc' }}>
+                    Luis Fernando Romano
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 600 }}>
+                    Lead Full Stack Developer • RoDevs
+                  </div>
                 </div>
-                <span className="glass-pill" style={{ fontSize: '0.75rem', color: '#10b981', borderColor: 'rgba(16, 185, 129, 0.3)' }}>
-                  UTN - FRT
-                </span>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', fontSize: '0.875rem', color: '#cbd5e1' }}>
-                <div style={{ paddingBottom: '0.75rem', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase' }}>Rol Principal</div>
-                  <div style={{ fontWeight: 700, color: '#f8fafc' }}>Lead Full Stack Developer & Arquitecto</div>
-                  <div style={{ fontSize: '0.8rem', color: '#38bdf8' }}>RoDevs Software Solutions</div>
+              {/* Badges footer */}
+              <div
+                style={{
+                  marginTop: '1rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '0 0.5rem'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: '#94a3b8' }}>
+                  <GraduationCap size={14} color="#06b6d4" />
+                  <span>Ingeniería UTN</span>
                 </div>
-
-                <div style={{ paddingBottom: '0.75rem', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase' }}>Formación Universitaria</div>
-                  <div style={{ fontWeight: 600, color: '#f8fafc' }}>Ingeniería en Sistemas de Información</div>
-                  <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Universidad Tecnológica Nacional (3° Año)</div>
-                </div>
-
-                <div style={{ paddingBottom: '0.75rem', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase' }}>Docencia & Idiomas</div>
-                  <div style={{ fontWeight: 600, color: '#f8fafc' }}>Ayudante de Cátedra (Algoritmos) • English Instructor</div>
-                </div>
-
-                <div>
-                  <div style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', marginBottom: '0.4rem' }}>Stack Central</div>
-                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                    {['TypeScript', 'React.js', 'Firebase', 'Leaflet GIS', 'PWA', 'TailwindCSS'].map((tech, i) => (
-                      <span key={i} className="glass-pill" style={{ fontSize: '0.75rem' }}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: '#94a3b8' }}>
+                  <Briefcase size={14} color="#10b981" />
+                  <span>Docencia Algoritmos</span>
                 </div>
               </div>
             </div>
