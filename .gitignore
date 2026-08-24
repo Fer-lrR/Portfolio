@@ -1,0 +1,31 @@
+# Logs and system artifacts
+*.log
+.gemini/
+.system_generated/
+.agents/
+.vscode/
+.idea/
+scratch/
+
+# Dependencies & Build Outputs
+node_modules/
+dist/
+dist-ssr/
+*.local
+tsconfig.tsbuildinfo
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Strict Security: Private Documents, Client Dossiers & Internal Notes
+CLIENTE_*
+RODEVS_*
+THUNDER_*
+*.md
+!README.md
+
+# OS Files
+.DS_Store
+Thumbs.db
