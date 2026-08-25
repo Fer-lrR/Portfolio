@@ -3,6 +3,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 import { Mail, Phone, MapPin, Send, Copy, Check, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import confetti from 'canvas-confetti';
+import { motion } from 'framer-motion';
 
 interface ContactProps {
   isOpen?: boolean;
@@ -50,8 +51,14 @@ export const Contact: React.FC<ContactProps> = () => {
   return (
     <section id="contact" className="section-padding" style={{ position: 'relative', background: '#f1ecdf' }}>
       <div className="container">
-        {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}>
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}
+        >
           <div className="solid-pill" style={{ marginBottom: '1rem', color: '#c25e00' }}>
             <MessageSquare size={14} color="#c25e00" />
             <span>Contacto Directo & Oportunidades</span>
@@ -62,7 +69,7 @@ export const Contact: React.FC<ContactProps> = () => {
           <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.65 }}>
             Disponible para roles de Lead Full Stack Developer, Systems Architect y consultoría técnica de alta disponibilidad.
           </p>
-        </div>
+        </motion.div>
 
         {/* Contact Grid */}
         <div
@@ -76,8 +83,14 @@ export const Contact: React.FC<ContactProps> = () => {
           }}
           className="contact-main-grid"
         >
-          {/* Left Column: Direct Info Cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          {/* Left Column: Direct Info Cards with Scroll Reveal */}
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+          >
             {/* Email Card */}
             <div className="solid-card" style={{ padding: '1.5rem', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
@@ -164,10 +177,14 @@ export const Contact: React.FC<ContactProps> = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: Direct Message Form */}
-          <div
+          {/* Right Column: Direct Message Form with Scroll Reveal */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="solid-card"
             style={{
               padding: '2rem',
@@ -178,139 +195,125 @@ export const Contact: React.FC<ContactProps> = () => {
             <h3 style={{ fontSize: '1.35rem', color: '#181a1f', marginBottom: '0.5rem', fontWeight: 800 }}>
               Enviar Mensaje Directo
             </h3>
-            <p style={{ color: '#4b5563', fontSize: '0.88rem', marginBottom: '1.5rem' }}>
-              Completá el formulario y te respondo a la brevedad.
+            <p style={{ color: '#6b7280', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
+              Completá el formulario para iniciar la consulta técnica directa por correo.
             </p>
 
-            {isSubmitted ? (
-              <div
-                style={{
-                  backgroundColor: '#ecfdf5',
-                  border: '1px solid #a7f3d0',
-                  borderRadius: '6px',
-                  padding: '2rem',
-                  textAlign: 'center'
-                }}
-              >
-                <CheckCircle2 size={36} color="#059669" style={{ margin: '0 auto 0.75rem auto' }} />
-                <h4 style={{ color: '#181a1f', fontSize: '1.15rem', marginBottom: '0.35rem', fontWeight: 700 }}>
-                  ¡Mensaje Preparado!
-                </h4>
-                <p style={{ color: '#4b5563', fontSize: '0.88rem' }}>
-                  Se abrió tu cliente de correo para enviar la comunicación a {PERSONAL_INFO.email}.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
-                    Tu Nombre o Empresa
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Ej. Martín González (Tech Lead)"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '6px',
-                      backgroundColor: '#ffffff',
-                      border: '1px solid #d5c9bc',
-                      color: '#181a1f',
-                      fontSize: '0.9rem',
-                      outline: 'none'
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
-                    Tu Correo Electrónico
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="martin@empresa.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '6px',
-                      backgroundColor: '#ffffff',
-                      border: '1px solid #d5c9bc',
-                      color: '#181a1f',
-                      fontSize: '0.9rem',
-                      outline: 'none'
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
-                    Asunto / Motivo
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Oportunidad Laboral / Consultoría de Software"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '6px',
-                      backgroundColor: '#ffffff',
-                      border: '1px solid #d5c9bc',
-                      color: '#181a1f',
-                      fontSize: '0.9rem',
-                      outline: 'none'
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
-                    Mensaje o Detalle
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder="Hola Fernando, vimos tu experiencia en arquitecturas en tiempo real y nos gustaría coordinar una reunión..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '6px',
-                      backgroundColor: '#ffffff',
-                      border: '1px solid #d5c9bc',
-                      color: '#181a1f',
-                      fontSize: '0.9rem',
-                      outline: 'none',
-                      resize: 'vertical'
-                    }}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn-heritage-primary"
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#374151', marginBottom: '0.35rem' }}>
+                  Nombre y Apellido
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Ej. Martín González"
                   style={{
                     width: '100%',
-                    padding: '0.85rem',
+                    padding: '0.65rem 0.85rem',
                     borderRadius: '6px',
-                    marginTop: '0.5rem'
+                    border: '1px solid #d1d5db',
+                    backgroundColor: '#f9fafb',
+                    fontSize: '0.9rem',
+                    color: '#181a1f'
                   }}
-                >
-                  <Send size={16} />
-                  <span>Enviar Mensaje</span>
-                </button>
-              </form>
-            )}
-          </div>
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#374151', marginBottom: '0.35rem' }}>
+                  Correo Electrónico
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="nombre@empresa.com"
+                  style={{
+                    width: '100%',
+                    padding: '0.65rem 0.85rem',
+                    borderRadius: '6px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: '#f9fafb',
+                    fontSize: '0.9rem',
+                    color: '#181a1f'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#374151', marginBottom: '0.35rem' }}>
+                  Asunto / Proyecto
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  placeholder="Ej. Proyecto de Telemetría Web / Oportunidad Laboral"
+                  style={{
+                    width: '100%',
+                    padding: '0.65rem 0.85rem',
+                    borderRadius: '6px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: '#f9fafb',
+                    fontSize: '0.9rem',
+                    color: '#181a1f'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#374151', marginBottom: '0.35rem' }}>
+                  Mensaje Detallado
+                </label>
+                <textarea
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Describí los requerimientos técnicos, stack o propuesta..."
+                  style={{
+                    width: '100%',
+                    padding: '0.65rem 0.85rem',
+                    borderRadius: '6px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: '#f9fafb',
+                    fontSize: '0.9rem',
+                    color: '#181a1f',
+                    resize: 'vertical'
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn-heritage-primary"
+                style={{
+                  width: '100%',
+                  padding: '0.85rem',
+                  fontSize: '0.92rem',
+                  fontWeight: 800,
+                  marginTop: '0.5rem'
+                }}
+              >
+                {isSubmitted ? (
+                  <>
+                    <CheckCircle2 size={16} />
+                    <span>¡Listo para Enviar!</span>
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    <span>Enviar Mensaje</span>
+                  </>
+                )}
+              </button>
+            </form>
+          </motion.div>
         </div>
       </div>
 

@@ -117,18 +117,30 @@ export const Projects: React.FC = () => {
   return (
     <section id="projects" className="section-padding" style={{ position: 'relative', background: '#f8f6f0' }}>
       <div className="container">
-        {/* Section Header: Pure Title */}
-        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.5rem auto' }}>
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.5rem auto' }}
+        >
           <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', color: '#181a1f', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>
             Proyectos
           </h2>
           <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.6 }}>
             Aplicaciones y plataformas en producción. Pasá el mouse para desplegar cada sistema o hacé click para ver detalles y abrir la app en vivo.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Accordion Gallery Component */}
-        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+        {/* Accordion Gallery Component with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}
+        >
           <AccordionGallery
             items={PROJECTS_DATA}
             defaultIndex={0}
@@ -150,7 +162,7 @@ export const Projects: React.FC = () => {
             orientation="horizontal"
             onItemClick={handleItemClick}
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* Interactive Project Detail Modal */}

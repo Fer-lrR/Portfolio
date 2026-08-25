@@ -27,8 +27,14 @@ export const TechRadar: React.FC = () => {
   return (
     <section id="skills" className="section-padding" style={{ position: 'relative', background: '#f8f6f0' }}>
       <div className="container">
-        {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.5rem auto' }}>
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.5rem auto' }}
+        >
           <div
             className="solid-pill"
             style={{
@@ -51,10 +57,14 @@ export const TechRadar: React.FC = () => {
           <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.6 }}>
             Tecnologías y herramientas con las que desarrollo aplicaciones y sistemas de alto rendimiento.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Category Filter Pills */}
-        <div
+        {/* Category Filter Pills with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -87,11 +97,15 @@ export const TechRadar: React.FC = () => {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Interactive Logo Grid */}
+        {/* Interactive Logo Grid with Scroll Reveal */}
         <motion.div
           layout
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
@@ -100,13 +114,14 @@ export const TechRadar: React.FC = () => {
             margin: '0 auto'
           }}
         >
-          {displayedSkills.map(({ skill }) => (
+          {displayedSkills.map(({ skill }, idx) => (
             <motion.div
               layout
               key={skill.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.88 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: Math.min(idx * 0.025, 0.4) }}
               whileHover={{
                 scale: 1.12,
                 y: -6,

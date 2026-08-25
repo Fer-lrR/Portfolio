@@ -1,13 +1,20 @@
 import React from 'react';
 import { UserCheck, GraduationCap, Award, Download, Building2, Code2, Globe, Shield } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { motion } from 'framer-motion';
 
 export const AboutMe: React.FC = () => {
   return (
     <section id="about" className="section-padding" style={{ position: 'relative', background: '#f8f6f0' }}>
       <div className="container">
-        {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}>
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}
+        >
           <div className="solid-pill" style={{ marginBottom: '1rem', color: '#c25e00' }}>
             <UserCheck size={14} color="#c25e00" />
             <span>Perfil Profesional & Académico</span>
@@ -18,7 +25,7 @@ export const AboutMe: React.FC = () => {
           <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.65 }}>
             Ingeniería de software con bases firmes en algoritmia, sistemas reactivos y telemetría de alta resistencia.
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Grid: Photo & Credentials Column + Bio & Pillars */}
         <div
@@ -31,7 +38,13 @@ export const AboutMe: React.FC = () => {
           className="about-grid"
         >
           {/* Left Column: Real Professional Photo Card + ATS Metrics */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+          >
             <div
               className="solid-card"
               style={{
@@ -126,10 +139,16 @@ export const AboutMe: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Bio & Core Pillars */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+          >
             {/* Bio Card */}
             <div
               className="solid-card"
@@ -271,7 +290,7 @@ export const AboutMe: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

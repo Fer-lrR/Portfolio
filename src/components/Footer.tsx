@@ -2,6 +2,7 @@ import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Terminal, ArrowUp, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { motion } from 'framer-motion';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -19,7 +20,11 @@ export const Footer: React.FC = () => {
       }}
     >
       <div className="container">
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -98,31 +103,31 @@ export const Footer: React.FC = () => {
               borderRadius: '4px',
               minHeight: '36px'
             }}
-            title="Volver arriba"
           >
-            <span>Subir</span>
             <ArrowUp size={14} />
+            <span>Volver Arriba</span>
           </button>
-        </div>
+        </motion.div>
 
+        {/* Copyright & Technical Signature */}
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            borderTop: '1px solid #2d3139',
             paddingTop: '1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '0.75rem',
-            fontSize: '0.8rem',
+            gap: '1rem',
+            fontSize: '0.78rem',
             color: '#9ca3af'
           }}
         >
           <div>
-            © 2026 <strong>Luis Fernando Romano</strong> — {PERSONAL_INFO.company}. Todos los derechos reservados.
+            © {new Date().getFullYear()} Luis Fernando Romano. Desarrollado con <strong>React 19, TypeScript & Web Audio API</strong>.
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-            Construido con <span style={{ color: '#fbbf24', fontWeight: 600 }}>React 19 & TypeScript</span> • Jamstack High Performance
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem' }}>
+            STATUS: <span style={{ color: '#34d399' }}>OPERATIONAL • 100% DISPONIBLE</span>
           </div>
         </div>
       </div>
