@@ -13,11 +13,11 @@ export const Projects: React.FC = () => {
             <Activity size={14} />
             <span>Sistemas en Producción</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem' }}>
-            Proyectos & <span className="gradient-text-primary">Aplicaciones en Vivo</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem', color: '#ffffff' }}>
+            Proyectos & <span style={{ color: '#38bdf8' }}>Aplicaciones en Vivo</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Plataformas desarrolladas y desplegadas en producción para transporte público y transmisión de medios.
+          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
+            Sistemas desplegados en producción con telemetría en tiempo real y streaming de medios.
           </p>
         </div>
 
@@ -35,14 +35,14 @@ export const Projects: React.FC = () => {
           {FEATURED_PROJECTS.map((project) => (
             <SpotlightCard
               key={project.id}
-              spotlightColor="rgba(6, 182, 212, 0.15)"
+              spotlightColor="rgba(37, 99, 235, 0.12)"
               style={{
                 padding: '2.25rem',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                border: '1px solid rgba(59, 130, 246, 0.25)',
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)'
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                background: 'rgba(12, 18, 32, 0.85)'
               }}
             >
               <div>

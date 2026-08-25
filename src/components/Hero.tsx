@@ -63,28 +63,29 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           <div>
             <h1
               style={{
-                fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
+                fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)',
                 fontWeight: 800,
                 letterSpacing: '-0.03em',
-                lineHeight: 1.15,
-                marginBottom: '1.25rem'
+                lineHeight: 1.18,
+                marginBottom: '1.25rem',
+                color: '#ffffff'
               }}
             >
-              Desarrollo Full Stack, <br />
-              <span className="gradient-text-primary">React & Arquitecturas</span> <br />
-              <span className="gradient-text-accent">en Tiempo Real.</span>
+              Arquitectura de Software, <br />
+              <span style={{ color: '#38bdf8' }}>Full Stack</span> & Sistemas <br />
+              en Tiempo Real.
             </h1>
 
             <p
               style={{
-                fontSize: '1.1rem',
+                fontSize: '1.05rem',
                 color: '#94a3b8',
                 maxWidth: '600px',
-                lineHeight: 1.65,
+                lineHeight: 1.7,
                 marginBottom: '2rem'
               }}
             >
-              Soy <strong style={{ color: '#f8fafc' }}>Luis Fernando Romano</strong>. Lead Full Stack Developer en <a href="https://rodevsoftware.com" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', fontWeight: 600, textDecoration: 'underline' }}>RoDevs Software</a>, estudiante avanzado de Ingeniería en Sistemas de Información (UTN) y docente universitario de Algoritmos. Construyo aplicaciones web y móviles de alta disponibilidad con telemetría en tiempo real y arquitecturas cloud eficientes.
+              Soy <strong style={{ color: '#f8fafc' }}>Luis Fernando Romano</strong>. Lead Full Stack Developer & Co-Founder en <a href="https://rodevsoftware.com" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', fontWeight: 600, textDecoration: 'none' }}>RoDevs Software</a>, estudiante avanzado de Ingeniería en Sistemas de Información (UTN - FRT) y ayudante de cátedra en Algoritmos. Construyo aplicaciones web y móviles de alta disponibilidad con telemetría en tiempo real y arquitecturas cloud eficientes.
             </p>
 
             {/* Action Buttons */}
@@ -92,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               <a
                 href="#projects"
                 className="btn-primary"
-                style={{ padding: '0.85rem 1.6rem', fontSize: '0.95rem', minHeight: '44px' }}
+                style={{ padding: '0.8rem 1.6rem', fontSize: '0.925rem', minHeight: '44px' }}
               >
                 <span>Ver Proyectos en Producción</span>
                 <ArrowRight size={17} />
@@ -104,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                   onOpenContact();
                 }}
                 className="btn-secondary"
-                style={{ padding: '0.85rem 1.6rem', fontSize: '0.95rem', minHeight: '44px' }}
+                style={{ padding: '0.8rem 1.6rem', fontSize: '0.925rem', minHeight: '44px' }}
               >
                 <span>Contactar Directamente</span>
               </button>
@@ -212,7 +213,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: '#94a3b8' }}>
                   <Briefcase size={14} color="#10b981" />
-                  <span>Docencia Algoritmos</span>
+                  <span>Ayudante Algoritmos</span>
                 </div>
               </div>
             </div>

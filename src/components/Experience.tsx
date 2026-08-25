@@ -12,11 +12,11 @@ export const Experience: React.FC = () => {
             <Award size={14} />
             <span>Trayectoria Profesional & Académica</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem' }}>
-            Experiencia & <span className="gradient-text-accent">Liderazgo de Ingeniería</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem', color: '#ffffff' }}>
+            Experiencia & <span style={{ color: '#38bdf8' }}>Liderazgo de Ingeniería</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Desde la arquitectura y co-fundación de RoDevs hasta la docencia universitaria de algoritmos en la UTN y consultoría para plantas industriales.
+          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
+            Desde el liderazgo y co-fundación de RoDevs hasta la docencia universitaria de algoritmos en la UTN y consultoría de procesos.
           </p>
         </div>
 

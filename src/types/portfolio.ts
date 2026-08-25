@@ -37,13 +37,18 @@ export interface ExperienceItem {
   badge?: string;
 }
 
+export interface TechSkill {
+  id: string;
+  name: string;
+  iconKey: string;
+  brandColor: string;
+  description: string;
+  highlight?: boolean;
+  level?: string;
+}
+
 export interface SkillCategory {
   title: string;
   icon: string;
-  skills: {
-    name: string;
-    level: 'Master' | 'Advanced' | 'Proficient';
-    iconName?: string;
-    highlight?: boolean;
-  }[];
+  skills: TechSkill[];
 }

@@ -162,7 +162,7 @@ export const FEATURED_PROJECTS: Project[] = [
       'Visualización cartográfica en tiempo real de unidades en recorrido con Leaflet GIS.',
       'Diseño responsive optimizado para uso táctil y pantallas móviles.'
     ],
-    impact: 'Monitoreo en tiempo real de frecuencias de viaje con cero costo de servidores dedicados.',
+    impact: 'Monitoreo en tiempo real de frecuencias de viaje con alta disponibilidad y arquitectura serverless eficiente.',
     stack: ['React', 'TypeScript', 'Leaflet GIS', 'Firebase Firestore', 'PWA', 'TailwindCSS'],
     demoUrl: 'https://transportesantaluciaconnect.netlify.app',
     featured: true
@@ -251,48 +251,206 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     title: 'Frontend & UI',
     icon: 'Layout',
     skills: [
-      { name: 'TypeScript', level: 'Master', highlight: true },
-      { name: 'React.js (React 19 / 18)', level: 'Master', highlight: true },
-      { name: 'JavaScript (ES6+)', level: 'Master' },
-      { name: 'Vite', level: 'Advanced', highlight: true },
-      { name: 'TailwindCSS', level: 'Master' },
-      { name: 'Progressive Web Apps (PWA)', level: 'Master', highlight: true },
-      { name: 'HTML5 & CSS3 Modular', level: 'Master' }
+      {
+        id: 'typescript',
+        name: 'TypeScript',
+        iconKey: 'typescript',
+        brandColor: '#3178C6',
+        description: 'Tipado estático riguroso y contratos de datos para arquitecturas web escalables.',
+        highlight: true
+      },
+      {
+        id: 'react',
+        name: 'React.js (React 19 / 18)',
+        iconKey: 'react',
+        brandColor: '#61DAFB',
+        description: 'Desarrollo de SPA reactivas de alto rendimiento y arquitectura modular de componentes.',
+        highlight: true
+      },
+      {
+        id: 'javascript',
+        name: 'JavaScript (ES6+)',
+        iconKey: 'javascript',
+        brandColor: '#F7DF1E',
+        description: 'Programación asíncrona avanzada, Event Loop, Closures y manipulación de Canvas API.'
+      },
+      {
+        id: 'vite',
+        name: 'Vite',
+        iconKey: 'vite',
+        brandColor: '#BD34FE',
+        description: 'Bundling ultrarrápido con Hot Module Replacement (HMR) y compilación optimizada.',
+        highlight: true
+      },
+      {
+        id: 'tailwind',
+        name: 'TailwindCSS',
+        iconKey: 'tailwind',
+        brandColor: '#38BDF8',
+        description: 'Diseño de interfaces modernas, utilidades atómicas y sistemas de diseño adaptables.'
+      },
+      {
+        id: 'pwa',
+        name: 'Progressive Web Apps (PWA)',
+        iconKey: 'pwa',
+        brandColor: '#A855F7',
+        description: 'Capacidades offline, Service Workers, instalación móvil nativa y Wake Lock API.',
+        highlight: true
+      },
+      {
+        id: 'html5_css3',
+        name: 'HTML5 & CSS3 Modular',
+        iconKey: 'html5_css3',
+        brandColor: '#E44D26',
+        description: 'Estructura semántica, accesibilidad web (a11y) y animaciones fluidas a 60 FPS.'
+      }
     ]
   },
   {
     title: 'Cloud & Bases de Datos',
     icon: 'Cloud',
     skills: [
-      { name: 'Google Firebase (Firestore, Auth)', level: 'Master', highlight: true },
-      { name: 'Firebase Realtime Database', level: 'Master', highlight: true },
-      { name: 'Supabase / PostgreSQL', level: 'Advanced' },
-      { name: 'SQL (SQL Server, MySQL)', level: 'Advanced' },
-      { name: 'Netlify / Cloudflare Pages', level: 'Master', highlight: true },
-      { name: 'Arquitecturas Serverless', level: 'Master', highlight: true }
+      {
+        id: 'firebase',
+        name: 'Google Firebase (Firestore, Auth)',
+        iconKey: 'firebase',
+        brandColor: '#FFA611',
+        description: 'Persistencia NoSQL en tiempo real, autenticación segura y reglas estrictas de seguridad.',
+        highlight: true
+      },
+      {
+        id: 'realtime_db',
+        name: 'Firebase Realtime Database',
+        iconKey: 'realtime_db',
+        brandColor: '#FFA000',
+        description: 'Sincronización instantánea de estados concurrentes y telemetría vehicular de baja latencia.',
+        highlight: true
+      },
+      {
+        id: 'supabase_postgres',
+        name: 'Supabase / PostgreSQL',
+        iconKey: 'supabase',
+        brandColor: '#3ECF8E',
+        description: 'Bases de datos relacionales robustas, Row Level Security (RLS) y APIs automáticas.'
+      },
+      {
+        id: 'sql',
+        name: 'SQL (SQL Server, MySQL)',
+        iconKey: 'sql',
+        brandColor: '#0284C7',
+        description: 'Consultas relacionales complejas, optimización de índices, normalización y modelado de datos.'
+      },
+      {
+        id: 'netlify_cloudflare',
+        name: 'Netlify / Cloudflare Pages',
+        iconKey: 'netlify',
+        brandColor: '#00C7B7',
+        description: 'Despliegue Jamstack continuo en Edge CDN con protección contra ataques y 0.01s TTFB.',
+        highlight: true
+      },
+      {
+        id: 'serverless',
+        name: 'Arquitecturas Serverless',
+        iconKey: 'serverless',
+        brandColor: '#FD5750',
+        description: 'Infraestructura elástica de alta concurrencia, escalabilidad automática y máxima eficiencia cloud.',
+        highlight: true
+      }
     ]
   },
   {
     title: 'Web APIs & Tiempo Real',
     icon: 'Smartphone',
     skills: [
-      { name: 'Leaflet GIS / OpenStreetMap', level: 'Master', highlight: true },
-      { name: 'Wake Lock API', level: 'Master', highlight: true },
-      { name: 'Web Audio API', level: 'Master' },
-      { name: 'REST APIs & WebSockets', level: 'Master' },
-      { name: 'Sonic Panel Streaming Audio', level: 'Advanced' }
+      {
+        id: 'leaflet_gis',
+        name: 'Leaflet GIS / OpenStreetMap',
+        iconKey: 'leaflet',
+        brandColor: '#199900',
+        description: 'Renderizado de capas satelitales, trazado de rutas viales reales y seguimiento GPS en vivo.',
+        highlight: true
+      },
+      {
+        id: 'wakelock',
+        name: 'Wake Lock API',
+        iconKey: 'wakelock',
+        brandColor: '#F59E0B',
+        description: 'Prevención del apagado de pantalla en smartphones durante trayectos de telemetría.',
+        highlight: true
+      },
+      {
+        id: 'webaudio',
+        name: 'Web Audio API',
+        iconKey: 'webaudio',
+        brandColor: '#EC4899',
+        description: 'Sintetizador de alertas acústicas y ecualizadores nativos sin consumo de archivos de audio pesados.'
+      },
+      {
+        id: 'websockets_rest',
+        name: 'REST APIs & WebSockets',
+        iconKey: 'websockets',
+        brandColor: '#06B6D4',
+        description: 'Comunicación full-duplex de alta concurrencia y contratos API estructurados en tiempo real.',
+        highlight: true
+      },
+      {
+        id: 'sonicpanel',
+        name: 'Sonic Panel Streaming Audio',
+        iconKey: 'sonicpanel',
+        brandColor: '#8B5CF6',
+        description: 'Integración y reproducción de streams de audio 24/7 con reconexión automática y tolerancia a fallos.'
+      }
     ]
   },
   {
     title: 'Ingeniería & Metodologías',
     icon: 'Cpu',
     skills: [
-      { name: 'Node.js & Express', level: 'Advanced' },
-      { name: 'Java, C#, C++', level: 'Advanced' },
-      { name: 'Algoritmos & Estructuras de Datos', level: 'Master', highlight: true },
-      { name: 'Git & GitHub Workflows', level: 'Master', highlight: true },
-      { name: 'CI/CD & Despliegue Continuo', level: 'Advanced' },
-      { name: 'Clean Code & Patrones de Diseño', level: 'Master', highlight: true }
+      {
+        id: 'nodejs',
+        name: 'Node.js & Express',
+        iconKey: 'nodejs',
+        brandColor: '#5FA04E',
+        description: 'Servicios de backend asíncronos, middlewares y automatización de procesos.'
+      },
+      {
+        id: 'polyglot',
+        name: 'Java, C#, C++',
+        iconKey: 'polyglot',
+        brandColor: '#E76F00',
+        description: 'Paradigmas orientados a objetos, robustez empresarial y optimización de memoria.'
+      },
+      {
+        id: 'algorithms',
+        name: 'Algoritmos & Estructuras de Datos',
+        iconKey: 'algorithms',
+        brandColor: '#6366F1',
+        description: 'Análisis de complejidad Big-O, grafos, árboles y ayudantía de cátedra en UTN.',
+        highlight: true
+      },
+      {
+        id: 'git_github',
+        name: 'Git & GitHub Workflows',
+        iconKey: 'git',
+        brandColor: '#F05032',
+        description: 'Control de versiones profesional, ramas GitFlow, pull requests y +370 contribuciones anuales.',
+        highlight: true
+      },
+      {
+        id: 'cicd',
+        name: 'CI/CD & Despliegue Continuo',
+        iconKey: 'cicd',
+        brandColor: '#10B981',
+        description: 'Pipelines automatizados de construcción, validación de tipos y publicación inmediata.'
+      },
+      {
+        id: 'cleancode',
+        name: 'Clean Code & Patrones de Diseño',
+        iconKey: 'cleancode',
+        brandColor: '#38BDF8',
+        description: 'Principios SOLID, arquitectura modular limpia, código autodocumentado y alta mantenibilidad.',
+        highlight: true
+      }
     ]
   }
 ];

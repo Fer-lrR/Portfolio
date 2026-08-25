@@ -19,11 +19,11 @@ export const Architectures: React.FC = () => {
             <Layers size={14} />
             <span>Enfoque de Desarrollo</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem' }}>
-            Arquitectura & <span className="gradient-text-accent">Rendimiento</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem', color: '#ffffff' }}>
+            Arquitectura & <span style={{ color: '#38bdf8' }}>Rendimiento</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Soluciones aplicadas en producción para sincronización en tiempo real, bajo consumo de datos y alta disponibilidad.
+          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
+            Patrones probados en producción para telemetría continua, compresión en cliente y arquitecturas Serverless.
           </p>
         </div>
 
@@ -46,9 +46,9 @@ export const Architectures: React.FC = () => {
                 onClick={() => setActiveTab(topic.id)}
                 style={{
                   padding: '0.75rem 1.25rem',
-                  borderRadius: '0.75rem',
-                  background: isActive ? 'linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(6, 182, 212, 0.3))' : 'rgba(15, 23, 42, 0.6)',
-                  border: isActive ? '1px solid #06b6d4' : '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '0.65rem',
+                  background: isActive ? 'rgba(37, 99, 235, 0.25)' : 'rgba(12, 18, 32, 0.6)',
+                  border: isActive ? '1px solid #38bdf8' : '1px solid rgba(255, 255, 255, 0.08)',
                   color: isActive ? '#ffffff' : '#94a3b8',
                   fontWeight: isActive ? 700 : 500,
                   fontSize: '0.9rem',
@@ -64,14 +64,14 @@ export const Architectures: React.FC = () => {
           })}
         </div>
 
-        {/* Dynamic Topic Details (Clean & Visual, No Bulky Code Blocks) */}
+        {/* Dynamic Topic Details */}
         <SpotlightCard
-          spotlightColor="rgba(6, 182, 212, 0.12)"
+          spotlightColor="rgba(37, 99, 235, 0.1)"
           style={{
             padding: '2.5rem',
-            border: '1px solid rgba(59, 130, 246, 0.25)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
             marginBottom: '2.5rem',
-            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)'
+            background: 'rgba(12, 18, 32, 0.85)'
           }}
         >
           <div

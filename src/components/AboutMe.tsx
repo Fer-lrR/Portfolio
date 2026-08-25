@@ -8,15 +8,15 @@ export const AboutMe: React.FC = () => {
       <div className="container">
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}>
-          <div className="glass-pill" style={{ marginBottom: '1rem', color: '#06b6d4', borderColor: 'rgba(6, 182, 212, 0.3)' }}>
+          <div className="glass-pill" style={{ marginBottom: '1rem', color: '#38bdf8', borderColor: 'rgba(56, 189, 248, 0.3)' }}>
             <UserCheck size={14} />
             <span>Perfil Profesional & Académico</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem' }}>
-            Sobre <span className="gradient-text-primary">Mí</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem', color: '#ffffff' }}>
+            Sobre <span style={{ color: '#38bdf8' }}>Mí</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Ingeniería de software con bases sólidas en algoritmia, liderazgo técnico y desarrollo de productos escalables.
+          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
+            Desarrollo de software con bases sólidas en algoritmia, sistemas reactivos y telemetría en tiempo real.
           </p>
         </div>
 
@@ -32,14 +32,14 @@ export const AboutMe: React.FC = () => {
         >
           {/* Left Column: Bio & Core Philosophy */}
           <SpotlightCard
-            spotlightColor="rgba(37, 99, 235, 0.15)"
+            spotlightColor="rgba(37, 99, 235, 0.12)"
             style={{
               padding: '2.5rem',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)',
-              border: '1px solid rgba(59, 130, 246, 0.25)'
+              background: 'rgba(12, 18, 32, 0.85)',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
             }}
           >
             <div>
@@ -69,7 +69,7 @@ export const AboutMe: React.FC = () => {
               </p>
 
               <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-                Como cofundador y líder técnico en <strong style={{ color: '#38bdf8' }}>RoDevs Software Solutions</strong>, diseño e implemento soluciones web y móviles para empresas de transporte, plataformas de medios de comunicación y comercio electrónico, priorizando siempre la <strong>velocidad de carga, la sincronización en tiempo real y la optimización de costos en infraestructura cloud</strong>.
+                Como cofundador y desarrollador en <strong style={{ color: '#38bdf8' }}>RoDevs Software Solutions</strong>, diseño e implemento soluciones web y móviles para empresas de transporte, plataformas de medios de comunicación y comercio electrónico, priorizando siempre la <strong>velocidad de carga, la sincronización en tiempo real y la alta disponibilidad en infraestructura cloud</strong>.
               </p>
             </div>
 
@@ -100,7 +100,7 @@ export const AboutMe: React.FC = () => {
 
           {/* Right Column: Key Pillars & Academic Background */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {/* Pillar 1: UTN Docencia */}
+            {/* Pillar 1: UTN Ayudantía */}
             <SpotlightCard
               spotlightColor="rgba(6, 182, 212, 0.15)"
               style={{
@@ -115,10 +115,10 @@ export const AboutMe: React.FC = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.35rem' }}>
-                    Docencia Universitaria en Algoritmos (UTN)
+                    Ayudantía en Algoritmos (UTN - FRT)
                   </h4>
                   <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.6 }}>
-                    Ayudante de cátedra e instructor en <em>Algoritmos y Estructuras de Datos</em> y <em>Paradigmas de Programación</em> en la Universidad Tecnológica Nacional. Mentoría en Clean Code, POO y complejidad algorítmica.
+                    Ayudante estudiantil de cátedra en <em>Algoritmos y Estructuras de Datos</em> y <em>Paradigmas de Programación</em> en la Universidad Tecnológica Nacional. Apoyo y tutoría a estudiantes en POO, estructuras de datos y buenas prácticas de código.
                   </p>
                 </div>
               </div>
@@ -163,10 +163,10 @@ export const AboutMe: React.FC = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.35rem' }}>
-                    Liderazgo en RoDevs Software Solutions
+                    Desarrollo & Co-Fundación en RoDevs
                   </h4>
                   <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.6 }}>
-                    Gestión integral de proyectos desde el relevamiento con clientes hasta el despliegue en producción, administración de infraestructura DNS, bases de datos y soporte continuo.
+                    Desarrollo de proyectos desde el relevamiento con clientes hasta el despliegue en producción, administración de infraestructura DNS, bases de datos y soporte continuo.
                   </p>
                 </div>
               </div>

@@ -23,7 +23,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     { name: 'Sobre Mí', href: '#about' },
     { name: 'Proyectos', href: '#projects' },
     { name: 'Arquitectura', href: '#architecture' },
-    { name: 'Experiencia', href: '#experience' },
     { name: 'Habilidades', href: '#skills' },
     { name: 'Contacto', href: '#contact' },
   ];

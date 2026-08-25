@@ -56,11 +56,11 @@ export const Contact: React.FC<ContactProps> = () => {
             <MessageSquare size={14} />
             <span>Contacto Directo & Oportunidades</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem' }}>
-            ¿Construimos algo <span className="gradient-text-primary">extraordinario?</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem', color: '#ffffff' }}>
+            Iniciemos una <span style={{ color: '#38bdf8' }}>Conversación Técnica</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Disponible para roles de Software Engineer / Architect, consultoría técnica y desarrollo de sistemas de alto impacto.
+          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
+            Disponible para roles de Software Engineer / Architect, consultoría técnica y desarrollo de plataformas de alta escala.
           </p>
         </div>
 
