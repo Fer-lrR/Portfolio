@@ -126,21 +126,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
         />
       </div>
 
-      {/* Video Control Pill (Top-Right) */}
+      {/* Video Control Pill (Clean Placement Below Navbar Clearance) */}
       <div
         style={{
           position: 'absolute',
-          top: '1.25rem',
+          top: '5.25rem',
           right: '1.5rem',
-          zIndex: 20,
+          zIndex: 50,
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
-          background: 'rgba(24, 26, 31, 0.85)',
+          background: 'rgba(24, 26, 31, 0.9)',
           border: '1px solid #c25e00',
           borderRadius: '6px',
-          padding: '0.35rem 0.75rem',
-          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)'
+          padding: '0.4rem 0.85rem',
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.45)'
         }}
       >
         <button
