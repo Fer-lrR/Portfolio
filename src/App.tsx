@@ -27,17 +27,21 @@ export const App: React.FC = () => {
       <div
         style={{
           minHeight: '100vh',
+          width: '100%',
+          maxWidth: '100%',
+          overflowX: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           opacity: loading ? 0 : 1,
-          transition: 'opacity 0.5s ease-in'
+          transition: 'opacity 0.5s ease-in',
+          position: 'relative'
         }}
       >
         {/* Navigation */}
         <Navbar onOpenContact={handleScrollToContact} />
 
         {/* Main Content */}
-        <main style={{ flex: 1 }}>
+        <main style={{ flex: 1, width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
           <Hero onOpenContact={handleScrollToContact} />
           <AboutMe />
           <Projects />

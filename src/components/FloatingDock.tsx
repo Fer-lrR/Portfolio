@@ -24,12 +24,12 @@ export const FloatingDock: React.FC = () => {
     <div
       style={{
         position: 'fixed',
-        bottom: '1.75rem',
-        right: '1.75rem',
+        bottom: 'clamp(1rem, 3vw, 1.75rem)',
+        right: 'clamp(1rem, 3vw, 1.75rem)',
         zIndex: 900,
         display: 'flex',
         flexDirection: 'column',
-        gap: '0.75rem',
+        gap: '0.65rem',
         alignItems: 'center'
       }}
     >
@@ -40,8 +40,8 @@ export const FloatingDock: React.FC = () => {
           aria-label="Volver arriba"
           className="solid-pill"
           style={{
-            width: '44px',
-            height: '44px',
+            width: '40px',
+            height: '40px',
             borderRadius: '50%',
             padding: 0,
             display: 'flex',
@@ -54,7 +54,7 @@ export const FloatingDock: React.FC = () => {
             cursor: 'pointer'
           }}
         >
-          <ArrowUp size={18} color="#c25e00" />
+          <ArrowUp size={16} color="#c25e00" />
         </button>
       )}
 
@@ -65,15 +65,15 @@ export const FloatingDock: React.FC = () => {
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
         style={{
-          width: '56px',
-          height: '56px',
+          width: '50px',
+          height: '50px',
           borderRadius: '50%',
           backgroundColor: '#25D366',
           color: '#ffffff',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 10px 30px rgba(37, 211, 102, 0.55)',
+          boxShadow: '0 8px 25px rgba(37, 211, 102, 0.55)',
           textDecoration: 'none',
           position: 'relative',
           transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -85,11 +85,11 @@ export const FloatingDock: React.FC = () => {
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.boxShadow = '0 10px 30px rgba(37, 211, 102, 0.55)';
+          e.currentTarget.style.boxShadow = '0 8px 25px rgba(37, 211, 102, 0.55)';
         }}
         title="Enviar WhatsApp a Luis Fernando Romano"
       >
-        <WhatsappIcon size={30} color="#ffffff" />
+        <WhatsappIcon size={26} color="#ffffff" />
       </a>
     </div>
   );

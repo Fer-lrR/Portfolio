@@ -78,7 +78,19 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
   const firstRunRef = useRef(true);
   const mediaSizeRef = useRef(320);
 
-  const vertical = orientation === 'vertical';
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < 640 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const vertical = orientation === 'vertical' || isMobile;
   const count = items.length;
   const [active, setActive] = useState(Math.min(Math.max(defaultIndex, 0), count - 1));
 
@@ -109,7 +121,8 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
         const bar = barRefs.current[i];
         const text = textRefs.current[i];
 
-        const rot = isActive ? 0 : i < active ? tilt : -tilt;
+        const activeTilt = isMobile ? 0 : tilt;
+        const rot = isActive ? 0 : i < active ? activeTilt : -activeTilt;
         const rotProp = vertical ? { rotateX: -rot } : { rotateY: rot };
 
         tl.to(panel, { flexGrow: isActive ? grow : 1, ...rotProp, duration: dur, ease }, 0);
@@ -227,14 +240,14 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
   return (
     <div
       ref={rootRef}
-      className={`flex ${vertical ? 'flex-col' : 'flex-row'} w-full max-w-full [perspective:1400px] max-[640px]:!flex-col max-[640px]:[perspective:none] ${className}`}
+      className={`accordion-gallery-root ${className}`}
       style={{
         display: 'flex',
         flexDirection: vertical ? 'column' : 'row',
         width: '100%',
-        gap: `${gap}px`,
-        height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px`,
-        perspective: '1400px'
+        gap: `${isMobile ? 8 : gap}px`,
+        height: vertical ? `${Math.min(Math.round(height * 1.15), 520)}px` : `${height}px`,
+        perspective: isMobile ? 'none' : '1400px'
       }}
       role="list"
       aria-label="Image accordion gallery"
@@ -248,13 +261,15 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
             ref={(el: HTMLElement | null) => {
               panelRefs.current[i] = el;
             }}
-            className="group relative block min-w-0 min-h-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#181a1f] no-underline outline-none [transform-style:preserve-3d] [transform-origin:center] [box-shadow:0_10px_30px_-18px_rgba(0,0,0,0.4)] focus-visible:[box-shadow:0_0_0_2px_var(--ag-accent),0_10px_30px_-18px_rgba(0,0,0,0.8)] max-[640px]:min-h-[110px] max-[640px]:!transform-none"
+            className="group relative block min-w-0 min-h-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#181a1f] no-underline outline-none"
             style={
               {
-                borderRadius: `${radius}px`,
+                borderRadius: `${isMobile ? 10 : radius}px`,
                 '--ag-accent': accentColor,
                 willChange: 'flex-grow, transform',
-                border: isActive ? '2px solid #c25e00' : '1px solid #e2d9cf'
+                border: isActive ? '2px solid #c25e00' : '1px solid #e2d9cf',
+                minHeight: isMobile ? '60px' : '0',
+                position: 'relative'
               } as CSSProperties
             }
             href={item.link && !onItemClick ? item.link : undefined}

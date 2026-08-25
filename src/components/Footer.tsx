@@ -60,15 +60,15 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Social Links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
               className="solid-pill"
-              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151' }}
+              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151', padding: '0.35rem 0.65rem', fontSize: '0.78rem' }}
             >
-              <GithubIcon size={15} />
+              <GithubIcon size={14} />
               <span>GitHub</span>
             </a>
 
@@ -77,18 +77,18 @@ export const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="solid-pill"
-              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151' }}
+              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151', padding: '0.35rem 0.65rem', fontSize: '0.78rem' }}
             >
-              <LinkedinIcon size={15} />
+              <LinkedinIcon size={14} />
               <span>LinkedIn</span>
             </a>
 
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
               className="solid-pill"
-              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151' }}
+              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151', padding: '0.35rem 0.65rem', fontSize: '0.78rem' }}
             >
-              <Mail size={15} />
+              <Mail size={14} />
               <span>Email</span>
             </a>
           </div>

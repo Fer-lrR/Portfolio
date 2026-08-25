@@ -54,23 +54,31 @@ export const SplitText: React.FC<SplitTextProps> = ({
 
   return (
     <Tag
-      className={`split-parent overflow-hidden inline-flex flex-wrap ${className}`}
+      className={`split-parent ${className}`}
       style={{
         textAlign,
-        display: 'inline-flex',
+        display: 'flex',
         flexWrap: 'wrap',
         justifyContent: textAlign === 'center' ? 'center' : textAlign === 'right' ? 'flex-end' : 'flex-start',
-        rowGap: '0.2em',
-        columnGap: '0.28em',
-        wordBreak: 'break-word',
+        rowGap: '0.15em',
+        columnGap: '0.22em',
+        maxWidth: '100%',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
         lineHeight: 1.15
       }}
     >
       {words.map((word, wordIndex) => (
         <span
           key={wordIndex}
-          className="split-word inline-flex overflow-hidden"
-          style={{ whiteSpace: 'nowrap', display: 'inline-flex' }}
+          className="split-word"
+          style={{
+            whiteSpace: 'normal',
+            display: 'inline-flex',
+            flexWrap: 'wrap',
+            maxWidth: '100%',
+            overflow: 'hidden'
+          }}
         >
           {splitType === 'words' ? (
             <motion.span

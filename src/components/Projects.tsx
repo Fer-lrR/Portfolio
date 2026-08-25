@@ -184,7 +184,7 @@ export const Projects: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '1.25rem'
+              padding: 'clamp(0.5rem, 2.5vw, 1.25rem)'
             }}
             onClick={() => setSelectedProject(null)}
           >
@@ -197,7 +197,7 @@ export const Projects: React.FC = () => {
                 backgroundColor: '#ffffff',
                 border: '1px solid #e2d9cf',
                 borderRadius: '12px',
-                padding: '1.75rem',
+                padding: 'clamp(1rem, 3.5vw, 1.75rem)',
                 maxWidth: '640px',
                 width: '100%',
                 maxHeight: '90vh',
@@ -212,13 +212,13 @@ export const Projects: React.FC = () => {
                 onClick={() => setSelectedProject(null)}
                 style={{
                   position: 'absolute',
-                  top: '1.25rem',
-                  right: '1.25rem',
+                  top: '0.85rem',
+                  right: '0.85rem',
                   background: '#f8f6f0',
                   border: '1px solid #e2d9cf',
                   borderRadius: '50%',
-                  width: '36px',
-                  height: '36px',
+                  width: '32px',
+                  height: '32px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -228,17 +228,17 @@ export const Projects: React.FC = () => {
                 }}
                 aria-label="Cerrar modal"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
 
               {/* Project Screenshot Banner */}
               <div
                 style={{
                   width: '100%',
-                  height: '210px',
+                  height: 'clamp(150px, 24vh, 210px)',
                   borderRadius: '8px',
                   overflow: 'hidden',
-                  marginBottom: '1.25rem',
+                  marginBottom: '1rem',
                   border: '1px solid #e2d9cf',
                   backgroundColor: '#181a1f'
                 }}
@@ -256,23 +256,23 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Client & Production Badge */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
                 <span
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.78rem',
+                    gap: '0.35rem',
+                    fontSize: '0.74rem',
                     fontWeight: 700,
                     color: selectedProject.accentColor || '#c25e00',
                     backgroundColor: '#fff7ed',
                     border: '1px solid #fed7aa',
-                    padding: '0.25rem 0.75rem',
+                    padding: '0.2rem 0.65rem',
                     borderRadius: '4px',
                     textTransform: 'uppercase'
                   }}
                 >
-                  <Building2 size={13} />
+                  <Building2 size={12} />
                   {selectedProject.client || selectedProject.label}
                 </span>
 
@@ -281,12 +281,12 @@ export const Projects: React.FC = () => {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.35rem',
-                    fontSize: '0.75rem',
+                    fontSize: '0.72rem',
                     fontWeight: 700,
                     color: '#059669',
                     background: '#ecfdf5',
                     border: '1px solid #a7f3d0',
-                    padding: '0.25rem 0.65rem',
+                    padding: '0.2rem 0.55rem',
                     borderRadius: '4px'
                   }}
                 >
@@ -296,29 +296,29 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Title & Tagline */}
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#181a1f', marginBottom: '0.35rem', lineHeight: 1.25 }}>
+              <h3 style={{ fontSize: 'clamp(1.2rem, 3.5vw, 1.5rem)', fontWeight: 800, color: '#181a1f', marginBottom: '0.25rem', lineHeight: 1.25 }}>
                 {selectedProject.label}
               </h3>
 
               {selectedProject.tagline && (
-                <p style={{ fontSize: '0.9rem', color: '#c25e00', fontWeight: 700, marginBottom: '1rem' }}>
+                <p style={{ fontSize: '0.85rem', color: '#c25e00', fontWeight: 700, marginBottom: '0.85rem' }}>
                   {selectedProject.tagline}
                 </p>
               )}
 
               {/* Description */}
               {selectedProject.description && (
-                <p style={{ color: '#4b5563', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                <p style={{ color: '#4b5563', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '1rem' }}>
                   {selectedProject.description}
                 </p>
               )}
 
               {/* Highlights Checklist */}
               {selectedProject.highlights && selectedProject.highlights.length > 0 && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginBottom: '1.25rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1rem' }}>
                   {selectedProject.highlights.map((highlight, hIdx) => (
-                    <div key={hIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.84rem', color: '#374151' }}>
-                      <CheckCircle2 size={15} color={selectedProject.accentColor || '#c25e00'} style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <div key={hIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', fontSize: '0.82rem', color: '#374151' }}>
+                      <CheckCircle2 size={14} color={selectedProject.accentColor || '#c25e00'} style={{ flexShrink: 0, marginTop: '2px' }} />
                       <span>{highlight}</span>
                     </div>
                   ))}
@@ -327,16 +327,16 @@ export const Projects: React.FC = () => {
 
               {/* Stack Tags */}
               {selectedProject.stack && selectedProject.stack.length > 0 && (
-                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
                   {selectedProject.stack.map((tech, tIdx) => (
                     <span
                       key={tIdx}
                       style={{
-                        fontSize: '0.72rem',
+                        fontSize: '0.7rem',
                         color: '#4b5563',
                         backgroundColor: '#f8f6f0',
                         border: '1px solid #e2d9cf',
-                        padding: '0.2rem 0.6rem',
+                        padding: '0.2rem 0.55rem',
                         borderRadius: '4px',
                         fontFamily: 'var(--font-mono)',
                         fontWeight: 600
@@ -349,16 +349,16 @@ export const Projects: React.FC = () => {
               )}
 
               {/* Actions */}
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 {selectedProject.link && (
                   <a
                     href={selectedProject.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-heritage-primary"
-                    style={{ flex: 1, justifyContent: 'center', minHeight: '44px', fontSize: '0.88rem' }}
+                    style={{ flex: '1 1 180px', justifyContent: 'center', minHeight: '42px', fontSize: '0.84rem', padding: '0.65rem 1rem' }}
                   >
-                    <ExternalLink size={15} />
+                    <ExternalLink size={14} />
                     <span>Abrir Aplicación en Vivo</span>
                   </a>
                 )}
@@ -366,7 +366,7 @@ export const Projects: React.FC = () => {
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="btn-heritage-secondary"
-                  style={{ padding: '0.65rem 1.15rem', fontSize: '0.85rem' }}
+                  style={{ padding: '0.65rem 1rem', fontSize: '0.84rem', flex: '0 0 auto' }}
                 >
                   Cerrar
                 </button>

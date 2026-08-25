@@ -274,8 +274,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          padding: '2rem 1.5rem',
-          maxWidth: '960px'
+          padding: 'clamp(1rem, 2.5vh, 2rem) clamp(0.25rem, 2vw, 1.25rem)',
+          maxWidth: '960px',
+          width: '100%'
         }}
       >
         <AnimatePresence>
@@ -290,18 +291,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 alignItems: 'center',
                 justifyContent: 'center',
                 width: '100%',
-                padding: '1.5rem 1rem',
+                padding: 'clamp(0.5rem, 1.5vh, 1rem) 0',
                 borderRadius: '12px'
               }}
             >
               {/* Big Motorcycle Typography Animated with SplitText */}
               <div
                 style={{
-                  marginBottom: '0.85rem',
+                  marginBottom: 'clamp(0.5rem, 1.5vh, 0.85rem)',
+                  maxWidth: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: '0.2rem'
+                  gap: '0.2rem',
+                  width: '100%'
                 }}
               >
                 <SplitText
@@ -324,17 +327,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
                 style={{
-                  fontSize: 'clamp(0.95rem, 2vw, 1.35rem)',
+                  fontSize: 'clamp(0.78rem, 2.5vw, 1.25rem)',
                   fontWeight: 700,
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.03em',
                   textTransform: 'uppercase',
                   color: '#ffffff',
-                  marginBottom: '2rem',
+                  marginBottom: 'clamp(1rem, 2.5vh, 2rem)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem',
+                  gap: '0.35rem',
                   flexWrap: 'wrap',
                   justifyContent: 'center',
+                  maxWidth: '100%',
                   textShadow: '0 2px 16px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)'
                 }}
               >
@@ -354,15 +358,26 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 transition={{ duration: 0.5 }}
                 style={{
                   display: 'flex',
-                  gap: '1rem',
+                  gap: '0.75rem',
                   flexWrap: 'wrap',
                   justifyContent: 'center',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  width: '100%',
+                  maxWidth: '560px'
                 }}
               >
-                <a href="#about" className="btn-heritage-primary" style={{ minHeight: '48px', padding: '0.85rem 2rem' }}>
+                <a
+                  href="#about"
+                  className="btn-heritage-primary"
+                  style={{
+                    minHeight: '46px',
+                    padding: '0.75rem 1.5rem',
+                    flex: '1 1 200px',
+                    justifyContent: 'center'
+                  }}
+                >
                   <span>Ver Proyectos & Perfil</span>
-                  <ArrowRight size={17} />
+                  <ArrowRight size={16} />
                 </a>
 
                 <button
@@ -371,7 +386,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                     onOpenContact();
                   }}
                   className="btn-heritage-secondary"
-                  style={{ minHeight: '48px', padding: '0.85rem 2rem' }}
+                  style={{
+                    minHeight: '46px',
+                    padding: '0.75rem 1.5rem',
+                    flex: '1 1 200px',
+                    justifyContent: 'center'
+                  }}
                 >
                   <span>Contactar Directamente</span>
                 </button>

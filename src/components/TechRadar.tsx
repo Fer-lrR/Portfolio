@@ -68,9 +68,9 @@ export const TechRadar: React.FC = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '0.5rem',
+            gap: '0.4rem',
             flexWrap: 'wrap',
-            marginBottom: '3rem'
+            marginBottom: 'clamp(1.5rem, 4vw, 3rem)'
           }}
         >
           {categories.map((cat) => {
@@ -81,9 +81,9 @@ export const TechRadar: React.FC = () => {
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 style={{
-                  padding: '0.5rem 1.15rem',
+                  padding: '0.35rem 0.85rem',
                   borderRadius: '30px',
-                  fontSize: '0.85rem',
+                  fontSize: 'clamp(0.75rem, 2.2vw, 0.82rem)',
                   fontWeight: isSelected ? 800 : 600,
                   cursor: 'pointer',
                   border: isSelected ? '1px solid #c25e00' : '1px solid #e2d9cf',
@@ -108,8 +108,8 @@ export const TechRadar: React.FC = () => {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
-            gap: '1.25rem',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(clamp(85px, 24vw, 130px), 1fr))',
+            gap: 'clamp(0.6rem, 2vw, 1.25rem)',
             maxWidth: '1000px',
             margin: '0 auto'
           }}
@@ -123,8 +123,8 @@ export const TechRadar: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: Math.min(idx * 0.025, 0.4) }}
               whileHover={{
-                scale: 1.12,
-                y: -6,
+                scale: 1.1,
+                y: -4,
                 transition: { type: 'spring', stiffness: 450, damping: 18 }
               }}
               whileTap={{ scale: 0.96 }}
@@ -132,8 +132,8 @@ export const TechRadar: React.FC = () => {
               style={{
                 backgroundColor: '#ffffff',
                 border: '1px solid #e2d9cf',
-                borderRadius: '12px',
-                padding: '1.25rem 0.75rem',
+                borderRadius: '10px',
+                padding: 'clamp(0.75rem, 2.5vw, 1.25rem) clamp(0.35rem, 1.5vw, 0.75rem)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -148,28 +148,40 @@ export const TechRadar: React.FC = () => {
               {/* Tech Icon */}
               <div
                 style={{
-                  width: '52px',
-                  height: '52px',
+                  width: 'clamp(36px, 9vw, 50px)',
+                  height: 'clamp(36px, 9vw, 50px)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '0.75rem'
+                  marginBottom: '0.5rem'
                 }}
               >
-                <TechIcon name={skill.iconKey} size={42} />
+                <TechIcon name={skill.iconKey} size={36} />
               </div>
 
-              {/* Tech Name */}
+              {/* Skill Name */}
               <span
                 style={{
-                  fontSize: '0.85rem',
+                  fontSize: 'clamp(0.75rem, 2.2vw, 0.85rem)',
                   fontWeight: 700,
                   color: '#181a1f',
-                  lineHeight: 1.25,
-                  fontFamily: 'var(--font-heading)'
+                  marginBottom: '0.2rem',
+                  fontFamily: 'var(--font-heading)',
+                  lineHeight: 1.2
                 }}
               >
                 {skill.name}
+              </span>
+
+              {/* Category Subtitle */}
+              <span
+                style={{
+                  fontSize: 'clamp(0.6rem, 1.8vw, 0.68rem)',
+                  color: '#6b7280',
+                  fontWeight: 600
+                }}
+              >
+                {skill.level || 'Avanzado'}
               </span>
             </motion.div>
           ))}

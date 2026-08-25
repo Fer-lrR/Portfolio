@@ -153,7 +153,7 @@ export const AboutMe: React.FC = () => {
             <div
               className="solid-card"
               style={{
-                padding: '2.25rem',
+                padding: 'clamp(1.25rem, 3.5vw, 2.25rem)',
                 backgroundColor: '#ffffff',
                 border: '1px solid #e2d9cf',
                 borderRadius: '8px'
@@ -165,38 +165,39 @@ export const AboutMe: React.FC = () => {
                     padding: '0.55rem',
                     borderRadius: '6px',
                     backgroundColor: '#f1ecdf',
-                    color: '#c25e00'
+                    color: '#c25e00',
+                    flexShrink: 0
                   }}
                 >
                   <Code2 size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.35rem', color: '#181a1f', fontWeight: 800 }}>
+                  <h3 style={{ fontSize: 'clamp(1.15rem, 3.5vw, 1.35rem)', color: '#181a1f', fontWeight: 800 }}>
                     Ingeniería de Software & Arquitectura
                   </h3>
-                  <p style={{ fontSize: '0.8rem', color: '#c25e00', fontWeight: 700 }}>
+                  <p style={{ fontSize: '0.78rem', color: '#c25e00', fontWeight: 700 }}>
                     Enfoque Pragmático de Alto Rendimiento
                   </p>
                 </div>
               </div>
 
-              <p style={{ color: '#374151', fontSize: '0.96rem', lineHeight: 1.75, marginBottom: '1.15rem' }}>
+              <p style={{ color: '#374151', fontSize: '0.94rem', lineHeight: 1.7, marginBottom: '1.15rem' }}>
                 Soy desarrollador Full Stack con mentalidad orientada a la ingeniería de sistemas y estudiante avanzado de <strong>Ingeniería en Sistemas de Información</strong> en la <strong>Universidad Tecnológica Nacional (UTN - FRT)</strong>.
               </p>
 
-              <p style={{ color: '#4b5563', fontSize: '0.96rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+              <p style={{ color: '#4b5563', fontSize: '0.94rem', lineHeight: 1.7, marginBottom: '1.35rem' }}>
                 Como cofundador y arquitecto técnico en <strong style={{ color: '#c25e00' }}>RoDevs Software Solutions</strong>, diseño e implemento plataformas web y móviles para flotas de transporte en vivo, streaming continuo de radio y comercio electrónico, priorizando siempre la <strong>velocidad de carga instantánea, la sincronización en tiempo real y la máxima disponibilidad</strong>.
               </p>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', paddingTop: '1rem', borderTop: '1px solid #e2d9cf' }}>
+              <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', paddingTop: '1rem', borderTop: '1px solid #e2d9cf' }}>
                 <a
                   href="/cv/CV_Luis_Fernando_Romano.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-heritage-primary"
-                  style={{ padding: '0.75rem 1.4rem', fontSize: '0.85rem', minHeight: '44px' }}
+                  style={{ flex: '1 1 180px', justifyContent: 'center', padding: '0.7rem 1.1rem', fontSize: '0.82rem', minHeight: '44px' }}
                 >
-                  <Download size={15} />
+                  <Download size={14} />
                   <span>Descargar CV (Harvard / ATS)</span>
                 </a>
 
@@ -205,9 +206,9 @@ export const AboutMe: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-heritage-secondary"
-                  style={{ padding: '0.75rem 1.4rem', fontSize: '0.85rem', minHeight: '44px' }}
+                  style={{ flex: '1 1 140px', justifyContent: 'center', padding: '0.7rem 1.1rem', fontSize: '0.82rem', minHeight: '44px' }}
                 >
-                  <Globe size={15} />
+                  <Globe size={14} />
                   <span>Visitar RoDevs</span>
                 </a>
               </div>

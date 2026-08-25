@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.65rem',
+            gap: '0.5rem',
             textDecoration: 'none',
             flexShrink: 0
           }}
@@ -70,15 +70,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         >
           <div
             style={{
-              width: '38px',
-              height: '38px',
+              width: '34px',
+              height: '34px',
               borderRadius: '8px',
               background: '#f1ecdf',
               border: '1px solid #d5c9bc',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '4px',
+              padding: '3px',
               boxShadow: '0 2px 6px rgba(0,0,0,0.04)'
             }}
           >
@@ -129,16 +129,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         </nav>
 
         {/* Action Buttons: GitHub + LinkedIn + Contact Send + Hamburger Menu */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.25rem, 1.2vw, 0.45rem)', flexShrink: 0 }}>
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
             className="solid-pill"
             style={{
-              padding: '0.45rem',
-              minWidth: '36px',
-              minHeight: '36px',
+              padding: '0.35rem',
+              minWidth: '32px',
+              minHeight: '32px',
+              width: '32px',
+              height: '32px',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -148,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             title="GitHub Profile"
             aria-label="Perfil de GitHub"
           >
-            <GithubIcon size={17} />
+            <GithubIcon size={16} />
           </a>
 
           <a
@@ -157,9 +159,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             rel="noopener noreferrer"
             className="solid-pill"
             style={{
-              padding: '0.45rem',
-              minWidth: '36px',
-              minHeight: '36px',
+              padding: '0.35rem',
+              minWidth: '32px',
+              minHeight: '32px',
+              width: '32px',
+              height: '32px',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -169,23 +173,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             title="LinkedIn Profile"
             aria-label="Perfil de LinkedIn"
           >
-            <LinkedinIcon size={17} />
+            <LinkedinIcon size={16} />
           </a>
 
           <button
             onClick={onOpenContact}
             className="btn-heritage-primary"
             style={{
-              padding: '0.45rem 0.85rem',
-              fontSize: '0.82rem',
+              padding: '0.35rem 0.65rem',
+              fontSize: '0.78rem',
               borderRadius: '6px',
-              minHeight: '36px',
-              gap: '0.4rem'
+              minHeight: '32px',
+              gap: '0.35rem'
             }}
             title="Enviar mensaje / Contactar"
             aria-label="Contactar a Luis Romano"
           >
-            <Send size={14} />
+            <Send size={13} />
             <span className="nav-contact-text" style={{ fontWeight: 700 }}>Contactar</span>
           </button>
 
@@ -201,14 +205,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              padding: '0.45rem',
-              minWidth: '36px',
-              minHeight: '36px'
+              padding: '0.35rem',
+              minWidth: '32px',
+              minHeight: '32px',
+              width: '32px',
+              height: '32px'
             }}
             className="mobile-toggle"
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú de navegación'}
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>

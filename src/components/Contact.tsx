@@ -92,40 +92,40 @@ export const Contact: React.FC<ContactProps> = () => {
             style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
           >
             {/* Email Card */}
-            <div className="solid-card" style={{ padding: '1.5rem', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#eff6ff', color: '#1d4ed8' }}>
+            <div className="solid-card" style={{ padding: 'clamp(1rem, 2.5vw, 1.5rem)', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
+                  <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#eff6ff', color: '#1d4ed8', flexShrink: 0 }}>
                     <Mail size={20} />
                   </div>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: '#6b7280', fontWeight: 600 }}>Correo Principal</div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.email}</div>
+                  <div style={{ minWidth: 0, overflow: 'hidden' }}>
+                    <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>Correo Principal</div>
+                    <div style={{ fontSize: 'clamp(0.82rem, 2.8vw, 0.95rem)', fontWeight: 700, color: '#181a1f', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{PERSONAL_INFO.email}</div>
                   </div>
                 </div>
 
                 <button
                   onClick={handleCopyEmail}
                   className="solid-pill"
-                  style={{ cursor: 'pointer', padding: '0.35rem 0.65rem' }}
+                  style={{ cursor: 'pointer', padding: '0.3rem 0.6rem', fontSize: '0.72rem', flexShrink: 0 }}
                   title="Copiar email"
                 >
-                  {copiedEmail ? <Check size={14} color="#059669" /> : <Copy size={14} />}
-                  <span style={{ fontSize: '0.75rem' }}>{copiedEmail ? 'Copiado' : 'Copiar'}</span>
+                  {copiedEmail ? <Check size={13} color="#059669" /> : <Copy size={13} />}
+                  <span>{copiedEmail ? 'Copiado' : 'Copiar'}</span>
                 </button>
               </div>
             </div>
 
             {/* WhatsApp Card */}
-            <div className="solid-card" style={{ padding: '1.5rem', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div className="solid-card" style={{ padding: 'clamp(1rem, 2.5vw, 1.5rem)', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#ecfdf5', color: '#059669' }}>
+                  <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#ecfdf5', color: '#059669', flexShrink: 0 }}>
                     <Phone size={20} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: '#6b7280', fontWeight: 600 }}>WhatsApp / Teléfono</div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.phone}</div>
+                    <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>WhatsApp / Teléfono</div>
+                    <div style={{ fontSize: '0.92rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.phone}</div>
                   </div>
                 </div>
 
@@ -134,7 +134,7 @@ export const Contact: React.FC<ContactProps> = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-heritage-secondary"
-                  style={{ padding: '0.45rem 0.95rem', fontSize: '0.82rem', minHeight: '36px' }}
+                  style={{ padding: '0.4rem 0.85rem', fontSize: '0.78rem', minHeight: '34px', flexShrink: 0 }}
                 >
                   Abrir Chat
                 </a>
@@ -142,26 +142,26 @@ export const Contact: React.FC<ContactProps> = () => {
             </div>
 
             {/* Location & Socials */}
-            <div className="solid-card" style={{ padding: '1.5rem', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
+            <div className="solid-card" style={{ padding: 'clamp(1rem, 2.5vw, 1.5rem)', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#fdf4ff', color: '#9333ea' }}>
+                <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#fdf4ff', color: '#9333ea', flexShrink: 0 }}>
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.8rem', color: '#6b7280', fontWeight: 600 }}>Ubicación</div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.location} (Remoto Global)</div>
+                  <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>Ubicación</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.location} (Remoto Global)</div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', gap: '0.65rem' }}>
                 <a
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-heritage-secondary"
-                  style={{ flex: 1, justifyContent: 'center', fontSize: '0.85rem' }}
+                  style={{ flex: 1, justifyContent: 'center', fontSize: '0.82rem', padding: '0.5rem' }}
                 >
-                  <LinkedinIcon size={16} color="#0a66c2" />
+                  <LinkedinIcon size={15} color="#0a66c2" />
                   <span>LinkedIn</span>
                 </a>
 
@@ -170,9 +170,9 @@ export const Contact: React.FC<ContactProps> = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-heritage-secondary"
-                  style={{ flex: 1, justifyContent: 'center', fontSize: '0.85rem' }}
+                  style={{ flex: 1, justifyContent: 'center', fontSize: '0.82rem', padding: '0.5rem' }}
                 >
-                  <GithubIcon size={16} />
+                  <GithubIcon size={15} />
                   <span>GitHub</span>
                 </a>
               </div>
@@ -187,15 +187,15 @@ export const Contact: React.FC<ContactProps> = () => {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="solid-card"
             style={{
-              padding: '2rem',
+              padding: 'clamp(1.25rem, 3.5vw, 2rem)',
               backgroundColor: '#ffffff',
               border: '1px solid #e2d9cf'
             }}
           >
-            <h3 style={{ fontSize: '1.35rem', color: '#181a1f', marginBottom: '0.5rem', fontWeight: 800 }}>
+            <h3 style={{ fontSize: 'clamp(1.15rem, 3.5vw, 1.35rem)', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 800 }}>
               Enviar Mensaje Directo
             </h3>
-            <p style={{ color: '#6b7280', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
+            <p style={{ color: '#6b7280', fontSize: '0.82rem', marginBottom: '1.25rem' }}>
               Completá el formulario para iniciar la consulta técnica directa por correo.
             </p>
 

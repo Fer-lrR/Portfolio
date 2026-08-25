@@ -56,6 +56,9 @@
 html {
   scroll-behavior: smooth;
   color-scheme: light;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -67,8 +70,32 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Global Container Definition */
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+.section-padding {
+  padding: 5rem 0;
 }
 
 /* Subtle Country Paper Texture */
@@ -326,7 +353,7 @@ button, input, textarea {
   100% { transform: scale(2); opacity: 0; }
 }
 
-/* Responsive Navbar & Container rules */
+/* Responsive Navbar, Layout & Breakpoint Rules */
 .nav-brand-text {
   display: block;
 }
@@ -335,16 +362,13 @@ button, input, textarea {
   display: inline;
 }
 
-@media (max-width: 640px) {
-  .nav-brand-text {
-    display: none !important;
-  }
-  .nav-contact-text {
-    display: none !important;
-  }
-  .container {
-    padding: 0 1rem;
-  }
+.hero-cockpit-bar {
+  position: absolute;
+  top: 5.25rem;
+  right: 1.5rem;
+  left: auto;
+  transform: none;
+  z-index: 50;
 }
 
 @media (min-width: 769px) {
@@ -364,7 +388,67 @@ button, input, textarea {
     display: flex !important;
   }
   .section-padding {
-    padding: 3.75rem 0;
+    padding: 3.25rem 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-brand-text {
+    display: none !important;
+  }
+  .nav-contact-text {
+    display: none !important;
+  }
+  .container {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+  .section-padding {
+    padding: 2.5rem 0;
+  }
+  .hero-cockpit-bar {
+    top: 3.75rem !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: max-content !important;
+    max-width: calc(100% - 1.25rem) !important;
+    padding: 0.25rem 0.5rem !important;
+    gap: 0.35rem !important;
+  }
+  .hero-main-container {
+    padding-top: 6.25rem !important;
+    padding-bottom: 2rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  .moto-title-main {
+    font-size: clamp(1.35rem, 5.5vw, 2.5rem) !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1.15 !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+  .section-padding {
+    padding: 2rem 0;
+  }
+  .solid-card {
+    padding: 0.85rem !important;
+  }
+  .hero-cockpit-bar {
+    top: 3.5rem !important;
+    padding: 0.2rem 0.4rem !important;
+    gap: 0.25rem !important;
+  }
+  .moto-title-main {
+    font-size: clamp(1.25rem, 5.2vw, 1.85rem) !important;
+    letter-spacing: 0 !important;
   }
 }
 
@@ -395,12 +479,11 @@ button, input, textarea {
   transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.tech-icon-tile:hover,
-.tech-icon-tile:focus-visible {
-  background: #ffffff;
-  border-color: var(--border-amber);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-card);
+.tech-icon-tile:hover {
+  border-color: var(--accent-amber);
+  background-color: var(--bg-surface-warm);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .tech-floating-tooltip {
@@ -448,21 +531,22 @@ button, input, textarea {
   box-shadow: var(--shadow-sm);
 }
 
-/* Shiny Text metallic reflection */
+/* Shiny Text metallic reflection (Gold / Amber / Daylight) */
 .shiny-text-element {
   background: linear-gradient(
     120deg,
-    #181a1f 0%,
-    #c25e00 45%,
-    #9a3412 70%,
-    #181a1f 100%
+    #ffffff 0%,
+    #fbbf24 35%,
+    #f59e0b 55%,
+    #ffffff 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  animation: shiny-sweep 4s linear infinite;
+  animation: shiny-sweep 3.5s linear infinite;
+  text-shadow: none;
 }
 
 .shiny-text-element.disabled {
