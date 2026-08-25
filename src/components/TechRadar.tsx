@@ -3,24 +3,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 import { TechIcon } from './TechIcons';
 import { TechSkill } from '../types/portfolio';
-import { Layout, Cloud, Smartphone, Cpu, Sparkles, Terminal } from 'lucide-react';
+import { Layout, Cloud, Smartphone, Cpu, Sparkles, Terminal, Wrench } from 'lucide-react';
 
 export const TechRadar: React.FC = () => {
-  // Store active/hovered skill per category index or globally
   const [hoveredSkills, setHoveredSkills] = useState<{ [categoryIdx: number]: TechSkill | null }>({});
 
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
       case 'Layout':
-        return <Layout size={20} color="#38bdf8" />;
+        return <Layout size={20} color="#c25e00" />;
       case 'Cloud':
-        return <Cloud size={20} color="#06b6d4" />;
+        return <Cloud size={20} color="#1d4ed8" />;
       case 'Smartphone':
-        return <Smartphone size={20} color="#10b981" />;
+        return <Smartphone size={20} color="#059669" />;
       case 'Cpu':
-        return <Cpu size={20} color="#a855f7" />;
+        return <Cpu size={20} color="#9333ea" />;
       default:
-        return <Sparkles size={20} color="#38bdf8" />;
+        return <Sparkles size={20} color="#c25e00" />;
     }
   };
 
@@ -33,31 +32,31 @@ export const TechRadar: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="section-padding" style={{ position: 'relative' }}>
+    <section id="skills" className="section-padding" style={{ position: 'relative', background: '#f8f6f0' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 3.5rem auto' }}>
           <div
-            className="glass-pill"
+            className="solid-pill"
             style={{
               marginBottom: '1rem',
-              color: '#38bdf8',
-              borderColor: 'rgba(56, 189, 248, 0.3)',
+              color: '#c25e00',
+              borderColor: '#e2d9cf',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.5rem'
             }}
           >
-            <Sparkles size={14} />
-            <span>Ecosistema & Stack Tecnológico</span>
+            <Wrench size={14} color="#c25e00" />
+            <span>Herramientas & Maquinaria de Código</span>
           </div>
 
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem', color: '#ffffff' }}>
-            Stack Tecnológico <span style={{ color: '#38bdf8' }}>& Herramientas</span>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.2vw, 3rem)', marginBottom: '1rem', color: '#181a1f', fontWeight: 800 }}>
+            Stack Tecnológico <span style={{ color: '#c25e00' }}>& Dominio Técnico</span>
           </h2>
 
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
-            Arquitecturas escalables, tecnologías en tiempo real y desarrollo frontend de alta gama. Pasa el cursor sobre los íconos para explorar cada tecnología.
+          <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.65 }}>
+            Arquitecturas sólidas, sincronización en tiempo real y desarrollo de alto rendimiento. Pasa el cursor sobre los íconos para inspeccionar cada tecnología.
           </p>
         </div>
 
@@ -75,14 +74,15 @@ export const TechRadar: React.FC = () => {
             return (
               <div
                 key={catIdx}
-                className="glass-card"
+                className="solid-card"
                 style={{
                   padding: '1.75rem',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backgroundColor: '#ffffff',
+                  border: '1px solid #e2d9cf',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  borderRadius: '1.25rem',
+                  borderRadius: '8px',
                   position: 'relative'
                 }}
               >
@@ -95,26 +95,25 @@ export const TechRadar: React.FC = () => {
                       justifyContent: 'space-between',
                       marginBottom: '1.5rem',
                       paddingBottom: '0.85rem',
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
+                      borderBottom: '1px solid #e2d9cf'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                       <div
                         style={{
                           width: '40px',
                           height: '40px',
-                          borderRadius: '12px',
-                          backgroundColor: 'rgba(15, 23, 42, 0.85)',
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          borderRadius: '6px',
+                          backgroundColor: '#f8f6f0',
+                          border: '1px solid #e2d9cf',
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: 'center',
-                          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
+                          justifyContent: 'center'
                         }}
                       >
                         {getCategoryIcon(category.icon)}
                       </div>
-                      <h3 style={{ fontSize: '1.2rem', color: '#f8fafc', fontWeight: 600 }}>
+                      <h3 style={{ fontSize: '1.15rem', color: '#181a1f', fontWeight: 700 }}>
                         {category.title}
                       </h3>
                     </div>
@@ -123,11 +122,12 @@ export const TechRadar: React.FC = () => {
                       style={{
                         fontSize: '0.75rem',
                         fontFamily: 'var(--font-mono)',
-                        color: '#64748b',
-                        backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                        color: '#6b7280',
+                        backgroundColor: '#f8f6f0',
                         padding: '0.25rem 0.6rem',
-                        borderRadius: '6px',
-                        border: '1px solid rgba(255, 255, 255, 0.06)'
+                        borderRadius: '4px',
+                        border: '1px solid #e2d9cf',
+                        fontWeight: 600
                       }}
                     >
                       {category.skills.length} techs
@@ -154,27 +154,28 @@ export const TechRadar: React.FC = () => {
                           <motion.div
                             className="tech-icon-tile"
                             whileHover={{
-                              scale: 1.25,
-                              y: -6,
+                              scale: 1.15,
+                              y: -4,
                               transition: { type: 'spring', stiffness: 450, damping: 20 }
                             }}
                             whileTap={{ scale: 0.95 }}
                             animate={{
-                              borderColor: isHovered ? skill.brandColor : 'rgba(255, 255, 255, 0.08)',
+                              borderColor: isHovered ? '#c25e00' : '#e2d9cf',
                               boxShadow: isHovered
-                                ? `0 12px 24px -4px ${skill.brandColor}45, 0 0 16px ${skill.brandColor}30`
-                                : '0 4px 12px rgba(0, 0, 0, 0.2)'
+                                ? `0 8px 20px -4px rgba(194, 94, 0, 0.25)`
+                                : '0 1px 3px rgba(0, 0, 0, 0.05)'
                             }}
                             style={{
                               width: '100%',
                               height: '100%',
-                              padding: '0.75rem'
+                              padding: '0.75rem',
+                              backgroundColor: '#ffffff'
                             }}
                           >
                             <TechIcon name={skill.iconKey} size={32} />
                           </motion.div>
 
-                          {/* Floating Animated Tooltip with Name */}
+                          {/* Floating Tooltip */}
                           <AnimatePresence>
                             {isHovered && (
                               <motion.div
@@ -190,7 +191,6 @@ export const TechRadar: React.FC = () => {
                                     height: '8px',
                                     borderRadius: '50%',
                                     backgroundColor: skill.brandColor,
-                                    boxShadow: `0 0 8px ${skill.brandColor}`,
                                     display: 'inline-block'
                                   }}
                                 />
@@ -208,8 +208,8 @@ export const TechRadar: React.FC = () => {
                 <div
                   className="tech-telemetry-bar"
                   style={{
-                    borderColor: activeSkill ? `${activeSkill.brandColor}40` : 'rgba(255, 255, 255, 0.05)',
-                    backgroundColor: activeSkill ? `${activeSkill.brandColor}0a` : 'rgba(2, 6, 23, 0.6)'
+                    borderColor: activeSkill ? '#c25e00' : '#e2d9cf',
+                    backgroundColor: activeSkill ? '#fff7ed' : '#f8f6f0'
                   }}
                 >
                   <AnimatePresence mode="wait">
@@ -228,7 +228,6 @@ export const TechRadar: React.FC = () => {
                             height: '10px',
                             borderRadius: '50%',
                             backgroundColor: activeSkill.brandColor,
-                            boxShadow: `0 0 10px ${activeSkill.brandColor}`,
                             marginTop: '0.35rem',
                             flexShrink: 0
                           }}
@@ -239,7 +238,7 @@ export const TechRadar: React.FC = () => {
                               style={{
                                 fontSize: '0.88rem',
                                 fontWeight: 700,
-                                color: '#ffffff',
+                                color: '#181a1f',
                                 fontFamily: 'var(--font-heading)'
                               }}
                             >
@@ -249,7 +248,7 @@ export const TechRadar: React.FC = () => {
                           <p
                             style={{
                               fontSize: '0.78rem',
-                              color: '#94a3b8',
+                              color: '#4b5563',
                               lineHeight: 1.4,
                               margin: 0
                             }}
@@ -264,10 +263,10 @@ export const TechRadar: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#64748b' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#6b7280' }}
                       >
-                        <Terminal size={14} color="#38bdf8" />
-                        <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)' }}>
+                        <Terminal size={14} color="#c25e00" />
+                        <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
                           Pasa el cursor sobre los íconos para inspeccionar el stack
                         </span>
                       </motion.div>
@@ -282,3 +281,5 @@ export const TechRadar: React.FC = () => {
     </section>
   );
 };
+
+export default TechRadar;

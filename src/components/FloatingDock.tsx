@@ -38,22 +38,23 @@ export const FloatingDock: React.FC = () => {
         <button
           onClick={scrollToTop}
           aria-label="Volver arriba"
-          className="glass-pill"
+          className="solid-pill"
           style={{
-            width: '46px',
-            height: '46px',
+            width: '44px',
+            height: '44px',
             borderRadius: '50%',
             padding: 0,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#f8fafc',
-            backgroundColor: 'rgba(15, 23, 42, 0.85)',
-            boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+            color: '#181a1f',
+            backgroundColor: '#ffffff',
+            border: '1px solid #e2d9cf',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
             cursor: 'pointer'
           }}
         >
-          <ArrowUp size={20} />
+          <ArrowUp size={18} color="#c25e00" />
         </button>
       )}
 

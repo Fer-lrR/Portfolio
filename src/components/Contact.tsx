@@ -28,13 +28,13 @@ export const Contact: React.FC<ContactProps> = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     confetti({
-      particleCount: 100,
-      spread: 80,
+      particleCount: 80,
+      spread: 70,
       origin: { y: 0.6 },
-      colors: ['#3b82f6', '#06b6d4', '#10b981']
+      colors: ['#c25e00', '#9a3412', '#d97706', '#181a1f']
     });
 
-    // Construct mailto link as quick client dispatch
+    // Construct mailto link
     const mailto = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject || 'Contacto desde Portfolio')}&body=${encodeURIComponent(
       `Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`
     )}`;
@@ -48,19 +48,19 @@ export const Contact: React.FC<ContactProps> = () => {
   };
 
   return (
-    <section id="contact" className="section-padding" style={{ position: 'relative' }}>
+    <section id="contact" className="section-padding" style={{ position: 'relative', background: '#f1ecdf' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}>
-          <div className="glass-pill" style={{ marginBottom: '1rem', color: '#38bdf8', borderColor: 'rgba(56, 189, 248, 0.3)' }}>
-            <MessageSquare size={14} />
+          <div className="solid-pill" style={{ marginBottom: '1rem', color: '#c25e00' }}>
+            <MessageSquare size={14} color="#c25e00" />
             <span>Contacto Directo & Oportunidades</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginBottom: '1rem', color: '#ffffff' }}>
-            Iniciemos una <span style={{ color: '#38bdf8' }}>Conversación Técnica</span>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.2vw, 3rem)', marginBottom: '1rem', color: '#181a1f', fontWeight: 800 }}>
+            Iniciemos una <span style={{ color: '#c25e00' }}>Conversación Técnica</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
-            Disponible para roles de Software Engineer / Architect, consultoría técnica y desarrollo de plataformas de alta escala.
+          <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.65 }}>
+            Disponible para roles de Lead Full Stack Developer, Systems Architect y consultoría técnica de alta disponibilidad.
           </p>
         </div>
 
@@ -79,40 +79,40 @@ export const Contact: React.FC<ContactProps> = () => {
           {/* Left Column: Direct Info Cards */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {/* Email Card */}
-            <div className="glass-card" style={{ padding: '1.5rem' }}>
+            <div className="solid-card" style={{ padding: '1.5rem', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6' }}>
+                  <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#eff6ff', color: '#1d4ed8' }}>
                     <Mail size={20} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Correo Principal</div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc' }}>{PERSONAL_INFO.email}</div>
+                    <div style={{ fontSize: '0.8rem', color: '#6b7280', fontWeight: 600 }}>Correo Principal</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.email}</div>
                   </div>
                 </div>
 
                 <button
                   onClick={handleCopyEmail}
-                  className="glass-pill"
+                  className="solid-pill"
                   style={{ cursor: 'pointer', padding: '0.35rem 0.65rem' }}
                   title="Copiar email"
                 >
-                  {copiedEmail ? <Check size={14} color="#10b981" /> : <Copy size={14} />}
+                  {copiedEmail ? <Check size={14} color="#059669" /> : <Copy size={14} />}
                   <span style={{ fontSize: '0.75rem' }}>{copiedEmail ? 'Copiado' : 'Copiar'}</span>
                 </button>
               </div>
             </div>
 
             {/* WhatsApp Card */}
-            <div className="glass-card" style={{ padding: '1.5rem' }}>
+            <div className="solid-card" style={{ padding: '1.5rem', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                  <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#ecfdf5', color: '#059669' }}>
                     <Phone size={20} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>WhatsApp / Teléfono</div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc' }}>{PERSONAL_INFO.phone}</div>
+                    <div style={{ fontSize: '0.8rem', color: '#6b7280', fontWeight: 600 }}>WhatsApp / Teléfono</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.phone}</div>
                   </div>
                 </div>
 
@@ -120,8 +120,8 @@ export const Contact: React.FC<ContactProps> = () => {
                   href={`https://api.whatsapp.com/send?phone=5493863537818&text=${encodeURIComponent('Hola Fernando! Me gustaría conversar sobre una oportunidad/proyecto.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
-                  style={{ padding: '0.4rem 0.85rem', fontSize: '0.8rem' }}
+                  className="btn-heritage-secondary"
+                  style={{ padding: '0.45rem 0.95rem', fontSize: '0.82rem', minHeight: '36px' }}
                 >
                   Abrir Chat
                 </a>
@@ -129,14 +129,14 @@ export const Contact: React.FC<ContactProps> = () => {
             </div>
 
             {/* Location & Socials */}
-            <div className="glass-card" style={{ padding: '1.5rem' }}>
+            <div className="solid-card" style={{ padding: '1.5rem', backgroundColor: '#ffffff', border: '1px solid #e2d9cf' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>
+                <div style={{ padding: '0.5rem', borderRadius: '6px', background: '#fdf4ff', color: '#9333ea' }}>
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Ubicación</div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc' }}>{PERSONAL_INFO.location} (Remoto Global)</div>
+                  <div style={{ fontSize: '0.8rem', color: '#6b7280', fontWeight: 600 }}>Ubicación</div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#181a1f' }}>{PERSONAL_INFO.location} (Remoto Global)</div>
                 </div>
               </div>
 
@@ -145,7 +145,7 @@ export const Contact: React.FC<ContactProps> = () => {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
+                  className="btn-heritage-secondary"
                   style={{ flex: 1, justifyContent: 'center', fontSize: '0.85rem' }}
                 >
                   <LinkedinIcon size={16} color="#0a66c2" />
@@ -156,7 +156,7 @@ export const Contact: React.FC<ContactProps> = () => {
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
+                  className="btn-heritage-secondary"
                   style={{ flex: 1, justifyContent: 'center', fontSize: '0.85rem' }}
                 >
                   <GithubIcon size={16} />
@@ -168,56 +168,57 @@ export const Contact: React.FC<ContactProps> = () => {
 
           {/* Right Column: Direct Message Form */}
           <div
-            className="glass-card-static"
+            className="solid-card"
             style={{
               padding: '2rem',
-              border: '1px solid rgba(59, 130, 246, 0.3)'
+              backgroundColor: '#ffffff',
+              border: '1px solid #e2d9cf'
             }}
           >
-            <h3 style={{ fontSize: '1.35rem', color: '#f8fafc', marginBottom: '0.5rem' }}>
+            <h3 style={{ fontSize: '1.35rem', color: '#181a1f', marginBottom: '0.5rem', fontWeight: 800 }}>
               Enviar Mensaje Directo
             </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
-              Completá el formulario y te respondo en el día.
+            <p style={{ color: '#4b5563', fontSize: '0.88rem', marginBottom: '1.5rem' }}>
+              Completá el formulario y te respondo a la brevedad.
             </p>
 
             {isSubmitted ? (
               <div
                 style={{
-                  backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  borderRadius: '0.75rem',
+                  backgroundColor: '#ecfdf5',
+                  border: '1px solid #a7f3d0',
+                  borderRadius: '6px',
                   padding: '2rem',
                   textAlign: 'center'
                 }}
               >
-                <CheckCircle2 size={40} color="#10b981" style={{ margin: '0 auto 1rem auto' }} />
-                <h4 style={{ color: '#f8fafc', fontSize: '1.2rem', marginBottom: '0.5rem' }}>
-                  ¡Mensaje Enviado con Éxito!
+                <CheckCircle2 size={36} color="#059669" style={{ margin: '0 auto 0.75rem auto' }} />
+                <h4 style={{ color: '#181a1f', fontSize: '1.15rem', marginBottom: '0.35rem', fontWeight: 700 }}>
+                  ¡Mensaje Preparado!
                 </h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>
-                  Se abrió tu cliente de correo para confirmar el despacho a {PERSONAL_INFO.email}.
+                <p style={{ color: '#4b5563', fontSize: '0.88rem' }}>
+                  Se abrió tu cliente de correo para enviar la comunicación a {PERSONAL_INFO.email}.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: '#94a3b8', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
                     Tu Nombre o Empresa
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Ej. Martín González (Sparkling / Tech Lead)"
+                    placeholder="Ej. Martín González (Tech Lead)"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      borderRadius: '0.6rem',
-                      backgroundColor: 'rgba(2, 6, 23, 0.7)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: '#f8fafc',
+                      borderRadius: '6px',
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #d5c9bc',
+                      color: '#181a1f',
                       fontSize: '0.9rem',
                       outline: 'none'
                     }}
@@ -225,7 +226,7 @@ export const Contact: React.FC<ContactProps> = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: '#94a3b8', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
                     Tu Correo Electrónico
                   </label>
                   <input
@@ -237,10 +238,10 @@ export const Contact: React.FC<ContactProps> = () => {
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      borderRadius: '0.6rem',
-                      backgroundColor: 'rgba(2, 6, 23, 0.7)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: '#f8fafc',
+                      borderRadius: '6px',
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #d5c9bc',
+                      color: '#181a1f',
                       fontSize: '0.9rem',
                       outline: 'none'
                     }}
@@ -248,7 +249,7 @@ export const Contact: React.FC<ContactProps> = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: '#94a3b8', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
                     Asunto / Motivo
                   </label>
                   <input
@@ -260,10 +261,10 @@ export const Contact: React.FC<ContactProps> = () => {
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      borderRadius: '0.6rem',
-                      backgroundColor: 'rgba(2, 6, 23, 0.7)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: '#f8fafc',
+                      borderRadius: '6px',
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #d5c9bc',
+                      color: '#181a1f',
                       fontSize: '0.9rem',
                       outline: 'none'
                     }}
@@ -271,22 +272,22 @@ export const Contact: React.FC<ContactProps> = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: '#94a3b8', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', color: '#181a1f', marginBottom: '0.35rem', fontWeight: 600 }}>
                     Mensaje o Detalle
                   </label>
                   <textarea
                     required
                     rows={4}
-                    placeholder="Hola Fernando, vimos tu experiencia en arquitecturas en tiempo real y nos gustaría coordinar una entrevista..."
+                    placeholder="Hola Fernando, vimos tu experiencia en arquitecturas en tiempo real y nos gustaría coordinar una reunión..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      borderRadius: '0.6rem',
-                      backgroundColor: 'rgba(2, 6, 23, 0.7)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: '#f8fafc',
+                      borderRadius: '6px',
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #d5c9bc',
+                      color: '#181a1f',
                       fontSize: '0.9rem',
                       outline: 'none',
                       resize: 'vertical'
@@ -296,11 +297,11 @@ export const Contact: React.FC<ContactProps> = () => {
 
                 <button
                   type="submit"
-                  className="btn-primary"
+                  className="btn-heritage-primary"
                   style={{
                     width: '100%',
                     padding: '0.85rem',
-                    borderRadius: '0.65rem',
+                    borderRadius: '6px',
                     marginTop: '0.5rem'
                   }}
                 >
@@ -323,3 +324,5 @@ export const Contact: React.FC<ContactProps> = () => {
     </section>
   );
 };
+
+export default Contact;

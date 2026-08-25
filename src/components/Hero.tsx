@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
       particleCount: 70,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#f59e0b', '#d97706', '#38bdf8', '#ffffff']
+      colors: ['#c25e00', '#9a3412', '#d97706', '#181a1f']
     });
   };
 
@@ -82,7 +82,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
         background: '#07090e'
       }}
     >
-      {/* Background Video: 100% Crisp, Natural & Bright (No dark filters!) */}
+      {/* Background Video: 100% Crisp, Natural & Bright */}
       <div
         style={{
           position: 'absolute',
@@ -111,22 +111,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
           }}
         />
 
-        {/* Minimal Bottom Blend: Only fades smoothly at the very bottom edge into section 2 */}
+        {/* Natural Smooth Blend into Light Canvas at the very bottom */}
         <div
           style={{
             position: 'absolute',
             bottom: 0,
             left: 0,
             right: 0,
-            height: '160px',
-            background: 'linear-gradient(to bottom, transparent 0%, rgba(8, 11, 17, 0.95) 100%)',
+            height: '180px',
+            background: 'linear-gradient(to bottom, transparent 0%, rgba(248, 246, 240, 0.6) 65%, #f8f6f0 100%)',
             pointerEvents: 'none',
             zIndex: 2
           }}
         />
       </div>
 
-      {/* Video Control Pill (Discreet Top-Right) */}
+      {/* Video Control Pill (Top-Right) */}
       <div
         style={{
           position: 'absolute',
@@ -136,12 +136,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
-          background: 'rgba(8, 11, 17, 0.75)',
-          border: '1px solid rgba(217, 119, 6, 0.35)',
+          background: 'rgba(24, 26, 31, 0.85)',
+          border: '1px solid #c25e00',
           borderRadius: '6px',
-          padding: '0.3rem 0.65rem',
-          backdropFilter: 'blur(12px)',
-          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.6)'
+          padding: '0.35rem 0.75rem',
+          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)'
         }}
       >
         <button
@@ -157,7 +156,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
             padding: '0.2rem'
           }}
         >
-          {isPlaying ? <Pause size={14} color="#f59e0b" /> : <Play size={14} color="#f59e0b" />}
+          {isPlaying ? <Pause size={14} color="#fbbf24" /> : <Play size={14} color="#fbbf24" />}
         </button>
 
         <button
@@ -173,14 +172,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
             padding: '0.2rem'
           }}
         >
-          {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} color="#38bdf8" />}
+          {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} color="#fbbf24" />}
         </button>
 
         <div
           style={{
             height: '14px',
             width: '1px',
-            backgroundColor: 'rgba(255, 255, 255, 0.25)',
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
             margin: '0 0.25rem'
           }}
         />
@@ -196,7 +195,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
             textShadow: '0 1px 3px rgba(0,0,0,0.8)'
           }}
         >
-          <Compass size={12} color="#f59e0b" />
+          <Compass size={12} color="#fbbf24" />
           <span>RN 38 • TUCUMÁN</span>
         </div>
       </div>
@@ -229,9 +228,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 justifyContent: 'center',
                 width: '100%',
                 padding: '2rem 1.5rem',
-                borderRadius: '16px',
-                background: 'radial-gradient(ellipse at center, rgba(6, 9, 15, 0.6) 0%, rgba(6, 9, 15, 0.25) 70%, transparent 100%)',
-                backdropFilter: 'blur(4px)'
+                borderRadius: '12px'
               }}
             >
               {/* Big Motorcycle Typography Animated with SplitText */}
@@ -258,7 +255,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 />
               </div>
 
-              {/* Sub-Headline / Tagline with Metallic Bronze Sheen */}
+              {/* Sub-Headline / Tagline */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -279,11 +276,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 }}
               >
                 <span>Lead Full Stack Developer</span>
-                <span style={{ color: '#f59e0b' }}>•</span>
+                <span style={{ color: '#fbbf24' }}>•</span>
                 <ShinyText text="Systems Architect @ RoDevs" speed={3.5} />
               </motion.div>
 
-              {/* Scroll Action Trigger / Buttons */}
+              {/* Action Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
@@ -300,7 +297,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                   alignItems: 'center'
                 }}
               >
-                <a href="#about" className="btn-heritage-primary" style={{ minHeight: '50px', padding: '0.9rem 2rem' }}>
+                <a href="#about" className="btn-heritage-primary" style={{ minHeight: '50px', padding: '0.9rem 2.2rem' }}>
                   <span>Ver Proyectos & Perfil</span>
                   <ArrowRight size={18} />
                 </a>
@@ -311,7 +308,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                     onOpenContact();
                   }}
                   className="btn-heritage-secondary"
-                  style={{ minHeight: '50px', padding: '0.9rem 2rem' }}
+                  style={{ minHeight: '50px', padding: '0.9rem 2.2rem' }}
                 >
                   <span>Contactar Directamente</span>
                 </button>
@@ -333,7 +330,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
             className="scroll-indicator-pulse"
             style={{
               position: 'absolute',
-              bottom: '1.75rem',
+              bottom: '2rem',
               left: '50%',
               transform: 'translateX(-50%)',
               zIndex: 15,
@@ -341,18 +338,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
               flexDirection: 'column',
               alignItems: 'center',
               gap: '0.35rem',
-              color: '#fbbf24',
+              color: '#181a1f',
               textDecoration: 'none',
               fontFamily: 'var(--font-mono)',
               fontSize: '0.75rem',
               letterSpacing: '0.14em',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              textShadow: '0 2px 8px rgba(0,0,0,0.9)'
+              fontWeight: 800,
+              textTransform: 'uppercase'
             }}
           >
             <span>Deslizá para explorar</span>
-            <ChevronDown size={18} color="#f59e0b" />
+            <ChevronDown size={18} color="#c25e00" />
           </motion.a>
         )}
       </AnimatePresence>

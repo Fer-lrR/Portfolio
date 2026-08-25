@@ -13,7 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [navVisible, setNavVisible] = useState(false);
 
-  // Staged entrance: Navbar appears with smooth downward slide after hero title initiates
+  // Staged entrance: Navbar appears with smooth downward slide
   useEffect(() => {
     const timer = setTimeout(() => {
       setNavVisible(true);
@@ -47,11 +47,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         left: 0,
         right: 0,
         zIndex: 1000,
-        transition: 'background-color 0.3s ease, border-color 0.3s ease, padding 0.3s ease',
-        padding: isScrolled ? '0.65rem 0' : '1.15rem 0',
-        backgroundColor: isScrolled ? 'rgba(6, 9, 17, 0.95)' : 'rgba(6, 9, 17, 0.45)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: isScrolled ? '1px solid rgba(217, 119, 6, 0.25)' : '1px solid rgba(255, 255, 255, 0.05)'
+        transition: 'background-color 0.25s ease, border-color 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease',
+        padding: isScrolled ? '0.65rem 0' : '1rem 0',
+        backgroundColor: isScrolled ? '#ffffff' : 'rgba(248, 246, 240, 0.85)',
+        borderBottom: isScrolled ? '1px solid #e2d9cf' : '1px solid transparent',
+        boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.05)' : 'none'
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -68,11 +68,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         >
           <div
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(6, 182, 212, 0.2))',
-              border: '1px solid rgba(6, 182, 212, 0.35)',
+              width: '38px',
+              height: '38px',
+              borderRadius: '6px',
+              background: '#f1ecdf',
+              border: '1px solid #d5c9bc',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -86,11 +86,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             />
           </div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: '1.05rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              LUIS ROMANO<span style={{ color: '#38bdf8' }}>.dev</span>
+            <div style={{ fontWeight: 800, fontSize: '1.05rem', letterSpacing: '-0.02em', color: '#181a1f' }}>
+              LUIS ROMANO<span style={{ color: '#c25e00' }}>.dev</span>
             </div>
-            <div style={{ fontSize: '0.7rem', color: '#94a3b8', letterSpacing: '0.04em' }}>
-              Lead Developer @ <span style={{ color: '#38bdf8' }}>RoDevs</span>
+            <div style={{ fontSize: '0.7rem', color: '#6b7280', letterSpacing: '0.04em', fontWeight: 600 }}>
+              Lead Developer @ <span style={{ color: '#c25e00' }}>RoDevs</span>
             </div>
           </div>
         </a>
@@ -102,14 +102,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               key={link.name}
               href={link.href}
               style={{
-                color: '#94a3b8',
-                fontWeight: 500,
+                color: '#4b5563',
+                fontWeight: 600,
                 fontSize: '0.9rem',
                 transition: 'color 0.2s ease',
                 position: 'relative'
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#38bdf8')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#94a3b8')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#c25e00')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#4b5563')}
             >
               {link.name}
             </a>
@@ -119,15 +119,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             href="/cv/CV_Luis_Fernando_Romano.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-pill"
+            className="solid-pill"
             style={{
-              color: '#38bdf8',
-              fontWeight: 600,
+              color: '#c25e00',
+              fontWeight: 700,
               fontSize: '0.8rem',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.35rem',
-              borderColor: 'rgba(56, 189, 248, 0.3)'
+              borderColor: '#e2d9cf'
             }}
           >
             <Download size={13} />
@@ -136,13 +136,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         </nav>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-pill"
-            style={{ padding: '0.5rem 0.75rem', minWidth: '44px', minHeight: '44px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#f8fafc' }}
+            className="solid-pill"
+            style={{ padding: '0.5rem 0.75rem', minWidth: '40px', minHeight: '40px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#181a1f' }}
             title="GitHub Profile"
             aria-label="Perfil de GitHub"
           >
@@ -153,8 +153,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             href={PERSONAL_INFO.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-pill"
-            style={{ padding: '0.5rem 0.75rem', minWidth: '44px', minHeight: '44px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#f8fafc' }}
+            className="solid-pill"
+            style={{ padding: '0.5rem 0.75rem', minWidth: '40px', minHeight: '40px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#181a1f' }}
             title="LinkedIn Profile"
             aria-label="Perfil de LinkedIn"
           >
@@ -163,15 +163,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
           <button
             onClick={onOpenContact}
-            className="btn-primary"
+            className="btn-heritage-primary"
             style={{
-              padding: '0.6rem 1.25rem',
-              fontSize: '0.875rem',
-              borderRadius: '0.6rem',
-              minHeight: '44px'
+              padding: '0.55rem 1.15rem',
+              fontSize: '0.85rem',
+              borderRadius: '6px',
+              minHeight: '40px'
             }}
           >
-            <Send size={15} />
+            <Send size={14} />
             <span className="contact-btn-text">Contactar</span>
           </button>
 
@@ -181,14 +181,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             style={{
               background: 'transparent',
               border: 'none',
-              color: '#f8fafc',
+              color: '#181a1f',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
               padding: '0.5rem',
-              minWidth: '44px',
-              minHeight: '44px'
+              minWidth: '40px',
+              minHeight: '40px'
             }}
             className="mobile-toggle"
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
@@ -202,13 +202,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
       {mobileMenuOpen && (
         <div
           style={{
-            backgroundColor: 'rgba(2, 6, 23, 0.98)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#ffffff',
+            borderBottom: '1px solid #e2d9cf',
             padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
-            backdropFilter: 'blur(20px)'
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)'
           }}
         >
           {navLinks.map((link) => (
@@ -217,9 +217,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               style={{
-                color: '#f8fafc',
-                fontSize: '1.1rem',
-                fontWeight: 600,
+                color: '#181a1f',
+                fontSize: '1.05rem',
+                fontWeight: 700,
                 padding: '0.5rem 0'
               }}
             >
@@ -232,9 +232,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              color: '#38bdf8',
+              color: '#c25e00',
               fontSize: '1rem',
-              fontWeight: 600,
+              fontWeight: 700,
               padding: '0.5rem 0',
               display: 'flex',
               alignItems: 'center',
@@ -250,9 +250,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              color: '#38bdf8',
+              color: '#c25e00',
               fontSize: '1rem',
-              fontWeight: 600,
+              fontWeight: 700,
               padding: '0.5rem 0',
               display: 'flex',
               alignItems: 'center',
@@ -263,13 +263,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             <ExternalLink size={16} />
           </a>
 
-          <div style={{ height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '0.5rem 0' }} />
+          <div style={{ height: '1px', backgroundColor: '#e2d9cf', margin: '0.5rem 0' }} />
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenContact();
             }}
-            className="btn-primary"
+            className="btn-heritage-primary"
             style={{ width: '100%', justifyContent: 'center', minHeight: '44px' }}
           >
             <Send size={16} /> Contactar Directamente
@@ -295,3 +295,5 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     </motion.header>
   );
 };
+
+export default Navbar;

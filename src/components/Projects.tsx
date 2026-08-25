@@ -40,7 +40,7 @@ const APPS_DATA: AppProject[] = [
       'Sincronización en tiempo real con Firestore sin saturar cuotas.',
       'Alertas acústicas nativas con Web Audio API sin archivos pesados.'
     ],
-    accentColor: '#38bdf8',
+    accentColor: '#1d4ed8',
     previewType: 'gps'
   },
   {
@@ -64,7 +64,7 @@ const APPS_DATA: AppProject[] = [
       'Chat comunitario y grilla de programas sincronizados en vivo.',
       'Despliegue Jamstack sin caídas por ruteo SPA en Netlify.'
     ],
-    accentColor: '#f59e0b',
+    accentColor: '#c25e00',
     previewType: 'radio'
   },
   {
@@ -88,7 +88,7 @@ const APPS_DATA: AppProject[] = [
       'Embudo Lead Preservation (Captura EmailJS + WhatsApp Business).',
       'Simulador financiero en cuotas fijas en pesos argentinos.'
     ],
-    accentColor: '#10b981',
+    accentColor: '#059669',
     previewType: 'showroom'
   }
 ];
@@ -106,18 +106,18 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="section-padding" style={{ position: 'relative', background: '#07090e' }}>
+    <section id="projects" className="section-padding" style={{ position: 'relative', background: '#f1ecdf' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 3rem auto' }}>
-          <div className="moto-tank-badge" style={{ marginBottom: '1rem', color: '#fbbf24' }}>
-            <Activity size={14} color="#f59e0b" />
+          <div className="solid-pill" style={{ marginBottom: '1rem', color: '#c25e00' }}>
+            <Activity size={14} color="#c25e00" />
             <span>Aplicaciones Desplegadas en Producción</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.2vw, 3.2rem)', marginBottom: '1rem', color: '#ffffff', fontWeight: 800 }}>
-            Proyectos & <span style={{ color: '#f59e0b' }}>Sistemas en Vivo</span>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.2vw, 3.2rem)', marginBottom: '1rem', color: '#181a1f', fontWeight: 800 }}>
+            Proyectos & <span style={{ color: '#c25e00' }}>Sistemas en Vivo</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.65 }}>
+          <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.65 }}>
             Sistemas reales desarrollados para empresas, operando en tiempo real con alta concurrencia y máxima disponibilidad.
           </p>
         </div>
@@ -142,26 +142,26 @@ export const Projects: React.FC = () => {
                 style={{
                   padding: '0.65rem 1.25rem',
                   borderRadius: '6px',
-                  border: isActive ? `1px solid ${proj.accentColor}` : '1px solid rgba(255, 255, 255, 0.08)',
-                  backgroundColor: isActive ? 'rgba(18, 24, 36, 0.95)' : 'rgba(10, 14, 22, 0.65)',
-                  color: isActive ? '#ffffff' : '#94a3b8',
+                  border: isActive ? `1px solid #c25e00` : '1px solid #d5c9bc',
+                  backgroundColor: isActive ? '#ffffff' : '#f8f6f0',
+                  color: isActive ? '#c25e00' : '#4b5563',
                   fontFamily: 'var(--font-heading)',
                   fontSize: '0.88rem',
-                  fontWeight: isActive ? 700 : 500,
+                  fontWeight: isActive ? 800 : 600,
                   cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  transition: 'all 0.25s ease',
-                  boxShadow: isActive ? `0 4px 20px ${proj.accentColor}25` : 'none'
+                  transition: 'all 0.2s ease',
+                  boxShadow: isActive ? '0 4px 14px rgba(194, 94, 0, 0.12)' : 'none'
                 }}
               >
                 <span
                   style={{
-                    width: '7px',
-                    height: '7px',
+                    width: '8px',
+                    height: '8px',
                     borderRadius: '50%',
-                    backgroundColor: isActive ? proj.accentColor : '#64748b'
+                    backgroundColor: isActive ? '#c25e00' : '#9ca3af'
                   }}
                 />
                 <span>{proj.client.split('/')[0]}</span>
@@ -174,21 +174,20 @@ export const Projects: React.FC = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentProject.id}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             style={{
               display: 'grid',
               gridTemplateColumns: '1.05fr 0.95fr',
               gap: '2.5rem',
               alignItems: 'stretch',
-              background: 'linear-gradient(145deg, rgba(14, 18, 28, 0.92) 0%, rgba(8, 11, 17, 0.96) 100%)',
-              border: '1px solid rgba(217, 119, 6, 0.3)',
-              borderRadius: '12px',
+              backgroundColor: '#ffffff',
+              border: '1px solid #e2d9cf',
+              borderRadius: '8px',
               padding: '2.25rem',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
-              backdropFilter: 'blur(16px)'
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.06)'
             }}
             className="project-showcase-grid"
           >
@@ -204,9 +203,9 @@ export const Projects: React.FC = () => {
                       gap: '0.45rem',
                       fontSize: '0.8rem',
                       fontWeight: 700,
-                      color: currentProject.accentColor,
-                      backgroundColor: `${currentProject.accentColor}18`,
-                      border: `1px solid ${currentProject.accentColor}35`,
+                      color: '#c25e00',
+                      backgroundColor: '#fff7ed',
+                      border: '1px solid #ffedd5',
                       padding: '0.3rem 0.8rem',
                       borderRadius: '4px',
                       textTransform: 'uppercase',
@@ -223,10 +222,10 @@ export const Projects: React.FC = () => {
                       alignItems: 'center',
                       gap: '0.4rem',
                       fontSize: '0.75rem',
-                      fontWeight: 600,
-                      color: '#10b981',
-                      background: 'rgba(16, 185, 129, 0.1)',
-                      border: '1px solid rgba(16, 185, 129, 0.25)',
+                      fontWeight: 700,
+                      color: '#059669',
+                      background: '#ecfdf5',
+                      border: '1px solid #a7f3d0',
                       padding: '0.25rem 0.65rem',
                       borderRadius: '4px'
                     }}
@@ -236,11 +235,11 @@ export const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.9rem)', color: '#ffffff', fontWeight: 800, marginBottom: '0.75rem', lineHeight: 1.25 }}>
+                <h3 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.9rem)', color: '#181a1f', fontWeight: 800, marginBottom: '0.75rem', lineHeight: 1.25 }}>
                   {currentProject.title}
                 </h3>
 
-                <p style={{ color: '#cbd5e1', fontSize: '0.98rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                <p style={{ color: '#374151', fontSize: '0.98rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                   {currentProject.description}
                 </p>
 
@@ -251,18 +250,18 @@ export const Projects: React.FC = () => {
                     gridTemplateColumns: 'repeat(3, 1fr)',
                     gap: '0.75rem',
                     marginBottom: '1.5rem',
-                    background: 'rgba(6, 9, 15, 0.7)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '8px',
+                    background: '#f8f6f0',
+                    border: '1px solid #e2d9cf',
+                    borderRadius: '6px',
                     padding: '0.85rem'
                   }}
                 >
                   {currentProject.metrics.map((m, mIdx) => (
                     <div key={mIdx} style={{ textAlign: 'center' }}>
-                      <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#f8fafc', fontFamily: 'var(--font-mono)' }}>
+                      <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#181a1f', fontFamily: 'var(--font-mono)' }}>
                         {m.value}
                       </div>
-                      <div style={{ fontSize: '0.68rem', color: currentProject.accentColor, fontWeight: 700, textTransform: 'uppercase' }}>
+                      <div style={{ fontSize: '0.68rem', color: '#c25e00', fontWeight: 700, textTransform: 'uppercase' }}>
                         {m.label}
                       </div>
                     </div>
@@ -272,8 +271,8 @@ export const Projects: React.FC = () => {
                 {/* Highlights List */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.75rem' }}>
                   {currentProject.highlights.map((highlight, hIdx) => (
-                    <div key={hIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: '#94a3b8' }}>
-                      <CheckCircle2 size={15} color={currentProject.accentColor} style={{ flexShrink: 0, marginTop: '3px' }} />
+                    <div key={hIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: '#4b5563' }}>
+                      <CheckCircle2 size={15} color="#c25e00" style={{ flexShrink: 0, marginTop: '3px' }} />
                       <span>{highlight}</span>
                     </div>
                   ))}
@@ -288,12 +287,13 @@ export const Projects: React.FC = () => {
                       key={tIdx}
                       style={{
                         fontSize: '0.72rem',
-                        color: '#cbd5e1',
-                        backgroundColor: 'rgba(6, 9, 15, 0.8)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        color: '#4b5563',
+                        backgroundColor: '#f8f6f0',
+                        border: '1px solid #e2d9cf',
                         padding: '0.2rem 0.6rem',
                         borderRadius: '4px',
-                        fontFamily: 'var(--font-mono)'
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 600
                       }}
                     >
                       {tech}
@@ -310,7 +310,7 @@ export const Projects: React.FC = () => {
                     width: '100%',
                     justifyContent: 'center',
                     minHeight: '48px',
-                    fontSize: '0.92rem'
+                    fontSize: '0.9rem'
                   }}
                 >
                   <ExternalLink size={16} />
@@ -319,7 +319,7 @@ export const Projects: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: High-Tech App UI Mockup / Preview Frame */}
+            {/* Right Column: Clean Light Browser Frame Mockup */}
             <div
               style={{
                 display: 'flex',
@@ -331,19 +331,19 @@ export const Projects: React.FC = () => {
               {/* Browser Window Device Frame */}
               <div
                 style={{
-                  background: 'rgba(6, 9, 15, 0.95)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: '10px',
+                  background: '#ffffff',
+                  border: '1px solid #d5c9bc',
+                  borderRadius: '8px',
                   overflow: 'hidden',
-                  boxShadow: '0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(217, 119, 6, 0.12)'
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)'
                 }}
               >
                 {/* Browser Top Titlebar */}
                 <div
                   style={{
                     padding: '0.65rem 1rem',
-                    background: 'rgba(15, 20, 30, 0.95)',
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                    background: '#f1ecdf',
+                    borderBottom: '1px solid #e2d9cf',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between'
@@ -359,29 +359,30 @@ export const Projects: React.FC = () => {
                     style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.72rem',
-                      color: '#94a3b8',
-                      backgroundColor: 'rgba(6, 9, 15, 0.8)',
+                      color: '#4b5563',
+                      backgroundColor: '#ffffff',
                       padding: '0.2rem 0.8rem',
                       borderRadius: '4px',
-                      border: '1px solid rgba(255, 255, 255, 0.06)'
+                      border: '1px solid #e2d9cf',
+                      fontWeight: 600
                     }}
                   >
                     https://{currentProject.displayUrl}
                   </div>
 
-                  <ShieldCheck size={14} color="#10b981" />
+                  <ShieldCheck size={14} color="#059669" />
                 </div>
 
                 {/* Mockup Canvas Screen */}
                 <div
                   style={{
-                    padding: '1.75rem',
+                    padding: '2rem',
                     minHeight: '280px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    background: 'radial-gradient(circle at 50% 30%, rgba(18, 24, 38, 0.8) 0%, rgba(6, 9, 15, 0.98) 100%)',
+                    background: '#faf9f5',
                     textAlign: 'center',
                     position: 'relative'
                   }}
@@ -393,21 +394,21 @@ export const Projects: React.FC = () => {
                           width: '72px',
                           height: '72px',
                           borderRadius: '50%',
-                          backgroundColor: 'rgba(56, 189, 248, 0.15)',
-                          border: '2px solid #38bdf8',
+                          backgroundColor: '#eff6ff',
+                          border: '2px solid #1d4ed8',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '0 0 30px rgba(56, 189, 248, 0.35)'
+                          boxShadow: '0 4px 16px rgba(29, 78, 216, 0.15)'
                         }}
                       >
-                        <MapPin size={34} color="#38bdf8" />
+                        <MapPin size={34} color="#1d4ed8" />
                       </div>
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#f8fafc' }}>
+                        <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#181a1f' }}>
                           Monitoreo Satelital Activo
                         </div>
-                        <div style={{ fontSize: '0.8rem', color: '#38bdf8', fontFamily: 'var(--font-mono)', marginTop: '0.25rem' }}>
+                        <div style={{ fontSize: '0.8rem', color: '#1d4ed8', fontFamily: 'var(--font-mono)', marginTop: '0.25rem', fontWeight: 600 }}>
                           Unidades #104 & #108 • Ruta RP 307 ➔ RN 38
                         </div>
                       </div>
@@ -417,10 +418,11 @@ export const Projects: React.FC = () => {
                           gap: '0.75rem',
                           padding: '0.4rem 0.8rem',
                           borderRadius: '6px',
-                          background: 'rgba(15, 23, 42, 0.8)',
-                          border: '1px solid rgba(56, 189, 248, 0.3)',
+                          background: '#ffffff',
+                          border: '1px solid #e2d9cf',
                           fontSize: '0.75rem',
-                          color: '#cbd5e1'
+                          color: '#4b5563',
+                          fontWeight: 600
                         }}
                       >
                         <span>📡 GPS: 54 km/h</span>
@@ -436,21 +438,21 @@ export const Projects: React.FC = () => {
                           width: '72px',
                           height: '72px',
                           borderRadius: '50%',
-                          backgroundColor: 'rgba(245, 158, 11, 0.15)',
-                          border: '2px solid #f59e0b',
+                          backgroundColor: '#fff7ed',
+                          border: '2px solid #c25e00',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '0 0 30px rgba(245, 158, 11, 0.35)'
+                          boxShadow: '0 4px 16px rgba(194, 94, 0, 0.15)'
                         }}
                       >
-                        <Radio size={34} color="#f59e0b" />
+                        <Radio size={34} color="#c25e00" />
                       </div>
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#f8fafc' }}>
+                        <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#181a1f' }}>
                           Transmisión HD en Directo
                         </div>
-                        <div style={{ fontSize: '0.8rem', color: '#fbbf24', fontFamily: 'var(--font-mono)', marginTop: '0.25rem' }}>
+                        <div style={{ fontSize: '0.8rem', color: '#c25e00', fontFamily: 'var(--font-mono)', marginTop: '0.25rem', fontWeight: 600 }}>
                           Sonic Panel Audio Server • 24/7 En Línea
                         </div>
                       </div>
@@ -460,10 +462,11 @@ export const Projects: React.FC = () => {
                           gap: '0.75rem',
                           padding: '0.4rem 0.8rem',
                           borderRadius: '6px',
-                          background: 'rgba(15, 23, 42, 0.8)',
-                          border: '1px solid rgba(245, 158, 11, 0.3)',
+                          background: '#ffffff',
+                          border: '1px solid #e2d9cf',
                           fontSize: '0.75rem',
-                          color: '#cbd5e1'
+                          color: '#4b5563',
+                          fontWeight: 600
                         }}
                       >
                         <span>📻 192 Kbps Stereo</span>
@@ -479,21 +482,21 @@ export const Projects: React.FC = () => {
                           width: '72px',
                           height: '72px',
                           borderRadius: '50%',
-                          backgroundColor: 'rgba(16, 185, 129, 0.15)',
-                          border: '2px solid #10b981',
+                          backgroundColor: '#ecfdf5',
+                          border: '2px solid #059669',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '0 0 30px rgba(16, 185, 129, 0.35)'
+                          boxShadow: '0 4px 16px rgba(5, 150, 105, 0.15)'
                         }}
                       >
-                        <Zap size={34} color="#10b981" />
+                        <Zap size={34} color="#059669" />
                       </div>
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#f8fafc' }}>
+                        <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#181a1f' }}>
                           E-Commerce & Showroom 360°
                         </div>
-                        <div style={{ fontSize: '0.8rem', color: '#34d399', fontFamily: 'var(--font-mono)', marginTop: '0.25rem' }}>
+                        <div style={{ fontSize: '0.8rem', color: '#059669', fontFamily: 'var(--font-mono)', marginTop: '0.25rem', fontWeight: 600 }}>
                           Simulador Cuotas DNI • Compresor Canvas
                         </div>
                       </div>
@@ -503,10 +506,11 @@ export const Projects: React.FC = () => {
                           gap: '0.75rem',
                           padding: '0.4rem 0.8rem',
                           borderRadius: '6px',
-                          background: 'rgba(15, 23, 42, 0.8)',
-                          border: '1px solid rgba(16, 185, 129, 0.3)',
+                          background: '#ffffff',
+                          border: '1px solid #e2d9cf',
                           fontSize: '0.75rem',
-                          color: '#cbd5e1'
+                          color: '#4b5563',
+                          fontWeight: 600
                         }}
                       >
                         <span>🚀 Carga: 0.01s</span>
@@ -535,7 +539,7 @@ export const Projects: React.FC = () => {
                   <span>Anterior</span>
                 </button>
 
-                <div style={{ fontSize: '0.78rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ fontSize: '0.78rem', color: '#6b7280', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
                   0{activeIndex + 1} / 0{APPS_DATA.length}
                 </div>
 

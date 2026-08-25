@@ -11,8 +11,9 @@ export const Footer: React.FC = () => {
   return (
     <footer
       style={{
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-        backgroundColor: 'rgba(2, 6, 23, 0.95)',
+        borderTop: '1px solid #e2d9cf',
+        backgroundColor: '#181a1f',
+        color: '#f8fafc',
         padding: '3rem 0 2rem 0',
         position: 'relative'
       }}
@@ -34,8 +35,8 @@ export const Footer: React.FC = () => {
               style={{
                 width: '32px',
                 height: '32px',
-                borderRadius: '8px',
-                background: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+                borderRadius: '6px',
+                background: '#c25e00',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
@@ -44,23 +45,23 @@ export const Footer: React.FC = () => {
               <Terminal size={18} color="#ffffff" />
             </div>
             <div>
-              <div style={{ fontWeight: 800, fontSize: '1rem', color: '#f8fafc' }}>
-                LUIS ROMANO<span style={{ color: '#38bdf8' }}>.dev</span>
+              <div style={{ fontWeight: 800, fontSize: '1rem', color: '#ffffff' }}>
+                LUIS ROMANO<span style={{ color: '#fbbf24' }}>.dev</span>
               </div>
-              <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                Senior FullStack & Software Architect
+              <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 600 }}>
+                Lead Full Stack Developer & Systems Architect
               </div>
             </div>
           </div>
 
           {/* Social Links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-pill"
-              style={{ color: '#94a3b8' }}
+              className="solid-pill"
+              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151' }}
             >
               <GithubIcon size={15} />
               <span>GitHub</span>
@@ -70,8 +71,8 @@ export const Footer: React.FC = () => {
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-pill"
-              style={{ color: '#94a3b8' }}
+              className="solid-pill"
+              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151' }}
             >
               <LinkedinIcon size={15} />
               <span>LinkedIn</span>
@@ -79,8 +80,8 @@ export const Footer: React.FC = () => {
 
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="glass-pill"
-              style={{ color: '#94a3b8' }}
+              className="solid-pill"
+              style={{ color: '#ffffff', backgroundColor: '#262930', borderColor: '#374151' }}
             >
               <Mail size={15} />
               <span>Email</span>
@@ -90,11 +91,12 @@ export const Footer: React.FC = () => {
           {/* Back to top button */}
           <button
             onClick={scrollToTop}
-            className="btn-secondary"
+            className="btn-heritage-secondary"
             style={{
-              padding: '0.5rem 0.85rem',
+              padding: '0.45rem 0.95rem',
               fontSize: '0.8rem',
-              borderRadius: '9999px'
+              borderRadius: '4px',
+              minHeight: '36px'
             }}
             title="Volver arriba"
           >
@@ -105,7 +107,7 @@ export const Footer: React.FC = () => {
 
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             paddingTop: '1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
@@ -113,17 +115,19 @@ export const Footer: React.FC = () => {
             flexWrap: 'wrap',
             gap: '0.75rem',
             fontSize: '0.8rem',
-            color: '#64748b'
+            color: '#9ca3af'
           }}
         >
           <div>
             © 2026 <strong>Luis Fernando Romano</strong> — {PERSONAL_INFO.company}. Todos los derechos reservados.
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-            Diseñado con <span style={{ color: '#38bdf8' }}>React 19 & TypeScript</span> • Jamstack High Performance
+            Construido con <span style={{ color: '#fbbf24', fontWeight: 600 }}>React 19 & TypeScript</span> • Jamstack High Performance
           </div>
         </div>
       </div>
     </footer>
   );
 };
+
+export default Footer;
