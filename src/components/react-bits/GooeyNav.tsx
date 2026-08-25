@@ -181,9 +181,13 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
             border-radius: 6px;
             cursor: pointer;
             transition: color 0.25s ease;
-            color: #4b5563;
-            font-weight: 600;
+            color: var(--nav-link-color, #181a1f);
+            font-weight: 700;
             font-size: 0.88rem;
+            text-shadow: var(--nav-link-shadow, none);
+          }
+          .gooey-nav-item:hover a {
+            color: var(--nav-link-hover, #c25e00);
           }
           .gooey-nav-item a {
             display: inline-block;
@@ -196,8 +200,9 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
             transition: color 0.2s ease;
           }
           .gooey-nav-item.active a {
-            color: #ffffff;
-            font-weight: 700;
+            color: #ffffff !important;
+            font-weight: 800;
+            text-shadow: none !important;
           }
           .gooey-nav-item::after {
             content: "";
@@ -209,7 +214,7 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
             transform: scale(0.85);
             transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
             z-index: 1;
-            box-shadow: 0 4px 12px rgba(194, 94, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(194, 94, 0, 0.35);
           }
           .gooey-nav-item.active::after {
             opacity: 1;

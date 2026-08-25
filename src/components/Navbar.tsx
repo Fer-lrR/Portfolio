@@ -62,17 +62,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         redOffset={0}
         greenOffset={8}
         blueOffset={16}
+        mode={isScrolled ? 'light' : 'dark'}
         brightness={isScrolled ? 98 : 12}
-        opacity={isScrolled ? 0.72 : 0.45}
-        backgroundOpacity={isScrolled ? 0.65 : 0.4}
+        opacity={isScrolled ? 0.92 : 0.75}
+        backgroundOpacity={isScrolled ? 0.88 : 0.65}
         saturation={isScrolled ? 1.8 : 1.5}
-        blur={14}
+        blur={18}
         style={{
           padding: isScrolled ? '0.45rem 0' : '0.75rem 0',
-          borderBottom: isScrolled ? '1px solid rgba(226, 217, 207, 0.75)' : '1px solid rgba(255, 255, 255, 0.12)',
-          boxShadow: isScrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.15)',
-          transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-        }}
+          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.88)' : 'rgba(18, 20, 26, 0.65)',
+          borderBottom: isScrolled ? '1px solid rgba(213, 201, 188, 0.9)' : '1px solid rgba(255, 255, 255, 0.15)',
+          boxShadow: isScrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.1)' : '0 4px 20px rgba(0, 0, 0, 0.25)',
+          transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
+          '--nav-link-color': isScrolled ? '#181a1f' : '#f8fafc',
+          '--nav-link-hover': isScrolled ? '#c25e00' : '#fbbf24',
+          '--nav-link-shadow': isScrolled ? 'none' : '0 1px 4px rgba(0,0,0,0.85)'
+        } as React.CSSProperties}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         {/* Brand: Logo Shield (Always visible) + Text (Hidden on mobile < 640px) */}
@@ -92,13 +97,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               width: '34px',
               height: '34px',
               borderRadius: '8px',
-              background: isScrolled ? 'rgba(241, 236, 223, 0.8)' : 'rgba(255, 255, 255, 0.15)',
-              border: isScrolled ? '1px solid #d5c9bc' : '1px solid rgba(255, 255, 255, 0.25)',
+              background: isScrolled ? '#ffffff' : 'rgba(255, 255, 255, 0.15)',
+              border: isScrolled ? '1px solid #d5c9bc' : '1px solid rgba(255, 255, 255, 0.3)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               padding: '3px',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.04)',
+              boxShadow: isScrolled ? '0 2px 6px rgba(0,0,0,0.06)' : '0 2px 8px rgba(0,0,0,0.4)',
               transition: 'all 0.3s ease'
             }}
           >
@@ -116,6 +121,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 letterSpacing: '-0.02em',
                 color: isScrolled ? '#181a1f' : '#ffffff',
                 fontFamily: 'var(--font-heading)',
+                textShadow: isScrolled ? 'none' : '0 1px 4px rgba(0,0,0,0.9)',
                 transition: 'color 0.3s ease'
               }}
             >
@@ -144,13 +150,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             className="solid-pill"
             style={{
               color: isScrolled ? '#c25e00' : '#fbbf24',
-              fontWeight: 700,
+              fontWeight: 800,
               fontSize: '0.8rem',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.35rem',
-              borderColor: isScrolled ? '#e2d9cf' : 'rgba(255, 255, 255, 0.25)',
-              backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.12)',
+              borderColor: isScrolled ? '#d5c9bc' : 'rgba(255, 255, 255, 0.3)',
+              backgroundColor: isScrolled ? '#ffffff' : 'rgba(255, 255, 255, 0.15)',
+              boxShadow: isScrolled ? '0 1px 4px rgba(0,0,0,0.06)' : '0 2px 8px rgba(0,0,0,0.4)',
               transition: 'all 0.3s ease'
             }}
           >
@@ -176,8 +183,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               alignItems: 'center',
               justifyContent: 'center',
               color: isScrolled ? '#181a1f' : '#ffffff',
-              backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.15)',
-              borderColor: isScrolled ? '#e2d9cf' : 'rgba(255, 255, 255, 0.25)',
+              backgroundColor: isScrolled ? '#ffffff' : 'rgba(255, 255, 255, 0.15)',
+              borderColor: isScrolled ? '#d5c9bc' : 'rgba(255, 255, 255, 0.3)',
+              boxShadow: isScrolled ? '0 1px 4px rgba(0,0,0,0.06)' : '0 2px 8px rgba(0,0,0,0.4)',
               borderRadius: '6px',
               transition: 'all 0.3s ease'
             }}
@@ -202,8 +210,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               alignItems: 'center',
               justifyContent: 'center',
               color: isScrolled ? '#181a1f' : '#ffffff',
-              backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.15)',
-              borderColor: isScrolled ? '#e2d9cf' : 'rgba(255, 255, 255, 0.25)',
+              backgroundColor: isScrolled ? '#ffffff' : 'rgba(255, 255, 255, 0.15)',
+              borderColor: isScrolled ? '#d5c9bc' : 'rgba(255, 255, 255, 0.3)',
+              boxShadow: isScrolled ? '0 1px 4px rgba(0,0,0,0.06)' : '0 2px 8px rgba(0,0,0,0.4)',
               borderRadius: '6px',
               transition: 'all 0.3s ease'
             }}
@@ -234,8 +243,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
-              background: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.15)',
-              border: isScrolled ? '1px solid #e2d9cf' : '1px solid rgba(255, 255, 255, 0.25)',
+              background: isScrolled ? '#ffffff' : 'rgba(255, 255, 255, 0.15)',
+              border: isScrolled ? '1px solid #d5c9bc' : '1px solid rgba(255, 255, 255, 0.3)',
               borderRadius: '6px',
               color: isScrolled ? '#181a1f' : '#ffffff',
               display: 'flex',
@@ -247,6 +256,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               minHeight: '32px',
               width: '32px',
               height: '32px',
+              boxShadow: isScrolled ? '0 1px 4px rgba(0,0,0,0.06)' : '0 2px 8px rgba(0,0,0,0.4)',
               transition: 'all 0.3s ease'
             }}
             className="mobile-toggle"

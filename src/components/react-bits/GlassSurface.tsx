@@ -18,6 +18,7 @@ export interface GlassSurfaceProps {
   blueOffset?: number;
   xChannel?: 'R' | 'G' | 'B';
   yChannel?: 'R' | 'G' | 'B';
+  mode?: 'light' | 'dark' | 'auto';
   mixBlendMode?:
     | 'normal'
     | 'multiply'
@@ -76,6 +77,7 @@ export const GlassSurface: React.FC<GlassSurfaceProps> = ({
   blueOffset = 20,
   xChannel = 'R',
   yChannel = 'G',
+  mode = 'auto',
   mixBlendMode = 'difference',
   className = '',
   style = {}
@@ -201,12 +203,15 @@ export const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return div.style.backdropFilter !== '';
   };
 
-  const supportsBackdropFilter = () => {
-    if (typeof window === 'undefined') return false;
-    return CSS.supports('backdrop-filter', 'blur(10px)');
-  };
-
   const getContainerStyles = (): React.CSSProperties => {
+    const isDark = mode === 'auto' ? isDarkMode : mode === 'dark';
+    const customBg = style?.background || style?.backgroundColor;
+    const computedBg = customBg
+      ? customBg
+      : isDark
+      ? `rgba(18, 20, 26, ${backgroundOpacity})`
+      : `rgba(255, 255, 255, ${backgroundOpacity})`;
+
     const baseStyles: React.CSSProperties = {
       position: 'relative',
       display: 'flex',
@@ -220,76 +225,34 @@ export const GlassSurface: React.FC<GlassSurfaceProps> = ({
       ...style
     };
 
-    const backdropFilterSupported = supportsBackdropFilter();
-
     if (svgSupported) {
       return {
         ...baseStyles,
-        background: isDarkMode ? `hsl(0 0% 0% / ${backgroundOpacity})` : `hsl(0 0% 100% / ${backgroundOpacity})`,
+        background: computedBg,
         backdropFilter: `url(#${filterId}) saturate(${saturation})`,
         WebkitBackdropFilter: `url(#${filterId}) saturate(${saturation})`,
-        boxShadow: isDarkMode
+        boxShadow: isDark
           ? `0 0 2px 1px color-mix(in oklch, white, transparent 65%) inset,
              0 0 10px 4px color-mix(in oklch, white, transparent 85%) inset,
              0px 4px 16px rgba(17, 17, 26, 0.05),
              0px 8px 24px rgba(17, 17, 26, 0.05),
-             0px 16px 56px rgba(17, 17, 26, 0.05),
-             0px 4px 16px rgba(17, 17, 26, 0.05) inset,
-             0px 8px 24px rgba(17, 17, 26, 0.05) inset,
-             0px 16px 56px rgba(17, 17, 26, 0.05) inset`
+             0px 16px 56px rgba(17, 17, 26, 0.05)`
           : `0 0 2px 1px color-mix(in oklch, black, transparent 85%) inset,
              0 0 10px 4px color-mix(in oklch, black, transparent 90%) inset,
              0px 4px 16px rgba(17, 17, 26, 0.05),
              0px 8px 24px rgba(17, 17, 26, 0.05),
-             0px 16px 56px rgba(17, 17, 26, 0.05),
-             0px 4px 16px rgba(17, 17, 26, 0.05) inset,
-             0px 8px 24px rgba(17, 17, 26, 0.05) inset,
-             0px 16px 56px rgba(17, 17, 26, 0.05) inset`
+             0px 16px 56px rgba(17, 17, 26, 0.05)`
       };
     } else {
-      if (isDarkMode) {
-        if (!backdropFilterSupported) {
-          return {
-            ...baseStyles,
-            background: 'rgba(0, 0, 0, 0.4)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
-                        inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)`
-          };
-        } else {
-          return {
-            ...baseStyles,
-            background: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(16px) saturate(1.8) brightness(1.2)',
-            WebkitBackdropFilter: 'blur(16px) saturate(1.8) brightness(1.2)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
-                        inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)`
-          };
-        }
-      } else {
-        if (!backdropFilterSupported) {
-          return {
-            ...baseStyles,
-            background: 'rgba(255, 255, 255, 0.4)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
-                        inset 0 -1px 0 0 rgba(255, 255, 255, 0.3)`
-          };
-        } else {
-          return {
-            ...baseStyles,
-            background: 'rgba(255, 255, 255, 0.55)',
-            backdropFilter: 'blur(16px) saturate(1.8) brightness(1.05)',
-            WebkitBackdropFilter: 'blur(16px) saturate(1.8) brightness(1.05)',
-            border: '1px solid rgba(226, 217, 207, 0.65)',
-            boxShadow: `0 8px 32px 0 rgba(0, 0, 0, 0.06),
-                        0 2px 16px 0 rgba(0, 0, 0, 0.04),
-                        inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
-                        inset 0 -1px 0 0 rgba(226, 217, 207, 0.3)`
-          };
-        }
-      }
+      return {
+        ...baseStyles,
+        background: computedBg,
+        backdropFilter: `blur(${blur}px) saturate(${saturation})`,
+        WebkitBackdropFilter: `blur(${blur}px) saturate(${saturation})`,
+        boxShadow: isDark
+          ? `0 4px 20px rgba(0, 0, 0, 0.25)`
+          : `0 10px 30px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)`
+      };
     }
   };
 
