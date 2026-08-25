@@ -272,15 +272,18 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           style={{
             position: 'fixed',
             inset: 0,
+            height: '100dvh',
+            minHeight: '100dvh',
             backgroundColor: '#0a080c',
             zIndex: 99999,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: '2rem 1.5rem',
+            padding: 'clamp(0.6rem, 1.8vh, 1.5rem) 1rem',
             overflow: 'hidden',
-            userSelect: 'none'
+            userSelect: 'none',
+            boxSizing: 'border-box'
           }}
         >
           {/* Background Tank Image with Studio Ambient Lighting */}
@@ -321,13 +324,17 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               maxWidth: '1200px'
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-              {/* Luis Fernando Romano Badge */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', gap: '0.5rem' }}>
+              {/* Luis Fernando Romano Badge with Fixed Round Aspect Ratio */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
                 <div
                   style={{
                     width: '38px',
                     height: '38px',
+                    minWidth: '38px',
+                    minHeight: '38px',
+                    flexShrink: 0,
+                    aspectRatio: '1 / 1',
                     borderRadius: '50%',
                     backgroundColor: '#c25e00',
                     display: 'flex',
@@ -339,26 +346,29 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 >
                   <span style={{ fontSize: '0.95rem', fontWeight: 900, color: '#ffffff', fontFamily: 'var(--font-heading)' }}>LR</span>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 900, letterSpacing: '0.08em', color: '#ffffff', fontFamily: 'var(--font-heading)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                  <span style={{ fontSize: 'clamp(0.8rem, 3.2vw, 0.95rem)', fontWeight: 900, letterSpacing: '0.06em', color: '#ffffff', fontFamily: 'var(--font-heading)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     LUIS FERNANDO ROMANO
                   </span>
-                  <span style={{ fontSize: '0.68rem', color: '#fed7aa', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '0.64rem', color: '#fed7aa', letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
                     Full Stack Developer • RoDevs
                   </span>
                 </div>
               </div>
 
               {/* Controls: Audio Toggle & Quick Skip */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
                 <button
                   onClick={toggleSound}
                   style={{
-                    background: 'rgba(24, 26, 31, 0.8)',
+                    background: 'rgba(24, 26, 31, 0.85)',
                     border: '1px solid #4b5563',
                     borderRadius: '50%',
-                    width: '38px',
-                    height: '38px',
+                    width: '36px',
+                    height: '36px',
+                    minWidth: '36px',
+                    minHeight: '36px',
+                    flexShrink: 0,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -367,7 +377,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   }}
                   title={soundEnabled ? 'Silenciar sonido' : 'Activar sonido'}
                 >
-                  {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+                  {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
                 </button>
 
                 <button
@@ -377,32 +387,33 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                     setTimeout(onComplete, 400);
                   }}
                   style={{
-                    background: 'rgba(24, 26, 31, 0.8)',
+                    background: 'rgba(24, 26, 31, 0.85)',
                     border: '1px solid #4b5563',
                     borderRadius: '20px',
-                    padding: '0.4rem 0.85rem',
+                    padding: '0.35rem 0.75rem',
                     color: '#e5e7eb',
-                    fontSize: '0.75rem',
+                    fontSize: '0.72rem',
                     fontWeight: 600,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.3rem',
-                    cursor: 'pointer'
+                    gap: '0.25rem',
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap'
                   }}
                 >
                   <span>Entrar</span>
-                  <ChevronRight size={13} />
+                  <ChevronRight size={12} />
                 </button>
               </div>
             </div>
 
             {/* Title: EXPLORA EL LEGADO */}
-            <div style={{ marginTop: '1.25rem', textAlign: 'center' }}>
+            <div style={{ marginTop: 'clamp(0.35rem, 1vh, 1rem)', textAlign: 'center' }}>
               <h1
                 style={{
-                  fontSize: 'clamp(1.8rem, 3.8vw, 3rem)',
+                  fontSize: 'clamp(1.35rem, 3.2vh, 2.6rem)',
                   fontWeight: 900,
-                  letterSpacing: '0.22em',
+                  letterSpacing: '0.2em',
                   color: '#f8f6f0',
                   textTransform: 'uppercase',
                   fontFamily: 'serif',
@@ -424,10 +435,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 'clamp(2.5rem, 6vw, 6rem)',
+              gap: 'clamp(1rem, 2.5vh, 4rem)',
               width: '100%',
               maxWidth: '980px',
-              paddingBottom: '1.5rem',
+              paddingBottom: '0.25rem',
               flexWrap: 'wrap'
             }}
           >
@@ -442,12 +453,12 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             >
               <div
                 style={{
-                  width: '216px',
-                  height: '216px',
+                  width: 'clamp(155px, 21vh, 210px)',
+                  height: 'clamp(155px, 21vh, 210px)',
                   borderRadius: '50%',
                   backgroundColor: '#0c0a0e',
-                  border: '6px solid #27221e',
-                  boxShadow: '0 15px 40px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,0,0,0.9), 0 0 20px rgba(217, 119, 6, 0.25)',
+                  border: '5px solid #27221e',
+                  boxShadow: '0 12px 35px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,0,0,0.9), 0 0 15px rgba(217, 119, 6, 0.25)',
                   position: 'relative',
                   display: 'flex',
                   alignItems: 'center',
@@ -459,7 +470,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 <div
                   style={{
                     position: 'absolute',
-                    inset: '6px',
+                    inset: '5px',
                     borderRadius: '50%',
                     backgroundColor: '#f1e6d4',
                     backgroundImage: 'radial-gradient(circle, #fbf7ee 50%, #d8caa7 100%)',
@@ -556,8 +567,8 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                       position: 'absolute',
                       top: '8px',
                       left: '12px',
-                      width: '60px',
-                      height: '35px',
+                      width: '55px',
+                      height: '32px',
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, transparent 80%)',
                       borderRadius: '50%',
                       transform: 'rotate(-25deg)',
@@ -569,10 +580,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   <div
                     style={{
                       position: 'absolute',
-                      width: '4px',
-                      height: '75px',
+                      width: '3.5px',
+                      height: '42%',
                       bottom: '50%',
-                      left: 'calc(50% - 2px)',
+                      left: 'calc(50% - 1.75px)',
                       backgroundColor: '#dc2626',
                       borderRadius: '2px',
                       transformOrigin: 'bottom center',
@@ -588,8 +599,8 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                         position: 'absolute',
                         top: '-4px',
                         left: '-2px',
-                        width: '8px',
-                        height: '8px',
+                        width: '7.5px',
+                        height: '7.5px',
                         backgroundColor: '#dc2626',
                         clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
                       }}
@@ -600,11 +611,11 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   <div
                     style={{
                       position: 'absolute',
-                      width: '20px',
-                      height: '20px',
+                      width: '18px',
+                      height: '18px',
                       borderRadius: '50%',
                       backgroundColor: '#1f1b18',
-                      border: '3px solid #b45309',
+                      border: '2.5px solid #b45309',
                       boxShadow: '0 2px 6px rgba(0,0,0,0.7)',
                       zIndex: 6
                     }}
@@ -615,8 +626,8 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               {/* Gauge Telemetry Percentage Indicator */}
               <div
                 style={{
-                  marginTop: '0.65rem',
-                  fontSize: '0.82rem',
+                  marginTop: '0.4rem',
+                  fontSize: '0.78rem',
                   fontFamily: 'var(--font-mono)',
                   color: isDecelerating ? '#34d399' : rpm > 80 ? '#fbbf24' : '#e5e7eb',
                   fontWeight: 700
@@ -653,15 +664,15 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 <div
                   style={{
                     position: 'absolute',
-                    right: '-42px',
-                    top: '-32px',
-                    bottom: '-32px',
-                    width: '90px',
+                    right: '-36px',
+                    top: '-26px',
+                    bottom: '-26px',
+                    width: '80px',
                     pointerEvents: 'none',
                     zIndex: 1
                   }}
                 >
-                  <svg width="90" height="160" viewBox="0 0 90 160">
+                  <svg width="80" height="135" viewBox="0 0 90 160">
                     {/* Background Track Arc */}
                     <path
                       d="M 20,12 A 80,80 0 0,1 20,148"
@@ -697,11 +708,11 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 {/* Left Aluminum Switchgear Housing & Clamp Bracket */}
                 <div
                   style={{
-                    width: '42px',
-                    height: '92px',
+                    width: 'clamp(28px, 5.5vw, 38px)',
+                    height: 'clamp(58px, 7.8vh, 84px)',
                     backgroundColor: '#44403c',
                     backgroundImage: 'linear-gradient(180deg, #78716c 0%, #292524 50%, #1c1917 100%)',
-                    borderRadius: '10px 0 0 10px',
+                    borderRadius: '8px 0 0 8px',
                     border: '2px solid #a8a29e',
                     borderRight: '2px solid #292524',
                     boxShadow: 'inset 0 2px 4px rgba(255,255,255,0.3), 0 8px 20px rgba(0,0,0,0.6)',
@@ -709,14 +720,14 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '8px 4px',
+                    padding: '6px 3px',
                     zIndex: 3
                   }}
                 >
                   {/* Metallic hex bolts */}
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d6d3d1', border: '1px solid #78716c', boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
-                  <div style={{ width: '12px', height: '2px', backgroundColor: '#a8a29e' }} />
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d6d3d1', border: '1px solid #78716c', boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#d6d3d1', border: '1px solid #78716c', boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
+                  <div style={{ width: '10px', height: '2px', backgroundColor: '#a8a29e' }} />
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#d6d3d1', border: '1px solid #78716c', boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
                 </div>
 
                 {/* Textured Diamond Knurl Rubber Grip with Realistic 3D Twist */}
@@ -730,15 +741,15 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                     y: { repeat: isRevving ? Infinity : 0, duration: 0.07 }
                   }}
                   style={{
-                    width: '190px',
-                    height: '80px',
+                    width: 'clamp(140px, 36vw, 185px)',
+                    height: 'clamp(54px, 7.2vh, 74px)',
                     backgroundColor: '#181615',
                     borderRadius: '4px 0 0 4px',
                     border: isRevving ? '2px solid #f59e0b' : '2px solid #44403c',
                     borderRight: 'none',
                     boxShadow: isRevving
-                      ? '0 0 30px rgba(245, 158, 11, 0.7), inset 0 0 20px rgba(0,0,0,0.95)'
-                      : '0 12px 28px rgba(0,0,0,0.85), inset 0 0 15px rgba(0,0,0,0.9)',
+                      ? '0 0 25px rgba(245, 158, 11, 0.7), inset 0 0 15px rgba(0,0,0,0.95)'
+                      : '0 10px 24px rgba(0,0,0,0.85), inset 0 0 12px rgba(0,0,0,0.9)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -758,23 +769,23 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   <div
                     style={{
                       position: 'absolute',
-                      top: '4px',
-                      left: '8px',
-                      right: '8px',
-                      height: '6px',
+                      top: '3px',
+                      left: '6px',
+                      right: '6px',
+                      height: '5px',
                       background: 'linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%)',
                       borderRadius: '3px',
                       pointerEvents: 'none'
                     }}
                   />
 
-                  {/* Clean text without sparkle star */}
+                  {/* Clean text */}
                   <span
                     style={{
                       color: isRevving ? '#fef08a' : '#e5e7eb',
-                      fontSize: '0.82rem',
+                      fontSize: 'clamp(0.72rem, 1.8vw, 0.82rem)',
                       fontWeight: 900,
-                      letterSpacing: '0.1em',
+                      letterSpacing: '0.08em',
                       textTransform: 'uppercase',
                       fontFamily: 'var(--font-heading)',
                       textShadow: '0 2px 8px rgba(0,0,0,0.9)',
@@ -788,34 +799,34 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 {/* Right Machined Chrome Bar-End Counterweight */}
                 <div
                   style={{
-                    width: '32px',
-                    height: '84px',
+                    width: 'clamp(22px, 5vw, 30px)',
+                    height: 'clamp(56px, 7.5vh, 76px)',
                     background: 'linear-gradient(90deg, #57534e 0%, #e7e5e4 40%, #a8a29e 70%, #44403c 100%)',
-                    borderRadius: '0 22px 22px 0',
+                    borderRadius: '0 18px 18px 0',
                     border: '2px solid #78716c',
                     borderLeft: '2px solid #292524',
-                    boxShadow: 'inset -3px 0 8px rgba(0,0,0,0.6), 0 8px 18px rgba(0,0,0,0.7)',
+                    boxShadow: 'inset -3px 0 8px rgba(0,0,0,0.6), 0 6px 16px rgba(0,0,0,0.7)',
                     zIndex: 3
                   }}
                 />
               </div>
 
-              {/* Instruction Label */}
-              <div style={{ marginTop: '1rem', textAlign: 'center', maxWidth: '280px' }}>
+              {/* Instruction Label - Fits 100% cleanly in any screen */}
+              <div style={{ marginTop: 'clamp(0.35rem, 0.8vh, 0.75rem)', textAlign: 'center', maxWidth: '280px' }}>
                 <span
                   style={{
-                    fontSize: '0.88rem',
+                    fontSize: 'clamp(0.74rem, 1.5vh, 0.85rem)',
                     fontWeight: 900,
                     color: isRevving ? '#fbbf24' : '#f8f6f0',
-                    letterSpacing: '0.12em',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     fontFamily: 'var(--font-heading)',
-                    textShadow: '0 2px 12px rgba(0,0,0,0.9)'
+                    textShadow: '0 2px 10px rgba(0,0,0,0.9)'
                   }}
                 >
                   GIRA EL ACELERADOR PARA CONTINUAR
                 </span>
-                <span style={{ display: 'block', fontSize: '0.72rem', color: '#9ca3af', marginTop: '0.25rem' }}>
+                <span style={{ display: 'block', fontSize: 'clamp(0.62rem, 1.2vh, 0.7rem)', color: '#9ca3af', marginTop: '0.15rem' }}>
                   (O mantén pulsada la barra espaciadora)
                 </span>
               </div>

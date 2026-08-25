@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Volume2, VolumeX, Play, Pause, ChevronDown, Compass } from 'lucide-react';
+import { ArrowRight, Volume2, VolumeX, Play, Pause, ChevronDown, Compass, Disc3 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { motion, AnimatePresence } from 'framer-motion';
 import SplitText from './react-bits/SplitText';
@@ -13,9 +13,12 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isMusicPlaying, setIsMusicPlaying] = useState<boolean>(false);
   const [showCenterMessage, setShowCenterMessage] = useState<boolean>(false);
   const [hasScrolled, setHasScrolled] = useState<boolean>(false);
+
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Staged Arrival: First pure clean bright video, then reveal central motorcycle title at ~1.1s
   useEffect(() => {
@@ -39,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const togglePlay = () => {
+  const toggleVideoPlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
@@ -51,10 +54,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
     }
   };
 
-  const toggleMute = () => {
+  const toggleVideoMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
+    }
+  };
+
+  // Toggle Road Stereo (Dire Straits - Sultans of Swing)
+  const toggleMusic = () => {
+    if (!audioRef.current) return;
+    if (isMusicPlaying) {
+      audioRef.current.pause();
+      setIsMusicPlaying(false);
+    } else {
+      audioRef.current.play().then(() => {
+        setIsMusicPlaying(true);
+      }).catch(() => {
+        // Autoplay policy handled on click
+      });
     }
   };
 
@@ -82,6 +100,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
         background: '#07090e'
       }}
     >
+      {/* Background Music Audio Element */}
+      <audio
+        ref={audioRef}
+        src="/music/sultans-of-swing.mp3"
+        loop
+        preload="auto"
+        onEnded={() => setIsMusicPlaying(false)}
+      />
+
       {/* Background Video: 100% Crisp, Natural & Bright */}
       <div
         style={{
@@ -126,83 +153,119 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
         />
       </div>
 
-      {/* Video Control Pill (Clean Placement Below Navbar Clearance) */}
-      <div
+      {/* Cockpit Stereo & Telemetry Bar (Responsive & Non-Intrusive) */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="hero-cockpit-bar"
         style={{
-          position: 'absolute',
-          top: '5.25rem',
-          right: '1.5rem',
-          zIndex: 50,
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem',
-          background: 'rgba(24, 26, 31, 0.9)',
+          gap: '0.45rem',
+          background: 'rgba(20, 22, 27, 0.92)',
+          backdropFilter: 'blur(8px)',
           border: '1px solid #c25e00',
-          borderRadius: '6px',
-          padding: '0.4rem 0.85rem',
-          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.45)'
+          borderRadius: '8px',
+          padding: '0.35rem 0.75rem',
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
+          zIndex: 50
         }}
       >
+        {/* Road Stereo Player Button (Sultans of Swing) */}
         <button
-          onClick={togglePlay}
-          title={isPlaying ? 'Pausar video' : 'Reproducir video'}
+          onClick={toggleMusic}
+          title={isMusicPlaying ? 'Pausar Stereo (Sultans of Swing)' : 'Encender Stereo: Sultans of Swing - Dire Straits'}
           style={{
-            background: 'transparent',
-            border: 'none',
-            color: '#f8fafc',
+            background: isMusicPlaying ? 'rgba(194, 94, 0, 0.25)' : 'transparent',
+            border: isMusicPlaying ? '1px solid #fbbf24' : '1px solid #4b5563',
+            borderRadius: '6px',
+            color: isMusicPlaying ? '#fbbf24' : '#e2e8f0',
             cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0.2rem'
-          }}
-        >
-          {isPlaying ? <Pause size={14} color="#fbbf24" /> : <Play size={14} color="#fbbf24" />}
-        </button>
-
-        <button
-          onClick={toggleMute}
-          title={isMuted ? 'Activar audio' : 'Silenciar'}
-          style={{
-            background: 'transparent',
-            border: 'none',
-            color: '#94a3b8',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0.2rem'
-          }}
-        >
-          {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} color="#fbbf24" />}
-        </button>
-
-        <div
-          style={{
-            height: '14px',
-            width: '1px',
-            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-            margin: '0 0.25rem'
-          }}
-        />
-
-        <div
-          style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.35rem',
+            padding: '0.3rem 0.55rem',
+            transition: 'all 0.2s ease'
+          }}
+        >
+          <Disc3 size={15} className={isMusicPlaying ? 'animate-spin' : ''} style={{ animationDuration: '3s', color: isMusicPlaying ? '#fbbf24' : '#94a3b8' }} />
+          
+          {/* Animated Equalizer Wave Bars */}
+          {isMusicPlaying && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', height: '14px' }}>
+              <span className="eq-bar eq-bar-1" />
+              <span className="eq-bar eq-bar-2" />
+              <span className="eq-bar eq-bar-3" />
+              <span className="eq-bar eq-bar-4" />
+            </div>
+          )}
+
+          <span style={{ fontSize: '0.72rem', fontWeight: 800, fontFamily: 'var(--font-mono)', letterSpacing: '0.04em' }}>
+            {isMusicPlaying ? 'STEREO ON' : 'STEREO'}
+          </span>
+        </button>
+
+        <div style={{ height: '16px', width: '1px', backgroundColor: 'rgba(255, 255, 255, 0.2)' }} />
+
+        {/* Video Play/Pause & Engine Sound */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          <button
+            onClick={toggleVideoPlay}
+            title={isPlaying ? 'Pausar video de ruta' : 'Reproducir video de ruta'}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#f8fafc',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0.2rem'
+            }}
+          >
+            {isPlaying ? <Pause size={14} color="#fbbf24" /> : <Play size={14} color="#fbbf24" />}
+          </button>
+
+          <button
+            onClick={toggleVideoMute}
+            title={isMuted ? 'Activar sonido del motor' : 'Silenciar sonido del motor'}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#94a3b8',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0.2rem'
+            }}
+          >
+            {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} color="#fbbf24" />}
+          </button>
+        </div>
+
+        <div style={{ height: '16px', width: '1px', backgroundColor: 'rgba(255, 255, 255, 0.2)' }} />
+
+        {/* Road Telemetry GPS Tag */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.3rem',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.72rem',
+            fontSize: '0.7rem',
+            fontWeight: 700,
             color: '#ffffff',
             textShadow: '0 1px 3px rgba(0,0,0,0.8)'
           }}
         >
           <Compass size={12} color="#fbbf24" />
-          <span>RN 38 • TUCUMÁN</span>
+          <span>RN 38</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Center Stage: Motorcycle Style Welcome Emblem */}
       <div
-        className="container"
+        className="container hero-main-container"
         style={{
           position: 'relative',
           zIndex: 10,
@@ -227,14 +290,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 alignItems: 'center',
                 justifyContent: 'center',
                 width: '100%',
-                padding: '2rem 1.5rem',
+                padding: '1.5rem 1rem',
                 borderRadius: '12px'
               }}
             >
               {/* Big Motorcycle Typography Animated with SplitText */}
               <div
                 style={{
-                  marginBottom: '1rem',
+                  marginBottom: '0.85rem',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -261,15 +324,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
                 style={{
-                  fontSize: 'clamp(1rem, 2.2vw, 1.35rem)',
+                  fontSize: 'clamp(0.95rem, 2vw, 1.35rem)',
                   fontWeight: 700,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   color: '#ffffff',
-                  marginBottom: '2.25rem',
+                  marginBottom: '2rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.6rem',
+                  gap: '0.5rem',
                   flexWrap: 'wrap',
                   justifyContent: 'center',
                   textShadow: '0 2px 16px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)'
@@ -284,22 +347,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
-                  opacity: hasScrolled ? 1 : 0.9,
+                  opacity: hasScrolled ? 1 : 0.95,
                   y: 0,
-                  scale: hasScrolled ? 1.04 : 1
+                  scale: hasScrolled ? 1.03 : 1
                 }}
                 transition={{ duration: 0.5 }}
                 style={{
                   display: 'flex',
-                  gap: '1.25rem',
+                  gap: '1rem',
                   flexWrap: 'wrap',
                   justifyContent: 'center',
                   alignItems: 'center'
                 }}
               >
-                <a href="#about" className="btn-heritage-primary" style={{ minHeight: '50px', padding: '0.9rem 2.2rem' }}>
+                <a href="#about" className="btn-heritage-primary" style={{ minHeight: '48px', padding: '0.85rem 2rem' }}>
                   <span>Ver Proyectos & Perfil</span>
-                  <ArrowRight size={18} />
+                  <ArrowRight size={17} />
                 </a>
 
                 <button
@@ -308,7 +371,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                     onOpenContact();
                   }}
                   className="btn-heritage-secondary"
-                  style={{ minHeight: '50px', padding: '0.9rem 2.2rem' }}
+                  style={{ minHeight: '48px', padding: '0.85rem 2rem' }}
                 >
                   <span>Contactar Directamente</span>
                 </button>
@@ -330,25 +393,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
             className="scroll-indicator-pulse"
             style={{
               position: 'absolute',
-              bottom: '2rem',
+              bottom: '1.75rem',
               left: '50%',
               transform: 'translateX(-50%)',
               zIndex: 15,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '0.35rem',
+              gap: '0.3rem',
               color: '#181a1f',
               textDecoration: 'none',
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
+              fontSize: '0.72rem',
               letterSpacing: '0.14em',
               fontWeight: 800,
               textTransform: 'uppercase'
             }}
           >
             <span>Deslizá para explorar</span>
-            <ChevronDown size={18} color="#c25e00" />
+            <ChevronDown size={17} color="#c25e00" />
           </motion.a>
         )}
       </AnimatePresence>
