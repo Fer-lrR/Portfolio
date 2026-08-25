@@ -1,0 +1,46 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security & Best Practice Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Caching for Production JS / CSS Chunks
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Caching for Video assets
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"
+
+# Caching for Music assets
+[[headers]]
+  for = "/music/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"
+
+# Caching for Images
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
