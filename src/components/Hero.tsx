@@ -138,15 +138,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
           }}
         />
 
-        {/* Natural Smooth Blend into Light Canvas at the very bottom */}
+        {/* Natural Smooth Blend into Light Canvas at the very bottom (No horizontal line) */}
         <div
           style={{
             position: 'absolute',
-            bottom: 0,
+            bottom: '-2px',
             left: 0,
             right: 0,
-            height: '180px',
-            background: 'linear-gradient(to bottom, transparent 0%, rgba(248, 246, 240, 0.6) 65%, #f8f6f0 100%)',
+            height: '240px',
+            background: 'linear-gradient(to bottom, transparent 0%, rgba(248, 246, 240, 0.25) 35%, rgba(248, 246, 240, 0.8) 70%, #f8f6f0 92%, #f8f6f0 100%)',
             pointerEvents: 'none',
             zIndex: 2
           }}
@@ -258,14 +258,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
             textShadow: '0 1px 3px rgba(0,0,0,0.8)'
           }}
         >
-          <Compass size={12} color="#fbbf24" />
-          <span>RN 38</span>
+          <Compass size={13} color="#fbbf24" />
+          <span style={{ letterSpacing: '0.04em' }}>RN 38</span>
         </div>
       </motion.div>
 
-      {/* Main Center Stage: Motorcycle Style Welcome Emblem */}
+      {/* Main Content Area */}
       <div
-        className="container hero-main-container"
+        className="container"
         style={{
           position: 'relative',
           zIndex: 10,
@@ -342,7 +342,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onHeroAnimated }) => 
                   textShadow: '0 2px 16px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)'
                 }}
               >
-                <span>Lead Full Stack Developer</span>
+                <span>Full Stack Developer</span>
                 <span style={{ color: '#fbbf24' }}>•</span>
                 <ShinyText text="Systems Architect @ RoDevs" speed={3.5} />
               </motion.div>

@@ -67,7 +67,7 @@ export const Contact: React.FC<ContactProps> = () => {
             Iniciemos una <span style={{ color: '#c25e00' }}>Conversación Técnica</span>
           </h2>
           <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.65 }}>
-            Disponible para roles de Lead Full Stack Developer, Systems Architect y consultoría técnica de alta disponibilidad.
+            Disponible para roles de Full Stack Developer, Systems Architect y consultoría técnica de alta disponibilidad.
           </p>
         </motion.div>
 

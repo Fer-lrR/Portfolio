@@ -1,11 +1,10 @@
 import React from 'react';
-import { UserCheck, GraduationCap, Award, Download, Building2, Code2, Globe, Shield } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { UserCheck, GraduationCap, Award, Download, Building2, Code2, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const AboutMe: React.FC = () => {
   return (
-    <section id="about" className="section-padding" style={{ position: 'relative', background: '#f8f6f0' }}>
+    <section id="about" className="section-padding" style={{ position: 'relative', background: '#f8f6f0', marginTop: '-2px' }}>
       <div className="container">
         {/* Section Header with Scroll Reveal */}
         <motion.div
@@ -37,7 +36,7 @@ export const AboutMe: React.FC = () => {
           }}
           className="about-grid"
         >
-          {/* Left Column: Real Professional Photo Card + ATS Metrics */}
+          {/* Left Column: Real Professional Photo Card + Metrics */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -68,7 +67,7 @@ export const AboutMe: React.FC = () => {
               >
                 <img
                   src="/images/luis-romano.jpg"
-                  alt="Luis Fernando Romano - Systems Architect & Full Stack Lead"
+                  alt="Luis Fernando Romano - Systems Architect & Full Stack Developer"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -94,7 +93,7 @@ export const AboutMe: React.FC = () => {
                     Luis Fernando Romano
                   </div>
                   <div style={{ fontSize: '0.72rem', color: '#fbbf24', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                    Lead Full Stack Developer • Co-Founder RoDevs
+                    Full Stack Developer • Co-Founder RoDevs
                   </div>
                 </div>
               </div>
@@ -103,85 +102,42 @@ export const AboutMe: React.FC = () => {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 0.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#4b5563', fontWeight: 600 }}>
                   <Award size={14} color="#c25e00" />
-                  <span>Ingeniería UTN</span>
+                  <span>UTN FRT 3° Año</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#4b5563', fontWeight: 600 }}>
-                  <Shield size={14} color="#1d4ed8" />
-                  <span>Ayudante Algoritmos</span>
+                  <GraduationCap size={14} color="#c25e00" />
+                  <span>Inglés Bilingüe</span>
                 </div>
               </div>
             </div>
-
-            {/* Metrics Tacometer */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '0.85rem',
-                backgroundColor: '#ffffff',
-                border: '1px solid #e2d9cf',
-                borderRadius: '8px',
-                padding: '1.25rem',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)'
-              }}
-            >
-              {PERSONAL_INFO.metrics.map((metric, idx) => (
-                <div key={idx} style={{ padding: '0.25rem' }}>
-                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#181a1f', fontFamily: 'var(--font-mono)' }}>
-                    {metric.value}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#c25e00', textTransform: 'uppercase' }}>
-                    {metric.label}
-                  </div>
-                  <div style={{ fontSize: '0.68rem', color: '#6b7280' }}>
-                    {metric.detail}
-                  </div>
-                </div>
-              ))}
-            </div>
           </motion.div>
 
-          {/* Right Column: Bio & Core Pillars */}
+          {/* Right Column: Narrative Biography + Pillars */}
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
           >
-            {/* Bio Card */}
+            {/* Biography Narrative Card */}
             <div
               className="solid-card"
               style={{
-                padding: 'clamp(1.25rem, 3.5vw, 2.25rem)',
-                backgroundColor: '#ffffff',
+                padding: '1.75rem',
                 border: '1px solid #e2d9cf',
-                borderRadius: '8px'
+                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.06)',
+                backgroundColor: '#ffffff'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                <div
-                  style={{
-                    padding: '0.55rem',
-                    borderRadius: '6px',
-                    backgroundColor: '#f1ecdf',
-                    color: '#c25e00',
-                    flexShrink: 0
-                  }}
-                >
-                  <Code2 size={22} />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: 'clamp(1.15rem, 3.5vw, 1.35rem)', color: '#181a1f', fontWeight: 800 }}>
-                    Ingeniería de Software & Arquitectura
-                  </h3>
-                  <p style={{ fontSize: '0.78rem', color: '#c25e00', fontWeight: 700 }}>
-                    Enfoque Pragmático de Alto Rendimiento
-                  </p>
-                </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+                <Code2 size={20} color="#c25e00" />
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#181a1f' }}>
+                  Arquitectura Serverless & Desarrollo Full Stack
+                </h3>
               </div>
 
-              <p style={{ color: '#374151', fontSize: '0.94rem', lineHeight: 1.7, marginBottom: '1.15rem' }}>
+              <p style={{ color: '#4b5563', fontSize: '0.94rem', lineHeight: 1.7, marginBottom: '0.85rem' }}>
                 Soy desarrollador Full Stack con mentalidad orientada a la ingeniería de sistemas y estudiante avanzado de <strong>Ingeniería en Sistemas de Información</strong> en la <strong>Universidad Tecnológica Nacional (UTN - FRT)</strong>.
               </p>
 
@@ -198,7 +154,7 @@ export const AboutMe: React.FC = () => {
                   style={{ flex: '1 1 180px', justifyContent: 'center', padding: '0.7rem 1.1rem', fontSize: '0.82rem', minHeight: '44px' }}
                 >
                   <Download size={14} />
-                  <span>Descargar CV (Harvard / ATS)</span>
+                  <span>Descargar CV</span>
                 </a>
 
                 <a

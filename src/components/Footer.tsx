@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
                 LUIS ROMANO<span style={{ color: '#fbbf24' }}>.dev</span>
               </div>
               <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 600 }}>
-                Lead Full Stack Developer & Systems Architect
+                Full Stack Developer & Systems Architect
               </div>
             </div>
           </div>

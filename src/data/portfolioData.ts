@@ -13,7 +13,7 @@ export const PERSONAL_INFO = {
   github: 'https://github.com/Fer-lrR',
   web: 'https://rodevsoftware.com',
   company: 'RoDevs Software Solutions',
-  companyRole: 'Lead Full Stack Developer / Fundador',
+  companyRole: 'Full Stack Developer / Fundador',
   bio: 'Desarrollador Full Stack y estudiante avanzado de Ingeniería en Sistemas de Información (UTN). Experiencia en la creación de aplicaciones web progresivas (PWAs), arquitecturas cloud y telemetría en tiempo real. Ayudante de cátedra universitario en Algoritmos y Estructuras de Datos, con formación bilingüe como instructor de idioma inglés.',
   metrics: [
     { value: '+370', label: 'Contribuciones Anuales', detail: 'Actividad en repositorios' },
@@ -190,10 +190,10 @@ export const FEATURED_PROJECTS: Project[] = [
 export const EXPERIENCES: ExperienceItem[] = [
   {
     period: 'Enero 2024 – Presente',
-    role: 'Lead Full Stack Developer / Fundador',
+    role: 'Full Stack Developer / Fundador',
     company: 'RoDevs Software Solutions',
     location: 'Tucumán, Argentina',
-    badge: 'Liderazgo Técnico',
+    badge: 'Desarrollo & Arquitectura',
     description: 'Liderazgo técnico y desarrollo de soluciones de software para clientes comerciales y de transporte. Diseño de arquitecturas web, integración de bases de datos y administración de infraestructura cloud.',
     bullets: [
       'Diseño y desarrollo del Sistema de Tracking GPS para Transporte Santa Lucía SRL con Wake Lock API y Firebase.',

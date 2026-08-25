@@ -64,7 +64,7 @@ export const SplitText: React.FC<SplitTextProps> = ({
         columnGap: '0.22em',
         maxWidth: '100%',
         boxSizing: 'border-box',
-        overflow: 'hidden',
+        overflow: 'visible',
         lineHeight: 1.15
       }}
     >
@@ -77,7 +77,7 @@ export const SplitText: React.FC<SplitTextProps> = ({
             display: 'inline-flex',
             flexWrap: 'wrap',
             maxWidth: '100%',
-            overflow: 'hidden'
+            overflow: 'visible'
           }}
         >
           {splitType === 'words' ? (
