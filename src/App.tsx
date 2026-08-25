@@ -4,7 +4,6 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutMe } from './components/AboutMe';
 import { Projects } from './components/Projects';
-import { Architectures } from './components/Architectures';
 import { TechRadar } from './components/TechRadar';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -42,7 +41,6 @@ export const App: React.FC = () => {
           <Hero onOpenContact={handleScrollToContact} />
           <AboutMe />
           <Projects />
-          <Architectures />
           <TechRadar />
           <Contact />
         </main>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Menu, X, Send, ExternalLink, Download } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { motion } from 'framer-motion';
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -10,6 +11,15 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [navVisible, setNavVisible] = useState(false);
+
+  // Staged entrance: Navbar appears with smooth downward slide after hero title initiates
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setNavVisible(true);
+    }, 2200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,24 +32,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const navLinks = [
     { name: 'Sobre Mí', href: '#about' },
     { name: 'Proyectos', href: '#projects' },
-    { name: 'Arquitectura', href: '#architecture' },
     { name: 'Habilidades', href: '#skills' },
     { name: 'Contacto', href: '#contact' },
   ];
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -90, opacity: 0 }}
+      animate={navVisible ? { y: 0, opacity: 1 } : { y: -90, opacity: 0 }}
+      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
         zIndex: 1000,
-        transition: 'all 0.25s ease',
+        transition: 'background-color 0.3s ease, border-color 0.3s ease, padding 0.3s ease',
         padding: isScrolled ? '0.65rem 0' : '1.15rem 0',
-        backgroundColor: isScrolled ? 'rgba(2, 6, 23, 0.92)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent'
+        backgroundColor: isScrolled ? 'rgba(6, 9, 17, 0.95)' : 'rgba(6, 9, 17, 0.45)',
+        backdropFilter: 'blur(16px)',
+        borderBottom: isScrolled ? '1px solid rgba(217, 119, 6, 0.25)' : '1px solid rgba(255, 255, 255, 0.05)'
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -280,6 +292,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           }
         }
       `}</style>
-    </header>
+    </motion.header>
   );
 };
