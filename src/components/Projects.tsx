@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ExternalLink, X, Building2, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import DriftWall, { DriftWallItem } from './react-bits/DriftWall';
+import AccordionGallery, { AccordionGalleryItem } from './react-bits/AccordionGallery';
 
-interface ProjectDetail extends DriftWallItem {
+interface ProjectDetail extends AccordionGalleryItem {
   client: string;
   category: string;
   tagline: string;
@@ -18,8 +18,8 @@ const PROJECTS_DATA: ProjectDetail[] = [
   {
     id: 'transporte-santa-lucia',
     image: '/images/projects/transporte-santa-lucia.png',
-    title: 'Transporte Santa Lucía GPS',
-    href: 'https://transportesantaluciaconnect.netlify.app',
+    label: 'Transporte Santa Lucía GPS',
+    link: 'https://transportesantaluciaconnect.netlify.app',
     badge: 'Producción • Telemetría',
     client: 'Transporte Santa Lucía SRL',
     category: 'Logística & Telemetría Vehicular',
@@ -38,8 +38,8 @@ const PROJECTS_DATA: ProjectDetail[] = [
   {
     id: 'somos-santa-lucenos',
     image: '/images/projects/somos-santalucenos.png',
-    title: 'Somos Santa Luceños Radio',
-    href: 'https://somossantalucenosbyjorgebarrera.com.ar',
+    label: 'Somos Santa Luceños Radio',
+    link: 'https://somossantalucenosbyjorgebarrera.com.ar',
     badge: 'Streaming 24/7',
     client: 'Somos Santa Luceños / Emisora Regional',
     category: 'Media Streaming & Audiencia Concurrente',
@@ -58,8 +58,8 @@ const PROJECTS_DATA: ProjectDetail[] = [
   {
     id: 'seamos-puente-ong',
     image: '/images/projects/seamos-puente.png',
-    title: 'Seamos Puente ONG Argentina',
-    href: 'https://rodevsoftware.com',
+    label: 'Seamos Puente ONG Argentina',
+    link: 'https://rodevsoftware.com',
     badge: 'Comunidad & ONG',
     client: 'Asociación Civil Seamos Puente',
     category: 'Acción Social & Plataforma Institucional',
@@ -77,8 +77,8 @@ const PROJECTS_DATA: ProjectDetail[] = [
   {
     id: 'rodevs-solutions',
     image: '/images/projects/rodevs-software.png',
-    title: 'RoDevs Software Solutions',
-    href: 'https://rodevsoftware.com',
+    label: 'RoDevs Software Solutions',
+    link: 'https://rodevsoftware.com',
     badge: 'Sitio Web Empresa',
     client: 'RoDevs Software Solutions',
     category: 'Ingeniería de Software & Arquitectura Cloud',
@@ -92,46 +92,6 @@ const PROJECTS_DATA: ProjectDetail[] = [
     ],
     impact: 'Canal principal de adquisición de clientes corporativos y posicionamiento de marca técnica.',
     accentColor: '#9333ea'
-  }
-];
-
-// Rich 3D DriftWall items using the 4 authentic client screenshot assets
-const DRIFT_PROJECT_ITEMS: DriftWallItem[] = [
-  PROJECTS_DATA[0],
-  PROJECTS_DATA[1],
-  PROJECTS_DATA[2],
-  PROJECTS_DATA[3],
-  {
-    ...PROJECTS_DATA[0],
-    title: 'Transporte Santa Lucía SRL'
-  },
-  {
-    ...PROJECTS_DATA[1],
-    title: 'Somos Santa Luceños 99.9'
-  },
-  {
-    ...PROJECTS_DATA[2],
-    title: 'Seamos Puente ONG'
-  },
-  {
-    ...PROJECTS_DATA[3],
-    title: 'RoDevs Tech Platform'
-  },
-  {
-    ...PROJECTS_DATA[0],
-    title: 'Monitoreo GPS Colectivos'
-  },
-  {
-    ...PROJECTS_DATA[1],
-    title: 'Sonic Panel Radio Player'
-  },
-  {
-    ...PROJECTS_DATA[2],
-    title: 'Voluntariado Seamos Puente'
-  },
-  {
-    ...PROJECTS_DATA[3],
-    title: 'Ingeniería RoDevs Software'
   }
 ];
 
@@ -149,8 +109,8 @@ export const Projects: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleTileClick = (item: DriftWallItem) => {
-    const fullProject = PROJECTS_DATA.find((p) => p.id === item.id || p.href === item.href || p.image === item.image) || (item as ProjectDetail);
+  const handleItemClick = (item: AccordionGalleryItem) => {
+    const fullProject = PROJECTS_DATA.find((p) => p.id === item.id || p.label === item.label || p.image === item.image) || (item as ProjectDetail);
     setSelectedProject(fullProject);
   };
 
@@ -158,45 +118,37 @@ export const Projects: React.FC = () => {
     <section id="projects" className="section-padding" style={{ position: 'relative', background: '#f8f6f0' }}>
       <div className="container">
         {/* Section Header: Pure Title */}
-        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 1.5rem auto' }}>
-          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', color: '#181a1f', fontWeight: 900, letterSpacing: '-0.02em' }}>
+        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.5rem auto' }}>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', color: '#181a1f', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>
             Proyectos
           </h2>
+          <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: 1.6 }}>
+            Aplicaciones y plataformas en producción. Pasá el mouse para desplegar cada sistema o hacé click para ver detalles y abrir la app en vivo.
+          </p>
         </div>
 
-        {/* 3D DriftWall Interactive Showcase */}
-        <div
-          style={{
-            height: '620px',
-            width: '100%',
-            position: 'relative',
-            overflow: 'hidden',
-            backgroundColor: 'transparent'
-          }}
-        >
-          <DriftWall
-            items={DRIFT_PROJECT_ITEMS}
-            columns={5}
-            tileWidth={230}
-            tileHeight={145}
-            gap={18}
-            tilt={16}
-            turn={-14}
-            perspective={1200}
-            depth={120}
-            speed={40}
-            direction="up"
-            variance={0.45}
-            parallax={0.6}
-            lift={64}
-            fade={0.6}
-            dim={0.8}
+        {/* Accordion Gallery Component */}
+        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+          <AccordionGallery
+            items={PROJECTS_DATA}
+            defaultIndex={0}
+            expandRatio={0.52}
+            trigger="hover"
+            accentColor="#c25e00"
             overlayColor="#181a1f"
-            radius={10}
-            roll={0}
-            pauseOnHover={false}
+            textColor="#ffffff"
             grayscale={false}
-            onItemClick={handleTileClick}
+            showLabels={true}
+            duration={0.6}
+            ease="power3.out"
+            parallax={0.5}
+            tilt={8}
+            stagger={0.06}
+            height={480}
+            gap={12}
+            radius={16}
+            orientation="horizontal"
+            onItemClick={handleItemClick}
           />
         </div>
       </div>
@@ -267,11 +219,11 @@ export const Projects: React.FC = () => {
                 <X size={18} />
               </button>
 
-              {/* Real Project Image Banner */}
+              {/* Project Screenshot Banner */}
               <div
                 style={{
                   width: '100%',
-                  height: '200px',
+                  height: '210px',
                   borderRadius: '8px',
                   overflow: 'hidden',
                   marginBottom: '1.25rem',
@@ -281,7 +233,7 @@ export const Projects: React.FC = () => {
               >
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title}
+                  alt={selectedProject.label || 'Project screenshot'}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -309,7 +261,7 @@ export const Projects: React.FC = () => {
                   }}
                 >
                   <Building2 size={13} />
-                  {selectedProject.client || selectedProject.title}
+                  {selectedProject.client || selectedProject.label}
                 </span>
 
                 <span
@@ -333,7 +285,7 @@ export const Projects: React.FC = () => {
 
               {/* Title & Tagline */}
               <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#181a1f', marginBottom: '0.35rem', lineHeight: 1.25 }}>
-                {selectedProject.title}
+                {selectedProject.label}
               </h3>
 
               {selectedProject.tagline && (
@@ -386,9 +338,9 @@ export const Projects: React.FC = () => {
 
               {/* Actions */}
               <div style={{ display: 'flex', gap: '0.75rem' }}>
-                {selectedProject.href && (
+                {selectedProject.link && (
                   <a
-                    href={selectedProject.href}
+                    href={selectedProject.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-heritage-primary"
