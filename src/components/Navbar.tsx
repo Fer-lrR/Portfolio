@@ -4,6 +4,7 @@ import { Menu, X, Send, Download, ExternalLink } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { motion, AnimatePresence } from 'framer-motion';
 import GooeyNav from './react-bits/GooeyNav';
+import GlassSurface from './react-bits/GlassSurface';
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -48,14 +49,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         left: 0,
         right: 0,
         zIndex: 1000,
-        transition: 'background-color 0.25s ease, border-color 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease',
-        padding: isScrolled ? '0.5rem 0' : '0.75rem 0',
-        backgroundColor: isScrolled ? '#ffffff' : 'rgba(248, 246, 240, 0.94)',
-        borderBottom: isScrolled ? '1px solid #e2d9cf' : '1px solid transparent',
-        boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.05)' : 'none'
+        transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <GlassSurface
+        width="100%"
+        height="auto"
+        borderRadius={0}
+        borderWidth={0.03}
+        displace={0.3}
+        distortionScale={-140}
+        redOffset={0}
+        greenOffset={8}
+        blueOffset={16}
+        brightness={isScrolled ? 98 : 12}
+        opacity={isScrolled ? 0.72 : 0.45}
+        backgroundOpacity={isScrolled ? 0.65 : 0.4}
+        saturation={isScrolled ? 1.8 : 1.5}
+        blur={14}
+        style={{
+          padding: isScrolled ? '0.45rem 0' : '0.75rem 0',
+          borderBottom: isScrolled ? '1px solid rgba(226, 217, 207, 0.75)' : '1px solid rgba(255, 255, 255, 0.12)',
+          boxShadow: isScrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.15)',
+          transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
+        }}
+      >
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         {/* Brand: Logo Shield (Always visible) + Text (Hidden on mobile < 640px) */}
         <a
           href="#"
@@ -73,13 +92,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               width: '34px',
               height: '34px',
               borderRadius: '8px',
-              background: '#f1ecdf',
-              border: '1px solid #d5c9bc',
+              background: isScrolled ? 'rgba(241, 236, 223, 0.8)' : 'rgba(255, 255, 255, 0.15)',
+              border: isScrolled ? '1px solid #d5c9bc' : '1px solid rgba(255, 255, 255, 0.25)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               padding: '3px',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.04)'
+              boxShadow: '0 2px 6px rgba(0,0,0,0.04)',
+              transition: 'all 0.3s ease'
             }}
           >
             <img
@@ -89,8 +109,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             />
           </div>
           <div className="nav-brand-text">
-            <span style={{ fontWeight: 900, fontSize: '1.05rem', letterSpacing: '-0.02em', color: '#181a1f', fontFamily: 'var(--font-heading)' }}>
-              LUIS ROMANO<span style={{ color: '#c25e00' }}>.dev</span>
+            <span
+              style={{
+                fontWeight: 900,
+                fontSize: '1.05rem',
+                letterSpacing: '-0.02em',
+                color: isScrolled ? '#181a1f' : '#ffffff',
+                fontFamily: 'var(--font-heading)',
+                transition: 'color 0.3s ease'
+              }}
+            >
+              LUIS ROMANO<span style={{ color: isScrolled ? '#c25e00' : '#fbbf24' }}>.dev</span>
             </span>
           </div>
         </a>
@@ -114,13 +143,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             rel="noopener noreferrer"
             className="solid-pill"
             style={{
-              color: '#c25e00',
+              color: isScrolled ? '#c25e00' : '#fbbf24',
               fontWeight: 700,
               fontSize: '0.8rem',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.35rem',
-              borderColor: '#e2d9cf'
+              borderColor: isScrolled ? '#e2d9cf' : 'rgba(255, 255, 255, 0.25)',
+              backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.12)',
+              transition: 'all 0.3s ease'
             }}
           >
             <Download size={13} />
@@ -144,8 +175,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#181a1f',
-              borderRadius: '6px'
+              color: isScrolled ? '#181a1f' : '#ffffff',
+              backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.15)',
+              borderColor: isScrolled ? '#e2d9cf' : 'rgba(255, 255, 255, 0.25)',
+              borderRadius: '6px',
+              transition: 'all 0.3s ease'
             }}
             title="GitHub Profile"
             aria-label="Perfil de GitHub"
@@ -167,8 +201,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#181a1f',
-              borderRadius: '6px'
+              color: isScrolled ? '#181a1f' : '#ffffff',
+              backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.15)',
+              borderColor: isScrolled ? '#e2d9cf' : 'rgba(255, 255, 255, 0.25)',
+              borderRadius: '6px',
+              transition: 'all 0.3s ease'
             }}
             title="LinkedIn Profile"
             aria-label="Perfil de LinkedIn"
@@ -197,10 +234,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
-              background: '#ffffff',
-              border: '1px solid #e2d9cf',
+              background: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.15)',
+              border: isScrolled ? '1px solid #e2d9cf' : '1px solid rgba(255, 255, 255, 0.25)',
               borderRadius: '6px',
-              color: '#181a1f',
+              color: isScrolled ? '#181a1f' : '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -209,7 +246,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               minWidth: '32px',
               minHeight: '32px',
               width: '32px',
-              height: '32px'
+              height: '32px',
+              transition: 'all 0.3s ease'
             }}
             className="mobile-toggle"
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú de navegación'}
@@ -218,6 +256,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           </button>
         </div>
       </div>
+      </GlassSurface>
 
       {/* Mobile Drawer Menu */}
       <AnimatePresence>
