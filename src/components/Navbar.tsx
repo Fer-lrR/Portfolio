@@ -3,6 +3,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 import { Menu, X, Send, ExternalLink, Download } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { motion } from 'framer-motion';
+import GooeyNav from './react-bits/GooeyNav';
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -29,11 +30,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Sobre Mí', href: '#about' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Habilidades', href: '#skills' },
-    { name: 'Contacto', href: '#contact' },
+  const navItems = [
+    { label: 'Sobre Mí', href: '#about' },
+    { label: 'Proyectos', href: '#projects' },
+    { label: 'Habilidades', href: '#skills' },
+    { label: 'Contacto', href: '#contact' },
   ];
 
   return (
@@ -48,8 +49,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         right: 0,
         zIndex: 1000,
         transition: 'background-color 0.25s ease, border-color 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease',
-        padding: isScrolled ? '0.65rem 0' : '1rem 0',
-        backgroundColor: isScrolled ? '#ffffff' : 'rgba(248, 246, 240, 0.85)',
+        padding: isScrolled ? '0.55rem 0' : '0.85rem 0',
+        backgroundColor: isScrolled ? '#ffffff' : 'rgba(248, 246, 240, 0.92)',
         borderBottom: isScrolled ? '1px solid #e2d9cf' : '1px solid transparent',
         boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.05)' : 'none'
       }}
@@ -95,25 +96,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           </div>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav style={{ display: 'none', alignItems: 'center', gap: '1.75rem' }} className="desktop-nav">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              style={{
-                color: '#4b5563',
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                transition: 'color 0.2s ease',
-                position: 'relative'
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#c25e00')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#4b5563')}
-            >
-              {link.name}
-            </a>
-          ))}
+        {/* Desktop Navigation with Gooey Particle Effect */}
+        <nav style={{ display: 'none', alignItems: 'center', gap: '1.25rem' }} className="desktop-nav">
+          <GooeyNav
+            items={navItems}
+            particleCount={14}
+            particleDistances={[70, 10]}
+            particleR={80}
+            animationTime={500}
+            timeVariance={250}
+            colors={[1, 2, 3, 4, 1, 2]}
+            initialActiveIndex={0}
+          />
 
           <a
             href="/cv/CV_Luis_Fernando_Romano.pdf"
@@ -211,10 +205,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)'
           }}
         >
-          {navLinks.map((link) => (
+          {navItems.map((item) => (
             <a
-              key={link.name}
-              href={link.href}
+              key={item.label}
+              href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 color: '#181a1f',
@@ -223,7 +217,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 padding: '0.5rem 0'
               }}
             >
-              {link.name}
+              {item.label}
             </a>
           ))}
 
