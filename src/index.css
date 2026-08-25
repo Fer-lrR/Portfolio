@@ -28,11 +28,25 @@
   --accent-rose: #ef4444;
   --accent-slate: #64748b;
 
+  /* Royal Enfield & Ford Heritage / Heavy Duty Palette */
+  --heritage-iron: #080a0f;
+  --heritage-gunmetal: #12161f;
+  --heritage-steel: #1c222e;
+  --heritage-border: rgba(217, 119, 6, 0.28);
+  --heritage-border-light: rgba(255, 255, 255, 0.12);
+  --heritage-amber: #f59e0b;
+  --heritage-copper: #d97706;
+  --heritage-bronze: #b45309;
+  --heritage-gold: #fbbf24;
+  --heritage-rust: #ea580c;
+
   /* Typography Colors */
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-highlight: #38bdf8;
+  --text-amber: #f59e0b;
+  --text-copper: #fbbf24;
 
   /* Fonts */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -43,6 +57,8 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-card: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
   --shadow-glow-blue: 0 0 24px rgba(37, 99, 235, 0.2);
+  --shadow-glow-amber: 0 0 30px rgba(217, 119, 6, 0.25);
+  --shadow-glow-copper: 0 0 24px rgba(245, 158, 11, 0.35);
 }
 
 /* Base Reset */
@@ -387,4 +403,168 @@ button, input, textarea {
   min-height: 52px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ==========================================================================
+   React Bits & Heritage (Royal Enfield / Ford Built Tough) Styles
+   ========================================================================== */
+
+/* Shiny Text metallic reflection */
+.shiny-text-element {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 1) 40%,
+    rgba(251, 191, 36, 0.9) 60%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shiny-sweep 4s linear infinite;
+}
+
+.shiny-text-element.disabled {
+  animation: none;
+  -webkit-text-fill-color: inherit;
+}
+
+@keyframes shiny-sweep {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Heritage Mechanical Badges & Stamps */
+.heritage-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--heritage-border);
+  background: rgba(18, 22, 31, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--heritage-amber);
+  box-shadow: inset 0 0 12px rgba(217, 119, 6, 0.15), 0 4px 16px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.heritage-stamp::before,
+.heritage-stamp::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--heritage-amber);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.heritage-stamp::before { top: 3px; left: 3px; }
+.heritage-stamp::after { bottom: 3px; right: 3px; }
+
+/* Heritage Rugged Buttons */
+.btn-heritage-primary {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: #080a0f;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.85rem;
+  border-radius: 6px;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(217, 119, 6, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  font-family: var(--font-heading);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-heritage-primary:hover {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border-color: rgba(251, 191, 36, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(245, 158, 11, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #000000;
+}
+
+.btn-heritage-secondary {
+  background: rgba(14, 18, 26, 0.85);
+  backdrop-filter: blur(12px);
+  color: #f8fafc;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--heritage-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-family: var(--font-heading);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.btn-heritage-secondary:hover {
+  background: rgba(26, 32, 44, 0.95);
+  border-color: var(--heritage-amber);
+  color: var(--heritage-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.2);
+}
+
+/* Mechanical Notched Box */
+.mechanical-frame {
+  position: relative;
+  background: linear-gradient(145deg, rgba(18, 22, 31, 0.92) 0%, rgba(8, 10, 15, 0.96) 100%);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.mechanical-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.08) 0%, transparent 60%);
+}
+
+/* Video Cinematic Vignette Overlay */
+.video-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(8, 10, 15, 0.4) 0%, rgba(8, 10, 15, 0.85) 75%, rgba(6, 9, 17, 0.98) 100%),
+              linear-gradient(to bottom, rgba(6, 9, 17, 0.7) 0%, transparent 35%, transparent 65%, rgba(6, 9, 17, 0.95) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Film Scanlines Effect (Subtle) */
+.film-scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 3;
+}
+
 
