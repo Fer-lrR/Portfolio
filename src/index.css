@@ -55,10 +55,15 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   color-scheme: light;
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -390,6 +395,11 @@ button, input, textarea {
   .section-padding {
     padding: 3.25rem 0;
   }
+  .mobile-nav-link:hover,
+  .mobile-nav-link:active {
+    background-color: #f1ecdf !important;
+    color: #c25e00 !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -567,3 +577,16 @@ button, input, textarea {
   0%, 100% { transform: translateY(0); opacity: 0.8; }
   50% { transform: translateY(8px); opacity: 1; }
 }
+
+/* ==========================================================================
+   Suppress Netlify Drawer / Feedback Widget Injections
+   ========================================================================== */
+[data-netlify-feedback],
+#netlify-drawer-root,
+.netlify-drawer,
+iframe[src*="netlify.com"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+

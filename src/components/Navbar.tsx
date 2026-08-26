@@ -51,6 +51,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     { label: 'Contacto', href: '#contact' },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const targetId = href.replace('#', '');
+    if (!targetId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // Ensure menu collapse finishes smoothly then trigger calculated offset scroll
+    setTimeout(() => {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const navHeight = 70;
+        const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navHeight;
+
+        window.scrollTo({
+          top: offsetPosition > 0 ? offsetPosition : 0,
+          behavior: 'smooth'
+        });
+      }
+    }, 60);
+  };
+
   return (
     <motion.header
       initial={{ y: -90, opacity: 0 }}
@@ -96,12 +122,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         {/* Brand: Logo Shield (Always visible) + Text (Hidden on mobile < 640px) */}
         <a
           href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            setMobileMenuOpen(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
             textDecoration: 'none',
-            flexShrink: 0
+            flexShrink: 0,
+            cursor: 'pointer'
           }}
           aria-label="Inicio - Luis Romano"
         >
@@ -154,6 +186,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             timeVariance={250}
             colors={[1, 2, 3, 4, 1, 2]}
             initialActiveIndex={0}
+            onItemClick={(item) => {
+              const targetId = item.href.replace('#', '');
+              if (!targetId) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+              }
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                const navHeight = 70;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - navHeight;
+                window.scrollTo({
+                  top: offsetPosition > 0 ? offsetPosition : 0,
+                  behavior: 'smooth'
+                });
+              }
+            }}
           />
 
           <a
@@ -292,22 +341,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             style={{
               backgroundColor: '#ffffff',
               borderBottom: '2px solid #c25e00',
-              padding: '1.25rem 1.5rem',
+              padding: '1.25rem 1.25rem',
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
-              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.12)',
-              overflow: 'hidden'
+              gap: '0.85rem',
+              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.15)',
+              overflow: 'hidden',
+              position: 'relative',
+              zIndex: 1001
             }}
           >
-            {/* Full Luis Romano Header inside Drawer */}
+            {/* Full Luis Romano Header inside Drawer (Clickable to top) */}
             <div
+              onClick={() => {
+                setMobileMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.75rem',
                 paddingBottom: '0.85rem',
-                borderBottom: '1px solid #e2d9cf'
+                borderBottom: '1px solid #e2d9cf',
+                cursor: 'pointer'
               }}
             >
               <div
@@ -320,7 +376,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  padding: '4px'
+                  padding: '4px',
+                  flexShrink: 0
                 }}
               >
                 <img
@@ -330,54 +387,68 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 />
               </div>
               <div>
-                <div style={{ fontWeight: 900, fontSize: '1.1rem', color: '#181a1f', fontFamily: 'var(--font-heading)' }}>
+                <div style={{ fontWeight: 900, fontSize: '1.05rem', color: '#181a1f', fontFamily: 'var(--font-heading)' }}>
                   LUIS ROMANO<span style={{ color: '#c25e00' }}>.dev</span>
                 </div>
-                <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.72rem', color: '#6b7280', fontWeight: 600 }}>
                   Full Stack Developer • <span style={{ color: '#c25e00' }}>RoDevs</span>
                 </div>
               </div>
             </div>
 
             {/* Navigation Links */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="mobile-nav-link"
                   style={{
                     color: '#181a1f',
-                    fontSize: '1.05rem',
+                    fontSize: '1rem',
                     fontWeight: 700,
-                    padding: '0.4rem 0',
+                    padding: '0.65rem 0.85rem',
+                    borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    minHeight: '44px',
                     borderBottom: '1px solid #f8f6f0',
-                    textDecoration: 'none'
+                    textDecoration: 'none',
+                    transition: 'all 0.15s ease',
+                    WebkitTapHighlightColor: 'rgba(194, 94, 0, 0.1)'
                   }}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  <span style={{ color: '#c25e00', fontSize: '0.9rem', fontWeight: 800 }}>→</span>
                 </a>
               ))}
             </div>
 
             {/* Extra Drawer Links: CV & Company */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid #e2d9cf' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', paddingTop: '0.5rem', borderTop: '1px solid #e2d9cf' }}>
               <a
                 href="/cv/CV_Luis_Fernando_Romano.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 style={{
                   color: '#c25e00',
-                  fontSize: '0.95rem',
+                  fontSize: '0.92rem',
                   fontWeight: 700,
-                  padding: '0.35rem 0',
+                  padding: '0.55rem 0.85rem',
+                  borderRadius: '6px',
+                  backgroundColor: '#fbf7ee',
+                  border: '1px solid #e2d9cf',
+                  minHeight: '44px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
+                  gap: '0.5rem',
                   textDecoration: 'none'
                 }}
               >
-                <Download size={15} />
+                <Download size={16} />
                 <span>Descargar CV (PDF)</span>
               </a>
 
@@ -385,18 +456,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 href="https://rodevsoftware.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 style={{
                   color: '#4b5563',
                   fontSize: '0.85rem',
                   fontWeight: 600,
+                  padding: '0.5rem 0.85rem',
+                  minHeight: '44px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
+                  justifyContent: 'space-between',
                   textDecoration: 'none'
                 }}
               >
                 <span>Visitar RoDevs Software</span>
-                <ExternalLink size={13} />
+                <ExternalLink size={14} />
               </a>
             </div>
           </motion.div>
