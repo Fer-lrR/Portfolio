@@ -43,7 +43,7 @@ export interface AccordionGalleryProps {
 const DEFAULT_ITEMS: AccordionGalleryItem[] = [
   { image: '/images/projects/transporte-santa-lucia.png', label: 'Transporte Santa Lucía GPS', link: 'https://transportesantaluciaconnect.netlify.app' },
   { image: '/images/projects/somos-santalucenos.png', label: 'Somos Santa Luceños Radio', link: 'https://somossantalucenosbyjorgebarrera.com.ar' },
-  { image: '/images/projects/seamos-puente.png', label: 'Seamos Puente ONG', link: 'https://rodevsoftware.com' },
+  { image: '/images/projects/seamos-puente.png', label: 'Seamos Puente ONG', link: 'https://seamospuente.netlify.app' },
   { image: '/images/projects/rodevs-software.png', label: 'RoDevs Software Solutions', link: 'https://rodevsoftware.com' }
 ];
 

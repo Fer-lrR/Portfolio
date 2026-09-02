@@ -165,23 +165,11 @@ export const TechRadar: React.FC = () => {
                   fontSize: 'clamp(0.75rem, 2.2vw, 0.85rem)',
                   fontWeight: 700,
                   color: '#181a1f',
-                  marginBottom: '0.2rem',
                   fontFamily: 'var(--font-heading)',
                   lineHeight: 1.2
                 }}
               >
                 {skill.name}
-              </span>
-
-              {/* Category Subtitle */}
-              <span
-                style={{
-                  fontSize: 'clamp(0.6rem, 1.8vw, 0.68rem)',
-                  color: '#6b7280',
-                  fontWeight: 600
-                }}
-              >
-                {skill.level || 'Avanzado'}
               </span>
             </motion.div>
           ))}

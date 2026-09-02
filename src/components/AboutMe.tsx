@@ -99,14 +99,14 @@ export const AboutMe: React.FC = () => {
               </div>
 
               {/* Quick Tags */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 0.25rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', padding: '0 0.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#4b5563', fontWeight: 600 }}>
                   <Award size={14} color="#c25e00" />
-                  <span>UTN FRT 3° Año</span>
+                  <span>Ing. Sistemas 4° Año UTN-FRT</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#4b5563', fontWeight: 600 }}>
                   <GraduationCap size={14} color="#c25e00" />
-                  <span>Inglés Bilingüe</span>
+                  <span>Inglés</span>
                 </div>
               </div>
             </div>
@@ -213,10 +213,10 @@ export const AboutMe: React.FC = () => {
                   </div>
                   <div>
                     <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#181a1f', marginBottom: '0.25rem' }}>
-                      Instructor de Idioma Inglés (Bilingüe)
+                      Instructor de Idioma Inglés
                     </h4>
                     <p style={{ fontSize: '0.83rem', color: '#4b5563', lineHeight: 1.55 }}>
-                      Egresado oficial del Instituto Stratford ICLI con capacidad bilingüe fluida para comunicación técnica, documentación y trabajo remoto internacional.
+                      Egresado oficial del Instituto Stratford ICLI con sólida base para comunicación técnica, documentación y trabajo profesional.
                     </p>
                   </div>
                 </div>

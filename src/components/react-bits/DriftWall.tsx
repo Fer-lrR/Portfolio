@@ -62,7 +62,7 @@ const DEFAULT_ITEMS: DriftWallItem[] = [
   {
     image: '/images/projects/seamos-puente.png',
     title: 'Seamos Puente ONG',
-    href: 'https://rodevsoftware.com',
+    href: 'https://seamospuente.netlify.app',
     badge: 'Plataforma ONG'
   },
   {

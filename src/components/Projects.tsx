@@ -59,7 +59,7 @@ const PROJECTS_DATA: ProjectDetail[] = [
     id: 'seamos-puente-ong',
     image: '/images/projects/seamos-puente.png',
     label: 'Seamos Puente ONG Argentina',
-    link: 'https://rodevsoftware.com',
+    link: 'https://seamospuente.netlify.app',
     badge: 'Comunidad & ONG',
     client: 'Asociación Civil Seamos Puente',
     category: 'Acción Social & Plataforma Institucional',

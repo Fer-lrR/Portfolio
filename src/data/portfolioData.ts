@@ -14,7 +14,7 @@ export const PERSONAL_INFO = {
   web: 'https://rodevsoftware.com',
   company: 'RoDevs Software Solutions',
   companyRole: 'Full Stack Developer / Fundador',
-  bio: 'Desarrollador Full Stack y estudiante avanzado de Ingeniería en Sistemas de Información (UTN). Experiencia en la creación de aplicaciones web progresivas (PWAs), arquitecturas cloud y telemetría en tiempo real. Ayudante de cátedra universitario en Algoritmos y Estructuras de Datos, con formación bilingüe como instructor de idioma inglés.',
+  bio: 'Desarrollador Full Stack y estudiante avanzado de Ingeniería en Sistemas de Información (UTN). Experiencia en la creación de aplicaciones web progresivas (PWAs), arquitecturas cloud y telemetría en tiempo real. Ayudante de cátedra universitario en Algoritmos y Estructuras de Datos, con formación como instructor de idioma inglés.',
   metrics: [
     { value: '+370', label: 'Contribuciones Anuales', detail: 'Actividad en repositorios' },
     { value: '0.01s', label: 'Carga Frontend', detail: 'Optimización de caché Edge' },
@@ -239,10 +239,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     badge: 'Certificación Profesional',
     description: 'Formación integral y certificación oficial como Instructor de Idioma Inglés con fluidez en lectura técnica y comunicación profesional.',
     bullets: [
-      'Capacidad bilingüe para lectura técnica, documentación de arquitectura y comunicación internacional.',
+      'Lectura técnica, documentación de arquitectura y comunicación internacional.',
       'Redacción de especificaciones técnicas y requerimientos en idioma inglés.'
     ],
-    tags: ['Inglés Técnico', 'Bilingüe', 'Documentación']
+    tags: ['Inglés Técnico', 'Documentación']
   }
 ];
 

@@ -410,7 +410,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               </div>
             </div>
 
-            {/* Title: EXPLORA EL LEGADO */}
+            {/* Title: BIENVENIDO */}
             <div style={{ marginTop: 'clamp(0.25rem, 0.8vh, 0.75rem)', textAlign: 'center' }}>
               <h1
                 style={{
@@ -424,7 +424,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   margin: 0
                 }}
               >
-                EXPLORA EL LEGADO
+                BIENVENIDO
               </h1>
             </div>
           </div>
@@ -664,39 +664,47 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 onTouchStart={startRevving}
                 onTouchEnd={stopRevving}
               >
-                {/* Precision Glowing Golden Arc */}
+                {/* Precision Glowing Golden Halo Arc */}
                 <div
                   style={{
                     position: 'absolute',
-                    right: '-6px',
+                    right: '-14px',
                     top: '-12px',
                     bottom: '-12px',
-                    width: '36px',
+                    width: '38px',
                     pointerEvents: 'none',
-                    zIndex: 1
+                    zIndex: 4,
+                    overflow: 'visible'
                   }}
                 >
-                  <svg width="100%" height="100%" viewBox="0 0 45 130" preserveAspectRatio="none">
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 40 100"
+                    style={{ overflow: 'visible' }}
+                  >
                     {/* Background Track Arc */}
                     <path
-                      d="M 6,8 A 52,52 0 0,1 6,122"
+                      d="M 4,8 C 34,16 38,50 38,50 C 38,50 34,84 4,92"
                       fill="none"
-                      stroke="rgba(255, 255, 255, 0.12)"
-                      strokeWidth="5"
+                      stroke="rgba(255, 255, 255, 0.14)"
+                      strokeWidth="4"
                       strokeLinecap="round"
                     />
                     {/* Active Glowing Golden Progress Arc */}
                     <path
-                      d="M 6,8 A 52,52 0 0,1 6,122"
+                      d="M 4,8 C 34,16 38,50 38,50 C 38,50 34,84 4,92"
                       fill="none"
                       stroke="url(#goldGrad)"
-                      strokeWidth="5"
+                      strokeWidth="4"
                       strokeLinecap="round"
-                      strokeDasharray="180"
-                      strokeDashoffset={180 - (rpm / 100) * 180}
+                      strokeDasharray="130"
+                      strokeDashoffset={130 - (rpm / 100) * 130}
                       style={{
                         transition: 'stroke-dashoffset 0.04s linear',
-                        filter: isRevving ? 'drop-shadow(0 0 6px #f59e0b) drop-shadow(0 0 12px rgba(245, 158, 11, 0.8))' : 'drop-shadow(0 0 3px rgba(245, 158, 11, 0.4))'
+                        filter: isRevving
+                          ? 'drop-shadow(0 0 6px #f59e0b) drop-shadow(0 0 14px rgba(245, 158, 11, 0.9))'
+                          : 'drop-shadow(0 0 3px rgba(245, 158, 11, 0.4))'
                       }}
                     />
                     <defs>
